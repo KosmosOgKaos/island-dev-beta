@@ -29,8 +29,6 @@ const Umsokn: NextPage = () => {
 
   const stepInfo = activeStep ? getFormStep(activeStep) : null
 
-  console.log({ stepInfo, activeStep })
-
   return (
     <FormLayout activeState={1}>
       <Text variant='h2'>Umsókn um atvinnuleysisbætur</Text>
