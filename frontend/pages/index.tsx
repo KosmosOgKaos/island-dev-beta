@@ -23,6 +23,7 @@ import {
   Input,
   Breadcrumbs,
   Stack,
+  Hyphen,
 } from "@island.is/island-ui/core";
 
 import * as styles from "./index.treat";
@@ -328,7 +329,34 @@ const Home: NextPage = () => {
               })}
               display={["none", "none", "block"]}
             >
-              sidebarContent
+              <Box
+                background="purple100"
+                borderRadius="large"
+                padding={[3, 3, 4]}
+                display="flex"
+                alignItems="center"
+              >
+                <Box
+                  display="block"
+                  style={{ flex: "0 0 64px" }}
+                  marginRight={3}
+                >
+                  <Box
+                    component="img"
+                    alt=""
+                    src="https://island.is/assets/skjaldarmerki.svg"
+                    width="full"
+                  />
+                </Box>
+                <Box>
+                  <Text variant="eyebrow" color="purple600">
+                    Vinnumálastofnun
+                  </Text>
+                  <Text variant="h3" as="h3" color="purple600" lineHeight="sm">
+                    <Hyphen locale="is">Vinnumálastofnun</Hyphen>
+                  </Text>
+                </Box>
+              </Box>
             </Box>
             <GridContainer id="main-content">
               <GridRow>
