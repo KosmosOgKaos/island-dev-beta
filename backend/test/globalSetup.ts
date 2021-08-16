@@ -6,6 +6,7 @@ process.env.DATABASE_URL =
 process.env.REDIS_HOST = 'localhost'
 process.env.REDIS_PORT = '7000'
 process.env.JWT_SECRET = 'SuperSecureSecret'
+process.env.ADMINS = 'iisadmin'
 
 const setup = async () => {
   // we have to pass the required environment variables since this runs outside of jest
