@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  db_nodejs_backend_starter:
+    image: postgres:13.3
+    container_name: db_nodejs_backend_starter
+    networks:
+      - local
+    environment:
+      - POSTGRES_PASSWORD=XjFsvIrGyCCrdE
+      - TEST_DB_USER=test_db
+      - TEST_DB_PASS=test_db
+      - TEST_DB_NAME=test_db
+      - DEV_DB_USER=dev_db
+      - DEV_DB_PASS=dev_db
+      - DEV_DB_NAME=dev_db
+    volumes:
+      - ./bin/startup.sql:/docker-entrypoint-initdb.d/startup.sql
+    ports:
+      - 5432:5432
+
+  redis_nodejs_backend_starter:
+    container_name: redis_nodejs_backend_starter
+    image: grokzen/redis-cluster:5.0.6
+    privileged: true
+    sysctls:
+      net.core.somaxconn: '511'
+    environment:
+      - IP=0.0.0.0
+    ports:
+      - '7000-7005:7000-7005'
+
+networks:
+  local:

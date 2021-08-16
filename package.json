@@ -1,0 +1,17 @@
+{
+  "name": "ne-x-stjs-starter",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "database",
+    "frontend"
+  ],
+  "engines": {
+    "node": "16"
+  },
+  "scripts": {
+    "backend": "yarn workspace backend",
+    "database": "yarn workspace database",
+    "frontend": "yarn workspace frontend"
+  }
+}

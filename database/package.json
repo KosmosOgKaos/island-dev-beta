@@ -1,0 +1,23 @@
+{
+  "name": "database",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "docker-compose -f docker-compose.yaml up -d",
+    "stop": "docker-compose -f docker-compose.yaml down",
+    "migrate": "prisma migrate dev",
+    "migrate:prod": "prisma migrate deploy",
+    "generate": "prisma generate",
+    "seed": "prisma db seed --preview-feature",
+    "reset": "prisma migrate reset"
+  },
+  "dependencies": {
+    "prisma": "^2.27.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^2.27.0",
+    "@types/faker": "^5.5.7",
+    "faker": "^5.5.3",
+    "typescript": "^4.3.5"
+  }
+}
