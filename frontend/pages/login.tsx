@@ -1,7 +1,9 @@
 import type { NextPage } from 'next'
 import { gql, useMutation } from '@apollo/client'
-import { useForm } from 'react-hook-form'
+import { ApolloError } from 'apollo-server-errors';
+import { useForm, useFormState } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
+
 
 const MUTATION_LOGIN = gql`
   mutation ($input: LoginDto!) {
@@ -19,14 +21,18 @@ const Login: NextPage = () => {
   const { login } = createLoginStore()
 
   const onSubmit = (data: { username: string }) => {
-    mutation({
-      variables: {
-        input: {
-          username: data.username
+    
+    if(data.username.length === 10) {
+      mutation({
+        variables: {
+          input: {
+            username: data.username
+          }
         }
-      }
-    })
+      })
+    }
   }
+
 
   if (data?.login?.token) {
     login({
@@ -41,15 +47,16 @@ const Login: NextPage = () => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1 className="title">Innskráning</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
-        <input {...register("username", { required: true })} />
+        <p>Stimplaðu inn kennitölu til þess að skrá þig inn.</p>
+        <input {...register("username", { required: true, minLength: 10, maxLength: 10, pattern: /^-?[0-9]\d*\.?\d*$/ })} />
 
-        {errors.username && <span>This field is required</span>}
+        {errors.username && <p>Kennitala er ekki gild.</p>}
 
-        <input type="submit" />
+        <input type="submit" value="Áfram" />
       </form>
     </div>
   )
