@@ -26,16 +26,12 @@ export class ApplicationsService {
   async updateApplicationById(id: number, data: any) {
     const applicationBefore = await this.getApplicationById(id)
 
-    console.log(JSON.stringify(applicationBefore))
-
     const oldData = JSON.parse(applicationBefore?.data ?? '{}')
     const incomingData = JSON.parse(data.data)
     const processedData = {
       ...oldData,
       ...incomingData,
     }
-
-    console.log(processedData)
 
     return this.prismaService.application.update({
       where: { id },
