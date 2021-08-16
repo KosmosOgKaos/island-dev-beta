@@ -1,5 +1,7 @@
+import React, { useRef } from "react";
 import type { NextPage } from "next";
 import { gql, useQuery } from "@apollo/client";
+import cn from "classnames";
 import NextLink from "next/link";
 import {
   Page,
@@ -12,14 +14,18 @@ import {
   Columns,
   FocusableBox,
   GridColumn,
+  Text,
   GridRow,
   Logo,
   Link,
   Menu,
   ResponsiveSpace,
   Input,
+  Breadcrumbs,
+  Stack,
 } from "@island.is/island-ui/core";
-import React, { useRef } from "react";
+
+import * as styles from "./index.treat";
 
 const marginLeft = [1, 1, 1, 2] as ResponsiveSpace;
 
@@ -306,6 +312,133 @@ const Home: NextPage = () => {
           </GridRow>
         </GridContainer>
       </header>
+      <Box>
+        <GridContainer position="none">
+          <Box
+            display="flex"
+            flexDirection="row"
+            paddingY={[3, 3, 6]}
+            height="full"
+            position="relative"
+          >
+            <Box
+              printHidden
+              className={cn(styles.sidebarWrapper, {
+                [styles.sticky]: true,
+              })}
+              display={["none", "none", "block"]}
+            >
+              sidebarContent
+            </Box>
+            <GridContainer id="main-content">
+              <GridRow>
+                <GridColumn
+                  offset={["0", "0", "0", "0", "1/9"]}
+                  span={["9/9", "9/9", "9/9", "9/9", "7/9"]}
+                >
+                  <Box paddingLeft={[0, 0, 6, 6, 0]}>
+                    <Box
+                      paddingBottom={[2, 2, 4]}
+                      display={["none", "none", "block"]}
+                      printHidden
+                    >
+                      <Breadcrumbs
+                        items={[
+                          {
+                            title: "Ísland.is",
+                            href: "https://island.is",
+                          },
+                          {
+                            title: "Launþegi, réttindi og lífeyrir",
+                            href: "https://island.is/flokkur/launthegi-rettindi-og-lifeyrir",
+                          },
+                          {
+                            isTag: true,
+                            title: "Atvinnuleysi og starfslok",
+                            href: "https://island.is/flokkur/launthegi-rettindi-og-lifeyrir#atvinnuleysi",
+                          },
+                        ]}
+                        renderLink={(link, { typename, slug, href }) => {
+                          return (
+                            <NextLink href={href} passHref>
+                              {link}
+                            </NextLink>
+                          );
+                        }}
+                      />
+                    </Box>
+                    <Stack space={3}>
+                      <Text variant="h1" as="h1">
+                        Atvinnuleysisbætur
+                      </Text>
+                      <Box display="block" printHidden>
+                        <Box
+                          width="full"
+                          background="blue100"
+                          display="flex"
+                          justifyContent="spaceBetween"
+                          borderRadius="large"
+                          paddingY={4}
+                          paddingX={[3, 3, 3, 3, 4]}
+                          alignItems={["flexStart", "center"]}
+                          flexDirection={["column", "row"]}
+                        >
+                          <Box marginRight={[0, 2]} marginBottom={[3, 0]}>
+                            <Text variant="h3" color="blue600">
+                              Umsókn um atvinnuleysisbætur
+                            </Text>
+                          </Box>
+                          <Link href="/umsokn" skipTab>
+                            <Button icon="open" iconType="outline" nowrap>
+                              Sækja um
+                            </Button>
+                          </Link>
+                        </Box>
+                      </Box>
+                      <Text>
+                        Þeir sem eru atvinnulausir geta skráð sig á
+                        atvinnuleysisskrá hjá vinnumiðlunum Vinnumálastofnunar
+                        og átt rétt á atvinnuleysisbótum. Þeir fá jafnframt
+                        ráðgjöf og aðstoð við atvinnuleit.
+                      </Text>
+                      <Text variant="h2" as="h2">
+                        Hvernig sæki ég um?
+                      </Text>
+                      <Text>
+                        Umsóknarferli um atvinnuleysisbætur er í tveimur
+                        skrefum. Fyrst skráir umsækjandi nauðsynlegar
+                        upplýsingar um sig. Síðan þarf umsækjandi að kynna sér
+                        mikilvægar upplýsingar og staðfesta umsóknina.
+                      </Text>
+                      <Text>
+                        Greiðslur atvinnuleysisbóta taka í fyrsta lagi mið af
+                        þeim degi sem umsækjandi staðfestir og sendir umsókn.
+                        Þegar umsækjandi hefur lokið við að sækja um, birtist
+                        listi yfir þau gögn sem þurfa að berast til
+                        Vinnumálastofnunar. Því fyrr sem umsækjandi skilar öllum
+                        gögnum, því fyrr er unnt að afgreiða umsóknina.
+                      </Text>
+                      <Text variant="h2" as="h2">
+                        Skilyrði atvinnuleysisbóta
+                      </Text>
+                      <Text>
+                        Sótt er um atvinnuleysisbætur hjá þjónustuskrifstofum
+                        Vinnumálastofnunar sem starfa í öllum landshlutum.
+                        Umsækjandi um atvinnuleysisbætur skráir sig jafnframt í
+                        atvinnuleit.
+                      </Text>
+                      <Text>
+                        Atvinnuleysisbætur eru greiddar út mánaðarlega af
+                        Greiðslustofu atvinnuleysistrygginga.
+                      </Text>
+                    </Stack>
+                  </Box>
+                </GridColumn>
+              </GridRow>
+            </GridContainer>
+          </Box>
+        </GridContainer>
+      </Box>
       <Footer showTagLinks showMiddleLinks />
     </Page>
   );
