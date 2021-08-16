@@ -3,6 +3,7 @@ import { gql, useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
 
+
 const MUTATION_LOGIN = gql`
   mutation ($input: LoginDto!) {
     login (input: $input) {
@@ -28,6 +29,7 @@ const Login: NextPage = () => {
     })
   }
 
+
   if (data?.login?.token) {
     login({
       username: data.login.username,
@@ -41,15 +43,16 @@ const Login: NextPage = () => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1 className="title">Innskráning</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
-        <input {...register("username", { required: true })} />
+        <p>Stimplaðu inn kennitölu til þess að skrá þig inn.</p>
+        <input {...register("username", { required: true, minLength: 10, maxLength: 10, pattern: /^-?[0-9]\d*\.?\d*$/ })} />
 
-        {errors.username && <span>This field is required</span>}
+        <p>{errors.username && <span>Kennitala er ekki gild</span>}</p>
 
-        <input type="submit" />
+        <input type="submit" value="Auðkenna" />
       </form>
     </div>
   )
