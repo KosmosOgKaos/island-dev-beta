@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import { gql, useMutation } from '@apollo/client'
-import { ApolloError } from 'apollo-server-errors';
-import { useForm, useFormState } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
 
 
@@ -54,7 +53,7 @@ const Login: NextPage = () => {
         <p>Stimplaðu inn kennitölu til þess að skrá þig inn.</p>
         <input {...register("username", { required: true, minLength: 10, maxLength: 10, pattern: /^-?[0-9]\d*\.?\d*$/ })} />
 
-        {errors.username && <p>Kennitala er ekki gild.</p>}
+        <p>{errors.username && <span>Kennitala er ekki gild</span>}</p>
 
         <input type="submit" value="Áfram" />
       </form>
