@@ -4,10 +4,16 @@ import { theme } from '@island.is/island-ui/theme'
 globalStyle('html', {
   boxSizing: 'border-box',
   fontSize: theme.typography.baseFontSize,
+  height: '100%',
 })
 
 globalStyle('body', {
   overflowX: 'hidden',
+  height: '100%',
+})
+
+globalStyle('#__next', {
+  height: '100%',
 })
 
 globalStyle('*, *:before, *:after', {
