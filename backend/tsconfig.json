@@ -15,6 +15,7 @@
     "skipLibCheck": true,
     "paths": {
       "@test/*": ["test/*"]
-    }
+    },
+    "resolveJsonModule": true
   }
 }
