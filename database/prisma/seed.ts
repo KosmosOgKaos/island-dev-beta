@@ -22,5 +22,31 @@ export async function seed() {
   })
   console.log('Created entries', createdEntries.count)
 
+  const createdApplications = await prisma.application.createMany({
+    data: [
+      {
+        id: 1,
+        data: JSON.stringify({
+          educated: "yes"
+        }),
+        owner: "0101302129"
+      },
+      {
+        id: 2,
+        data: JSON.stringify({
+          educated: "no"
+        }),
+        owner: "0101302209"
+      },
+      {
+        id: 3,
+        data: JSON.stringify({
+          educated: "maybe",
+        }),
+        owner: "0101302399"
+      }
+    ]
+  })
+
   await prisma.$disconnect()
 }
