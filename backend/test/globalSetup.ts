@@ -5,6 +5,7 @@ process.env.DATABASE_URL =
   'postgresql://test_db:test_db@localhost:5432/test_db?schema=public'
 process.env.REDIS_HOST = 'localhost'
 process.env.REDIS_PORT = '7000'
+process.env.JWT_SECRET = 'SuperSecureSecret'
 
 const setup = async () => {
   // we have to pass the required environment variables since this runs outside of jest
