@@ -16,9 +16,9 @@ const MUTATION_LOGIN = gql`
 const Login: NextPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [ mutation, { data } ] = useMutation(MUTATION_LOGIN)
-
+  
   const { login } = createLoginStore()
-
+  
   const onSubmit = (data: { username: string }) => {
     mutation({
       variables: {
@@ -27,6 +27,14 @@ const Login: NextPage = () => {
         }
       }
     })
+  }
+
+  function checkSocialNumber(username) {
+    if(username === '') {
+      return
+    }
+    const kennitala = require('kennitala')
+    return kennitala.isValid(username) || false
   }
 
 
@@ -48,10 +56,10 @@ const Login: NextPage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
         <p>Stimplaðu inn kennitölu til þess að skrá þig inn.</p>
-        <input {...register("username", { required: true, minLength: 10, maxLength: 10, pattern: /^-?[0-9]\d*\.?\d*$/ })} />
+        <input {...register("username", { required: true, validate: username => checkSocialNumber(username) })} />
+        {/* // , { required: true, minLength: 10, maxLength: 10, pattern: /^-?[0-9]\d*\.?\d*$/ })} /> */}
 
-        <p>{errors.username && <span>Kennitala er ekki gild</span>}</p>
-
+        <p>{!(username => checkSocialNumber(username)) && <span>Kennitala er ekki gild</span>}</p>
         <input type="submit" value="Auðkenna" />
       </form>
     </div>
