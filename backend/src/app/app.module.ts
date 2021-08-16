@@ -11,6 +11,7 @@ import { PrismaModule } from './modules/prisma/prisma.module'
 import { PubSubModule } from './modules/pubSub/pubSub.module'
 import { RolesGuard } from './modules/auth/roles/roles.guard'
 import environment from './environment'
+import { ThirdPartyModule } from './modules/thirdParty/thirdParty.module'
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import environment from './environment'
       signOptions: { expiresIn: '4h' },
     }),
     EntriesModule,
+    ThirdPartyModule,
   ],
   providers: [
     /*
