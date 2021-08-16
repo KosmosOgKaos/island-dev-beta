@@ -52,7 +52,7 @@ const Login: NextPage = () => {
 
         <p>{errors.username && <span>Kennitala er ekki gild</span>}</p>
 
-        <input type="submit" value="Áfram" />
+        <input type="submit" value="Auðkenna" />
       </form>
     </div>
   )
