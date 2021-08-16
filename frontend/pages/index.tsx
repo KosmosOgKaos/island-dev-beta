@@ -31,7 +31,7 @@ const Home: NextPage = () => {
         <Stack space={5}>
           <div>Hello</div>
           <Btn>Bla</Btn>
-          <Input label="ok"></Input>
+          <Input name="ok" label="ok"></Input>
         </Stack>
       </Box>
       <div className="my-5">

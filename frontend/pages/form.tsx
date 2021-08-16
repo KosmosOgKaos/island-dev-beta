@@ -23,7 +23,6 @@ export default function Home() {
           <GridColumn span={["12/12", "12/12", "3/12"]} order={[1, 1, 2]}>
             <Box marginTop={10} paddingLeft={2}>
               <FormStepper
-                theme="purple"
                 sections={[
                   {
                     name: "Gagnaöflun",
@@ -67,6 +66,7 @@ export default function Home() {
               <GridRow>
                 <GridColumn span="6/12" paddingBottom={3}>
                   <Input
+                    name="bla1"
                     label="Kennitala"
                     disabled
                     placeholder="haha"
@@ -74,26 +74,42 @@ export default function Home() {
                   />
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
-                  <Input label="Nafn" disabled value="Guðrún Jónsdóttir" />
-                </GridColumn>
-                <GridColumn span="6/12" paddingBottom={3}>
-                  <Input label="Heimilisfang" disabled value="Lindargata 3" />
-                </GridColumn>
-                <GridColumn span="6/12" paddingBottom={3}>
-                  <Input label="Staður" disabled value="Reykjavík" />
-                </GridColumn>
-                <GridColumn span="6/12" paddingBottom={3}>
-                  <Input label="Póstnúmer" disabled value="101" />
+                  <Input
+                    name="bla2"
+                    label="Nafn"
+                    disabled
+                    value="Guðrún Jónsdóttir"
+                  />
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
                   <Input
+                    name="bla3"
+                    label="Heimilisfang"
+                    disabled
+                    value="Lindargata 3"
+                  />
+                </GridColumn>
+                <GridColumn span="6/12" paddingBottom={3}>
+                  <Input
+                    name="bla4"
+                    label="Staður"
+                    disabled
+                    value="Reykjavík"
+                  />
+                </GridColumn>
+                <GridColumn span="6/12" paddingBottom={3}>
+                  <Input name="bla5" label="Póstnúmer" disabled value="101" />
+                </GridColumn>
+                <GridColumn span="6/12" paddingBottom={3}>
+                  <Input
+                    name="bla6"
                     label="Tölvupóstur"
                     type="email"
                     value="gj@island.is"
                   />
                 </GridColumn>
-                <GridColumn span="6/12" marginBottom={3}>
-                  <Input label="Sími" type="tel" value="4265500" />
+                <GridColumn span="6/12" paddingBottom={3}>
+                  <Input name="bla7" label="Sími" type="tel" value="4265500" />
                 </GridColumn>
               </GridRow>
             </Box>
