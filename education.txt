@@ -1,0 +1,401 @@
+Ekkert skólanám 
+Ólokið grunnskólanám 
+Barnapróf 
+Unglingapróf 
+Gagnfræðapróf 
+Landspróf 
+Grunnskólapróf 
+Fornám eða 0 áfangar 
+Grunnnám, annað
+Grunnnám í múraraiðn 
+Grunnnám í málmiðnaði 
+Grunnnám í rafiðngreinum 
+Grunnnám í húsasmíði 
+Grunnnám í bíliðnum 
+Grunnnám matvælagreina 
+Grunnnám í iðnum, annað 
+Hússtjórnarskólanám 
+Heimilisbraut 
+Handíðir og handmennt 
+Matsveinanám 
+Slátrun 
+Fiskvinnslubraut 
+Matvæla- og hússtjórnarnám, annað 
+Ferðamálabraut 
+Leiðsögumannanám 
+Ferðatengt nám, annað 
+Flugþjónustubraut 
+Flugfreyju/flugþjónanám 
+Hlaðmenn/hlaðfreyjur 
+Flugþjónustunám, annað 
+Förðunarnám 
+Stutt starfsnám, annað
+Búfræði START Búfræði 
+Blómaskreytingar 
+Garðyrkjuframleiðsla 
+Skógrækt og náttúra 
+Reiðkennaranám/tamningar 
+Landbúnaður, annað starfsmenntanám 
+Skipstjórnarnám, að 12 m. 
+Skipstjórn, námstig A að 24 m. 
+Skipstjórn, námsstig B að 45 m. 
+Skipsstjórn, námsstig C, ótakm. Fiskiskiparéttindi 
+Skipstjórn, námsstig D, eingöngu kaupskip 
+Skipsstjórn, námsstig E, varðskipanám-skipherra 
+Skipstjórnarnám, annað 
+Vélstjórnarbraut A 750 kw og minna 
+Vélstjórnarbraut B 1500 kw og minna 
+Vélstjórnarbraut C, minna en 3000 kw 
+Vélstjórnarbraut D, ótakmörkuð vélstjórnarréttindi 
+Vélstjórnarnám, annað 
+Einkaflugmannspróf 
+Atvinnuflugmannspróf 
+Flugumferðarstjórn 
+Flug- eða flugstjórnarnám, annað 
+Fiskiðnaðarnám/lengra fiskivinnslunám 
+Sjávarútvegsbraut 
+Fiskeldisnám á framhaldsskólastigi 
+Sjávarútvegur, annað starfsmenntanám 
+Hótelnám 
+Nám fyrir aðstoðarkokka 
+Matartækni 
+Matarfræði 
+Nám fyrir aðstoðarþjóna 
+Smurbrauðsnám 
+Hótel-, veitinga- og veisluþjónustunám, annað starfsmenntanám 
+Hönnunarbraut 
+Iðnhönnun 
+Vöruhönnun 
+Útstillingabraut 
+Margmiðlunarhönnun 
+Tækniteiknun 
+Hönnun, annað starfsmenntanám 
+Upplýsinga- og fjölmiðlagreinar, grunnnám 
+Kvikmyndagerð 
+Kvikmyndasýningarstjórn 
+Fjölmiðlun, sjón- og hljóðtækninám, annað 
+Læknaritaranám 
+Hjúkruna - og móttökuritaranám 
+Lyfjatæknanám 
+Námsbraut fyrir nuddara 
+Sjúkraliðabraut 
+Námsbraut í fótaaðgerðafræði 
+Tanntæknanám/aðstoðarfólk tannlækna 
+Heilbrigðisgreinar, annað 
+Félagsliði 
+Félagsmála - og tómstundabraut 
+Skólaliðabraut 
+Leikskólaliðanám 
+Stuðningsfulltrúar í grunnskólum 
+Uppeldisbraut 
+Íþróttabraut - starfsnám 
+Félags-, uppeldis- og íþróttagreinar, annað 
+Verslunarpróf 
+Samvinnuskólapróf 
+Viðskiptabraut 
+Skrifstofubraut 
+Tölvubraut 
+Bankamannanám 
+Ritaranám 
+Skrifstofu-, verslunar- og tölvugreinanám, annað 
+Lögreglunám 
+Tollvarðanám 
+Slökkvistarf 
+Fangavarsla 
+Lífvarsla 
+Öryggisþjónusta og tjónavarnir 
+Öryggisþjónusta og löggæsla, annað 
+Ökukennsla 
+Póstþjónusta 
+Danskennsla 
+Starfsnám, annað
+Húsasmíði 
+Húsgagnabólstrun 
+Húsgagnasmíði 
+Málaraiðn 
+Múraraiðn 
+Pípulagnir 
+Veggfóðrun og dúklögn 
+Bygginga- og mannvirkjagreinar, aðrar 
+Bifreiðasmíði 
+Bifvélavirkjun 
+Bílamálun 
+Farartækja- og flutningagreinar, aðrar 
+Feldskurður 
+Kjólasaumur 
+Klæðskurður 
+Hattasaumur 
+Glerslípun og spegla 
+Gull- og silfursmíði 
+Hljóðfærasmíði 
+Leturgröftur 
+Myndskurður 
+Skósmíðaiðn 
+Söðlasmíði 
+Steinsmíði 
+Leirkerasmíði 
+Vefnaðar-, leður-, stein-, gler- og listiðnaðargreinar, aðrar 
+Bakaraiðn 
+Matreiðsla 
+Framreiðsluiðn 
+Mjólkuriðn 
+Kjötiðn 
+Matvæla- og veitingagreinar, aðrar 
+Blikksmíði 
+Málmsteypa, járnsmíði 
+Málmsuða 
+Stálsmíði 
+Stálvirkjasmíði 
+Stóriðjubraut 
+Rennismíði 
+Vélvirkjun 
+Vélsmíði 
+Skipa- og bátasmíði 
+Kæli- og frystivélavirkjun 
+Flugvélavirkjun 
+Netagerð 
+Úrsmíði 
+Málm-, véltækni- og framleiðslugreinar, aðrar 
+Skrúðgarðyrkja 
+Náttúrunýtingargreinar, aðrar 
+Rafeindavirkjun 
+Rafveituvirkjun 
+Rafvélavirkjun 
+Rafvirkjun 
+Símsmíði 
+Rafiðngreinar, aðrar 
+Bókband 
+Prentsmíð/grafísk miðlun 
+Prentun 
+Ljósmyndun 
+Upplýsinga- og fjölmiðlagreinar, aðrar 
+Hárgreiðsla 
+Hárskurður 
+Hársnyrtiiðn 
+Snyrtifræði 
+Hár- og snyrtigreinar, aðrar 
+Tannsmíði 
+Aðrar iðngreinar
+Stúdentspróf, málabraut 
+Stúdentspróf, félagsfræðabraut 
+Stúdentspróf, viðskipta - og hagfræðibraut 
+Stúdentspróf, náttúrufræðibraut 
+Stúdentspróf, eðlisfræðibraut 
+Stúdentspróf, tæknibraut 
+Stúdentspróf, myndlistarbraut 
+Stúdentspróf, tónlistarbraut 
+Stúdentspróf, íþróttabraut 
+Stúdentspróf, listdansbraut 
+Stúdentspróf, búnaðarbraut 
+Stúdentspróf, heilbrigðisbraut 
+Stúdentspróf, læknaritarabraut 
+Stúdentspróf, matvælabraut 
+Stúdentspróf, Stærðfræðibraut 
+Stúdentspróf, Tölvufræðibraut 
+Raungreinadeildarpróf 
+IB nám - alþjóðlegt stúdentspróf 
+Stúdentspróf, annað 
+Starfsbraut framhaldsskóla
+Læknisfræði, almennt 
+Læknisfræði, sérfræðingur 
+Hjúkrunarfræði 
+Ljósmóðurfræði 
+Tannlæknisfræði 
+Sjúkraþjálfun 
+Iðjuþjálfun 
+Þroskaþjálfun 
+Íþróttafræði 
+Lyfjafræði 
+Lyfjavísindi 
+Lífeindafræði/meinatækni 
+Geislafræði/röntgentækni 
+Sálfræði 
+Matvælafræði 
+Næringarfræði 
+Líf- og læknavísindi 
+Vinnusálfræði 
+Jákvæð sálfræði 
+Fötlunarfræði 
+Lýðheilsufræði 
+Heilbrigðisnám annað 
+Félagsfræði, afbrotafræði 
+Þjóðfélagsfræði 
+Nútímafræði 
+Hagnýt jafnréttisfræði 
+Kynjafræði 
+Mannauðsstjórnun 
+Mannauðsstjórnun og vinnusálfræði 
+Stjórnun og efling mannauðs 
+Félagsráðgjöf 
+Náms- og starfsráðgjöf 
+Bókasafns- og upplýsingafræði 
+Æskulýðsfræði 
+Fjölmiðlafræði 
+Blaða- og fréttamennska 
+Miðlun og almannatengsl 
+Hagnýt fjölmiðlun 
+Auglýsingastjórnun 
+Mannfræði 
+Þjóðfræði 
+Stjórnmálafræði 
+Alþjóðasamskipti 
+Evrópufræði 
+Smáríkjafræði 
+Hnattræn tengsl, fólksflutningar og fjölmiðlun 
+Opinber stjórnsýsla 
+Lögfræði 
+Viðskiptalögfræði 
+Heimskautaréttur 
+Menningarstjórnun 
+Safnafræði 
+Félags, stjórnmála og mannvísindi, annað 
+Viðskiptafræði 
+Hagfræði 
+þjóðhagfræði 
+Rekstrarhagfræði 
+Markaðsfræði 
+Markaðsfræði og alþjóðaviðskipti 
+Rekstrarfræði 
+Rekstur fyrirtækja 
+Rekstur og viðskipti 
+Iðnrekstrarfræði, sjávarútvegsfræði, útgerðartækni 
+Samfélags- og hagþróunarfræði 
+Verslunarstjórnun 
+Vörustjórnun 
+Þróunarfræði 
+Fjármálahagfræði 
+Reikningshald og endurskoðun 
+Viðurkenndur bókari 
+Skattaréttur/Skattastjórnsýsla 
+Hagnýt hagvísindi 
+Alþjóðaviðskipti 
+Forysta og stjórnun 
+Viðburðastjórnun 
+Upplýsingatækni 
+Stjórnun og stefnumótun 
+Verkefnastjórnun/leiðtogaþjálfun 
+Markaðs og útflutningsfræði 
+Viðskipta og hagfræðigreinar, annað 
+Danska 
+Enska 
+Franska 
+Þýska 
+Spænska 
+Önnur tungumál 
+Guðfræði 
+Djáknanám 
+Trúarbragðafræði 
+Trúarbragðafræðinám, annað 
+Íslenskunám 
+Almenn málvísindi 
+Íslenskar bókmenntir 
+Bókmenntafræði 
+Bókmenntir, menning og miðlun 
+Íslensk málfræði 
+Íslensk fræði 
+Kvikmyndafræði 
+Listfræði 
+Máltækni 
+Menningarfræði 
+Ritlist 
+Táknmálsfræði 
+Talmeinafræði 
+Þýðingarfræði 
+Hagnýt ritstjórn og útgáfa 
+Hagnýt menningarmiðlun 
+Hagnýt siðfræði 
+Listmeðferð 
+Alþjóðafræði 
+Enskar bókmenntir 
+Íslensku- og málvísindanám annað og tengt 
+Fornleifafræði 
+Sagnfræði 
+Heimspeki 
+Klassísk fræði 
+Heimspeki, hagfræði og stjórnmálafræði 
+Sagnfræði- og heimspekinám, annað 
+Grunnskólakennaranám/kennarapróf 
+Leikskólakennaranám 
+Kennslufræði til kennsluréttinda 
+Uppeldis- og menntunarfræði 
+Íþróttakennaranám 
+Tónlistarkennaranám 
+Sérkennaranám 
+Tómstunda og félagsmálafræði 
+Myndlistarkennaranám 
+Starfstengt diplómanám fyrir fólk með þroskahömlun 
+Leiðsögunám 
+Kennaranám, annað 
+Leiklistarnám á háskólastigi 
+Myndlistarnám á háskólastigi 
+Tónlistarnám á háskólastigi 
+Söngnám á háskólastigi 
+Fatahönnun 
+Skapandi tónlistarmiðlun 
+Kvikmyndagerð 
+Listnám, annað á háskólastigi 
+Byggingarverkfræði 
+Rafmagnsverkfræði 
+Vélaverkfræði 
+Iðnaðarverkfræði 
+Efnaverkfræði 
+Rekstrarverkfræði 
+Tölvunarverkfræði 
+Hugbúnaðarverkfræði 
+Umhverfisverkfræði 
+Verkfræði,annað 
+Byggingariðnfræði 
+Rafiðnfræði 
+Véliðnfræði 
+Byggingarfræði 
+Skipulagsfræði 
+Landmælingar 
+Umhverfisskipulag 
+Arkitektanám 
+Innanhúsarkitekt 
+Landslagsarkitekt 
+Annað arkitektanám 
+Hönnunarnám á háskólastigi 
+Iðnhönnun á háskólastigi 
+Grafísk hönnun á háskólastigi 
+Textilhönnun 
+Umhverfis- og orkufræði 
+Skipulags- og hönnunarnám, annað 
+Byggingatæknifræði 
+Rafmagnstæknifræði 
+Véltæknifræði 
+Iðntæknifræði 
+Rekstrartæknifræði 
+Tæknifræðinám, annað 
+Jarðfræði 
+Jarðeðlisfræði/jarðskjálftafræði 
+Jarðefnafræði 
+Veðurfræði 
+Jarðvísindanám, annað 
+Ferðamálafræði 
+Landfræði 
+Líffræði 
+Lífefnafræði 
+Náttúru- og umhverfisfræði 
+Búvísindi 
+Skógfræði og landgræðsla 
+Fiskeldis- og fiskalíffræði 
+Hestafræði 
+Dýralækningar 
+Haf- og strandveiðastjórnun 
+Líftækni 
+Reiðmennska og reiðkennsla 
+Líf- og umhverfisvísindanám, annað 
+Stærðfræði 
+Reiknifræði 
+Tölfræði 
+Raunvísindanám, annað 
+Tölvunarfræði 
+Kerfisfræði 
+Tölvunarfræðinám, annað 
+Eðlisfræði 
+Efnafræði 
+Lífeindafræði 
+Eðlisvísindanám, annað 
+Háskólanám, annað
+Óþekkt nám
