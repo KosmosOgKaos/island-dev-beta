@@ -12,8 +12,19 @@ export enum Role {
     User = "User"
 }
 
+export interface ApplicationDTO {
+    data: string;
+    owner: string;
+}
+
 export interface LoginDto {
     username: string;
+}
+
+export interface Application {
+    data: string;
+    id: number;
+    owner: string;
 }
 
 export interface AuthUser {
@@ -30,10 +41,15 @@ export interface Entry {
 }
 
 export interface IMutation {
+    createApplication(data: ApplicationDTO): Application | Promise<Application>;
     login(input: LoginDto): AuthUser | Promise<AuthUser>;
+    updateApplication(data: ApplicationDTO, id: number): Application | Promise<Application>;
 }
 
 export interface IQuery {
+    getApplicationById(id: number): Nullable<Application> | Promise<Nullable<Application>>;
+    getApplicationByNationalId(owner: string): Nullable<Application> | Promise<Nullable<Application>>;
+    getApplications(): Application[] | Promise<Application[]>;
     getEntries(): Entry[] | Promise<Entry[]>;
     getEntry(id: number): Entry | Promise<Entry>;
 }
