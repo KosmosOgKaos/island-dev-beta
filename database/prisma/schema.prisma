@@ -18,3 +18,13 @@ model Entry {
   created DateTime  @default(now())
   updated DateTime  @updatedAt
 }
+
+model Application {
+  id        Int       @default(autoincrement()) @id
+  owner     String
+  data      String
+  completed Boolean   @default(false)
+  deleted   DateTime?
+  created   DateTime  @default(now())
+  updated   DateTime  @updatedAt
+} 

@@ -1,57 +1,75 @@
-import Head from "next/head";
+import Head from 'next/head'
 import {
   Box,
   Text,
   Input,
   FormStepper,
-  DatePicker,
   GridContainer,
   GridRow,
   GridColumn,
-  Divider,
-} from "@island.is/island-ui/core";
+  Header,
+} from '@island.is/island-ui/core'
 
 export default function Home() {
   return (
-    <Box background="purple100" paddingTop={15}>
+    <Box
+      background="purple100"
+      display="flex"
+      flexDirection="column"
+      height="full"
+    >
+      <Box background="white" marginBottom={5}>
+        <GridContainer>
+          <Header
+            authenticated
+            userName="Guðrún Jónsdóttir"
+            language="EN"
+            info={{
+              title: 'Vinnumálastofnun',
+              description: 'Umsókn um atvinnuleysisbætur',
+            }}
+            userAsDropdown={true}
+          />
+        </GridContainer>
+      </Box>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GridContainer>
         <GridRow>
-          <GridColumn span={["12/12", "12/12", "3/12"]} order={[1, 1, 2]}>
+          <GridColumn span={['12/12', '12/12', '3/12']} order={[1, 1, 2]}>
             <Box marginTop={10} paddingLeft={2}>
               <FormStepper
                 sections={[
                   {
-                    name: "Gagnaöflun",
+                    name: 'Gagnaöflun',
                   },
                   {
-                    name: "Yfirlit",
+                    name: 'Yfirlit',
                     children: [
                       {
-                        type: "SUB_SECTION",
-                        name: "Sub section #1",
+                        type: 'SUB_SECTION',
+                        name: 'Sub section #1',
                       },
                       {
-                        type: "SUB_SECTION",
-                        name: "Sub section #2",
+                        type: 'SUB_SECTION',
+                        name: 'Sub section #2',
                       },
                     ],
                   },
                   {
-                    name: "Viðbótarupplýsingar",
+                    name: 'Viðbótarupplýsingar',
                   },
                   {
-                    name: "Réttindi",
+                    name: 'Réttindi',
                   },
                 ]}
                 activeSection={1}
               />
             </Box>
           </GridColumn>
-          <GridColumn span={["12/12", "12/12", "9/12"]} order={[2, 2, 1]}>
+          <GridColumn span={['12/12', '12/12', '9/12']} order={[2, 2, 1]}>
             <Box
               paddingY={10}
               paddingX={[4, 4, 12]}
@@ -66,16 +84,18 @@ export default function Home() {
               <GridRow>
                 <GridColumn span="6/12" paddingBottom={3}>
                   <Input
-                    name="bla1"
+                    name="test1"
+                    onChange={() => {}}
                     label="Kennitala"
+                    placeholder="Kennitala"
                     disabled
-                    placeholder="haha"
                     value="170694-1119"
                   />
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
                   <Input
-                    name="bla2"
+                    name="test2"
+                    onChange={() => {}}
                     label="Nafn"
                     disabled
                     value="Guðrún Jónsdóttir"
@@ -83,7 +103,8 @@ export default function Home() {
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
                   <Input
-                    name="bla3"
+                    name="test3"
+                    onChange={() => {}}
                     label="Heimilisfang"
                     disabled
                     value="Lindargata 3"
@@ -91,25 +112,39 @@ export default function Home() {
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
                   <Input
-                    name="bla4"
+                    name="test4"
+                    onChange={() => {}}
                     label="Staður"
                     disabled
                     value="Reykjavík"
                   />
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
-                  <Input name="bla5" label="Póstnúmer" disabled value="101" />
+                  <Input
+                    name="test5"
+                    onChange={() => {}}
+                    label="Póstnúmer"
+                    disabled
+                    value="101"
+                  />
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
                   <Input
-                    name="bla6"
+                    name="test6"
+                    onChange={() => {}}
                     label="Tölvupóstur"
                     type="email"
                     value="gj@island.is"
                   />
                 </GridColumn>
                 <GridColumn span="6/12" paddingBottom={3}>
-                  <Input name="bla7" label="Sími" type="tel" value="4265500" />
+                  <Input
+                    name="test7"
+                    onChange={() => {}}
+                    label="Sími"
+                    type="tel"
+                    value="4265500"
+                  />
                 </GridColumn>
               </GridRow>
             </Box>
@@ -117,5 +152,5 @@ export default function Home() {
         </GridRow>
       </GridContainer>
     </Box>
-  );
+  )
 }

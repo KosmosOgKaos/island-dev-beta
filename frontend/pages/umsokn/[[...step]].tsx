@@ -6,7 +6,7 @@ import { ActiveStep } from 'src/components/ActiveStep'
 import { StepOverview } from 'src/components/StepOverview'
 import { FormStepKey, getFormStep } from 'src/components/formSteps'
 import { useEffect } from 'react'
-
+import { FormLayout } from '@cmp'
 
 const Umsokn: NextPage = () => {
   const { isLoggedIn, getUser } = createLoginStore()
@@ -30,7 +30,7 @@ const Umsokn: NextPage = () => {
   const stepInfo = activeStep !== null ? getFormStep(activeStep) : null
 
   return (
-    <div>
+    <FormLayout activeState={1}>
       <h1>Umsókn um atvinnuleysisbætur</h1>
 
       <Application>
@@ -39,9 +39,7 @@ const Umsokn: NextPage = () => {
           {stepInfo ? (
             <ActiveStep stepInfo={stepInfo} />
           ) : (
-            <div>
-              sorry no umsokn on this url try something else
-            </div>
+            <div>sorry no umsokn on this url try something else</div>
           )}
         </div>
 
@@ -50,8 +48,7 @@ const Umsokn: NextPage = () => {
           <StepOverview />
         </div>
       </Application>
-
-    </div>
+    </FormLayout>
   )
 }
 
