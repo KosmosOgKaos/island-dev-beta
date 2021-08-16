@@ -26,7 +26,7 @@ import {
   Hyphen,
 } from "@island.is/island-ui/core";
 
-import * as styles from "./index.treat";
+import * as styles from "../treat/index.treat";
 
 const marginLeft = [1, 1, 1, 2] as ResponsiveSpace;
 
