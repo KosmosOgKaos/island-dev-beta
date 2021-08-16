@@ -1,24 +1,37 @@
-import { SomeView } from './SomeView'
-import { SomeOtherView } from './SomeOtherView'
-import type { Step } from 'src/components/ActiveStep'
+import { Education } from './Education'
+import { DataConsent } from './DataConsent'
+import type { ID, Step } from 'src/components/ActiveStep'
+import { FormStepperSection } from '@island.is/island-ui/core'
 
-export const formSteps: { [key: string]: Step } = {
-  gagnaoflun: {
+export const formSteps: Step[] = [
+  {
+    id: 'gagnaoflun',
     title: 'Gagnaöflun',
     options: {},
-    component: SomeOtherView,
+    next: 'education',
+    component: DataConsent,
   },
 
-  menntun: {
+  {
+    id: 'education',
     title: 'Menntun',
     options: {},
-    component: SomeView,
+    component: Education,
   },
-  // more steps
+]
+
+export const getFormStep = (key: ID) => {
+  return formSteps.find(({ id }) => id === key)
 }
 
-export const getFormStep = (key: FormStepKey) => {
-  return formSteps[key] ?? null
+export const getFormStepIndex = (key: ID) => {
+  return formSteps.indexOf(getFormStep(key))
 }
 
-export type FormStepKey = keyof typeof formSteps
+// eventually reduce or something based on parent/child
+export const formStepSections: FormStepperSection[] = formSteps.map((step: Step) => {
+  return {
+    name: step.title,
+    children: [],
+  }
+})

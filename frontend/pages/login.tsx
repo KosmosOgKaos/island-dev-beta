@@ -36,8 +36,6 @@ const Login: NextPage = () => {
       token: data.login.token,
     })
 
-    window.location.href = '/'
-
     return null
   }
 
