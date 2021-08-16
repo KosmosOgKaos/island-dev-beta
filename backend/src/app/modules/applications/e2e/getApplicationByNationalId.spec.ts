@@ -46,7 +46,6 @@ describe('getApplications', () => {
     return gqlClient(query)
       .expect(200)
       .expect((result) => {
-        console.log(result.body)
         expect(result.body.data.getApplicationByNationalId).toMatchObject(
           testData[0],
         )
@@ -66,7 +65,6 @@ describe('getApplications', () => {
     return gqlClient(query)
       .expect(200)
       .expect((result) => {
-        console.log(result.body.data)
         expect(result.body.data.getApplicationByNationalId).toMatchObject(
           testData[2],
         )
