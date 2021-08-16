@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import { createLoginStore } from '../../lib/loginStore'
 import { useRouter } from 'next/router'
-import { Application } from 'src/components/Application'
 import { ActiveStep } from 'src/components/ActiveStep'
 import { getFormStep } from 'src/components/formSteps'
 import { useEffect } from 'react'
@@ -13,7 +12,7 @@ const Umsokn: NextPage = () => {
 
   const router = useRouter()
   const { step } = router.query
-  const activeStep = (Array.isArray(step) ? step[0] : null) as FormStepKey|null
+  const activeStep = Array.isArray(step) ? step[0] : null
 
   useEffect(() => {
     if (!isLoggedIn()) {
@@ -30,7 +29,7 @@ const Umsokn: NextPage = () => {
   const stepInfo = activeStep ? getFormStep(activeStep) : null
 
   return (
-    <FormLayout activeState={1}>
+    <FormLayout activeState={stepInfo?.id}>
       <Text variant='h2'>Umsókn um atvinnuleysisbætur</Text>
 
       <Box>
