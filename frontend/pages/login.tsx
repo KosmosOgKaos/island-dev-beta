@@ -20,16 +20,13 @@ const Login: NextPage = () => {
   const { login } = createLoginStore()
 
   const onSubmit = (data: { username: string }) => {
-    
-    if(data.username.length === 10) {
-      mutation({
-        variables: {
-          input: {
-            username: data.username
-          }
+    mutation({
+      variables: {
+        input: {
+          username: data.username
         }
-      })
-    }
+      }
+    })
   }
 
 
