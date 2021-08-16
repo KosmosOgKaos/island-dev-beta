@@ -1,24 +1,24 @@
-import { SomeView } from './SomeView'
-import { SomeOtherView } from './SomeOtherView'
-import type { Step } from 'src/components/ActiveStep'
+import { Education } from './Education'
+import { DataConsent } from './DataConsent'
+import type { ID, Step } from 'src/components/ActiveStep'
 
-export const formSteps: { [key: string]: Step } = {
-  gagnaoflun: {
+export const formSteps: Step[] = [
+  {
+    id: 'gagnaoflun',
     title: 'Gagnaöflun',
     options: {},
-    component: SomeOtherView,
+    next: 'education',
+    component: DataConsent,
   },
 
-  menntun: {
+  {
+    id: 'education',
     title: 'Menntun',
     options: {},
-    component: SomeView,
+    component: Education,
   },
-  // more steps
-}
+]
 
-export const getFormStep = (key: FormStepKey) => {
-  return formSteps[key] ?? null
+export const getFormStep = (key: ID) => {
+  return formSteps.find(({ id }) => id === key)
 }
-
-export type FormStepKey = keyof typeof formSteps
