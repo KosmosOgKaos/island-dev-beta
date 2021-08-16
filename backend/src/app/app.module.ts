@@ -12,6 +12,7 @@ import { PubSubModule } from './modules/pubSub/pubSub.module'
 import { RolesGuard } from './modules/auth/roles/roles.guard'
 import environment from './environment'
 import { ThirdPartyModule } from './modules/thirdParty/thirdParty.module'
+import { ApplicationsModule } from './modules/applications/applications.module'
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { ThirdPartyModule } from './modules/thirdParty/thirdParty.module'
     }),
     EntriesModule,
     ThirdPartyModule,
+    ApplicationsModule,
   ],
   providers: [
     /*
