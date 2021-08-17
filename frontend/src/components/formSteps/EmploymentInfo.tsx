@@ -46,7 +46,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
         <RadioController 
           id="jobPercentageWish"
           largeButtons={false}
-          split="1/2"
+          split="1/1"
           control={form.control} 
           options={[
             {label:"Fullt starf óskast", value:"fullt_starf"},
