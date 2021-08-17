@@ -10,25 +10,22 @@ export const ActiveStep = ({ stepInfo, formData }: ActiveStepProps) => {
   const router = useRouter()
 
   const onSubmit = (data: any) => {
-    console.log({ data })
+    console.log(data)
     // save data?
     // goto next step?
 
     if (stepInfo.next) {
-      router.push(`/umsokn/${stepInfo.next}`)
+      //router.push(`/umsokn/${stepInfo.next}`)
     }
   }
 
-  const {
-    component: Cmp,
-    options,
-  } = stepInfo
+  const { component: Cmp, options } = stepInfo
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Cmp options={options} form={form} />
 
-      <Button onClick={onSubmit}>Áfram</Button>
+      <Button type="submit">Áfram</Button>
     </form>
   )
 }

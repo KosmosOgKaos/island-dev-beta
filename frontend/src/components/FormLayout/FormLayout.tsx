@@ -9,6 +9,7 @@ import {
 } from '@island.is/island-ui/core'
 import { formStepSections, getFormStepIndex } from '../formSteps'
 import { ID } from '../ActiveStep'
+import { VinnumalastofnunLogo } from '@cmp'
 
 export interface FormLayoutProps {
   children?: React.ReactNode
@@ -21,7 +22,7 @@ export const FormLayout = ({ children, activeState }) => {
       background="purple100"
       display="flex"
       flexDirection="column"
-      height="full"
+      paddingBottom={20}
     >
       <Box background="white" marginBottom={5}>
         <GridContainer>
@@ -44,11 +45,26 @@ export const FormLayout = ({ children, activeState }) => {
       <GridContainer>
         <GridRow>
           <GridColumn span={['12/12', '12/12', '3/12']} order={[1, 1, 2]}>
-            <Box marginTop={10} paddingLeft={2}>
-              <FormStepper
-                sections={formStepSections}
-                activeSection={getFormStepIndex(activeState)}
-              />
+            <Box
+              paddingLeft={2}
+              display="flex"
+              justifyContent="spaceBetween"
+              flexDirection="column"
+              height="full"
+            >
+              <Box paddingTop={[0, 0, 10]} position="sticky" top={0}>
+                <FormStepper
+                  sections={formStepSections}
+                  activeSection={getFormStepIndex(activeState)}
+                />
+              </Box>
+              <Box
+                position="sticky"
+                bottom={4}
+                display={['none', 'none', 'block']}
+              >
+                <VinnumalastofnunLogo />
+              </Box>
             </Box>
           </GridColumn>
           <GridColumn span={['12/12', '12/12', '9/12']} order={[2, 2, 1]}>
