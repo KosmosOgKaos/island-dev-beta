@@ -41,6 +41,7 @@ export const SelectController = ({
           hasError={error !== undefined}
           disabled={disabled}
           id={id}
+          size="sm"
           errorMessage={error?.message}
           name={name}
           options={options}

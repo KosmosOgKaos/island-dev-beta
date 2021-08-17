@@ -19,7 +19,7 @@ import {
 import jobs from '../../static/jobs.json'
 import haskolagrada from '../../static/haskolagrada.json'
 import education from '../../static/education.json'
-import { InputController } from '@cmp'
+import { InputController, SelectController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
 
 const haskolagradaOptions = haskolagrada.map((x) => ({
@@ -143,8 +143,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_profgrada"
           name="nam_profgrada"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
@@ -152,8 +153,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="haskolagrada"
           name="haskolagrada"
           label="Háskólagráða"
           placeholder="Veldu nám/prófgráðu"
@@ -161,8 +163,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_hofst"
           name="nam_hofst"
           label="Nám hófst"
           placeholder="Ár"
@@ -170,8 +173,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={6}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_lauk"
           name="nam_lauk"
           label="Námi lauk"
           placeholder="Ár"
@@ -184,9 +188,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
-          name="nam_profgrada"
+        <SelectController
+          control={form.control}
+          id="annad_nam_profgrada_1"
+          name="annad_nam_profgrada_1"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
           options={educationOptions}
@@ -195,18 +200,20 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
-          name="nam_hofst"
+        <SelectController
+          control={form.control}
+          id="annad_nam_hofst_1"
+          name="annad_nam_hofst_1"
           label="Nám hófst"
           placeholder="Ár"
           options={yearsOptions}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
-          name="nam_lauk"
+        <SelectController
+          control={form.control}
+          id="annad_nam_lauk_1"
+          name="annad_nam_lauk_1"
           label="Námi lauk"
           placeholder="Ár"
           options={yearsOptions}
@@ -223,8 +230,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_profgrada"
           name="nam_profgrada"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
@@ -234,8 +242,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_hofst"
           name="nam_hofst"
           label="Nám hófst"
           placeholder="Ár"
@@ -243,8 +252,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_lauk"
           name="nam_lauk"
           label="Námi lauk"
           placeholder="Ár"
@@ -254,8 +264,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_profgrada"
           name="nam_profgrada"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
@@ -314,8 +325,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="ritvinnsla_thekking"
           name="ritvinnsla_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
@@ -335,8 +347,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="toflureiknir_thekking"
           name="toflureiknir_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
@@ -346,16 +359,18 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tolvuthekking_1"
           name="tolvuthekking_1"
           label="Heiti"
           options={tolvuthekkingOptions}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tolvuthekking_1_thekking"
           name="tolvuthekking_1_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
@@ -383,8 +398,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="islenska_thekking"
           name="islenska_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
@@ -404,8 +420,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="enska_thekking"
           name="enska_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
@@ -415,8 +432,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tungumal_1"
           name="tungumal_1"
           label="Heiti"
           placeholder="Annnað"
@@ -424,8 +442,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tungumal_1_thekking"
           name="tungumal_1_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
