@@ -35,7 +35,7 @@ export const EmploymentStatus = ({
             { label: 'Ég er í hlutastarfi', value: 'partTimeJob' },
             { label: 'Ég er í tilfallandi vinnu', value: 'incidentalJob' },
             { label: 'Ég er í eigin atvinnurekstri', value: 'independant' },
-            { label: 'Ég er í fæðingarorlofi', value: 'parentalLeave' },
+            { label: 'Ég er í fæðingarorlofi', value: 'faedingarorlof' },
           ]}
           rules={{
             required: 'Vinsamlegast veldu hnappinn sem á við um þig',
@@ -171,8 +171,8 @@ export const EmploymentStatus = ({
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
         <InputController
-          id="monthly_revenue"
-          name="monthly_revenue"
+          id="tekjur_a_manudi"
+          name="tekjur_a_manudi"
           label="Mánaðarlegar tekjur"
           placeholder="Sláðu inn mánaðarlegar tekjur"
           control={form.control}
@@ -212,8 +212,8 @@ export const EmploymentStatus = ({
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
         <InputController
-          id="insurance_institution"
-          name="insurance_institution"
+          id="greidslur_tryggingastofnun"
+          name="greidslur_tryggingastofnun"
           label="Tryggingastofnun"
           placeholder="0 kr"
           control={form.control}

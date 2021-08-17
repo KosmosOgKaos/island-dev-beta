@@ -14,7 +14,7 @@ const currentEmploymentStatusLabels = {
   partTimeJob: 'Í hlutastarfi',
   incidentalJob: 'Í tilfallandi vinnu',
   independant: 'Í eigin atvinnurekstri',
-  parentalLeave: 'Í fæðingarorlofi',
+  faedingarorlof: 'Í fæðingarorlofi',
 }
 
 export const Summary = ({ options, form }: ActiveStepComponentProps) => {
@@ -63,10 +63,10 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
     dateQuitJob,
     remainingVacation,
     currentEmploymentStatus,
-    monthly_revenue,
+    tekjur_a_manudi,
     capital_income,
     pension_payment,
-    insurance_institution,
+    greidslur_tryggingastofnun,
     onnur_haefni,
   } = form.getValues()
 
@@ -134,10 +134,10 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
               <Stack space={1}>
                 <Text variant="h4">Meðaltekjur þínar síðustu 12 mánuði</Text>
                 <Text>Nafn fyrirtækis: {company_name}</Text>
-                <Text>Mánaðarlegar tekjur: {monthly_revenue}</Text>
+                <Text>Mánaðarlegar tekjur: {tekjur_a_manudi}</Text>
                 <Text>Fjármagnstekjur: {capital_income}</Text>
                 <Text>Lífeyrissjóðsgreiðslur: {pension_payment}</Text>
-                <Text>Tryggingastofnun: {insurance_institution}</Text>
+                <Text>Tryggingastofnun: {greidslur_tryggingastofnun}</Text>
               </Stack>
             </Stack>
           </Box>
