@@ -21,11 +21,7 @@ const Umsokn: NextPage = () => {
     }
   })
 
-  const {
-    data,
-    loading,
-    error
-  } = useApplicationData(getUser())
+  const { data, loading, error } = useApplicationData(getUser())
 
   const stepInfo = activeStep ? getFormStep(activeStep) : null
 
@@ -37,14 +33,8 @@ const Umsokn: NextPage = () => {
 
   return (
     <FormLayout activeState={stepInfo?.id}>
-      <Text variant='h2'>Umsókn um atvinnuleysisbætur</Text>
-
-      {loading && (
-        <Text variant="h2">LOADING</Text>
-      )}
-      {error && (
-        <Text variant="h2">ERROR {error.toString()}</Text>
-      )}
+      {loading && <Text variant="h2">LOADING</Text>}
+      {error && <Text variant="h2">ERROR {error.toString()}</Text>}
 
       {data && (
         <Box>
@@ -55,9 +45,7 @@ const Umsokn: NextPage = () => {
               formData={data.formData}
             />
           ) : (
-            <Box>
-              sorry no umsokn on this url try something else
-            </Box>
+            <Box>sorry no umsokn on this url try something else</Box>
           )}
         </Box>
       )}
