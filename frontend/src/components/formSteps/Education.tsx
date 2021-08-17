@@ -457,7 +457,7 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           id="tungumal_1"
           name="tungumal_1"
           label="Heiti"
-          placeholder="Annnað"
+          placeholder="Annað"
           options={tungumalOptions}
         />
       </GridColumn>
