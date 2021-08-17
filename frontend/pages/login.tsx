@@ -54,21 +54,28 @@ const Login: NextPage = () => {
   return (
     <LoginLayout>
       <div>
-        <Header />
-        <h1 className="title"></h1>
+        <GridRow align="center">
+          <Header />
+        </GridRow>
         <Stack space={3}>
+        <GridRow align="center">
           <Text variant="h1" as="h1" marginBottom={0}>Skráðu þig inn</Text>
+        </GridRow>
+        <GridRow align="center">
           <Text variant="h4" as="h4" marginBottom={2}>á mínar síður Ísland.is</Text>
+        </GridRow>
         </Stack>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Text marginBottom={2}>Stimplaðu inn kennitölu til þess að skrá þig inn.</Text>
-          <Input name='username' label="Kennitala" defaultValue="" required {...register("username")} hasError={!hasErrors} />
-          
-          <GridRow align="center" marginTop={2}>
-            <Btn type="submit">Audkenna</Btn>
-          </GridRow>
-        </form>
+        <GridRow align="center">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Text marginBottom={2}>Stimplaðu inn kennitölu til þess að skrá þig inn.</Text>
+            <Input name='username' label="Kennitala" defaultValue="" required {...register("username")} hasError={!hasErrors} />
+            
+            <GridRow align="center" marginTop={2}>
+              <Btn type="submit">Audkenna</Btn>
+            </GridRow>
+          </form>
+        </GridRow>
       </div>
     </LoginLayout>
   )
