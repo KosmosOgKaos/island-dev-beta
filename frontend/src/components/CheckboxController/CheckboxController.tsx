@@ -49,7 +49,7 @@ export const CheckboxController = ({
       control={control}
       rules={rules}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <Box>
+        <Box onClick={(e) => {onChange(value = !value)}}>
           <Checkbox
             disabled={disabled}
             large={large}

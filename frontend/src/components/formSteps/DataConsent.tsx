@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Checkbox, Icon, Inline, Text } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
+import { CheckboxController } from '@cmp'
 
 export const DataConsent = ({ options, form }: ActiveStepComponentProps) => (
   <Box>
@@ -54,11 +55,16 @@ export const DataConsent = ({ options, form }: ActiveStepComponentProps) => (
     <Text marginBottom={7}>Sóttar eru upplýsingar um ökuréttindi</Text>
 
     <Box marginBottom={7}>
-      <Checkbox
+      <CheckboxController
+        id="consentCheck"
         label="Ég hef kynnt mér ofangreint"
         labelVariant="default"
         backgroundColor="blue"
         large
+        control={form.control}
+        rules={{
+          required: 'Vinsamlegast farðu yfir upplýsingarnar og hakaðu við',
+        }}
       />
     </Box>
   </Box>
