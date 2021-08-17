@@ -1,6 +1,7 @@
 import { Education } from './Education'
 import { Overview } from './Overview'
 import { DataConsent } from './DataConsent'
+import { EmploymentInfo } from './EmploymentInfo'
 import type { ID, Step } from 'src/components/ActiveStep'
 import { FormStepperSection } from '@island.is/island-ui/core'
 
@@ -9,7 +10,7 @@ export const formSteps: Step[] = [
     id: 'gagnaoflun',
     title: 'Gagnaöflun',
     options: {},
-    next: 'yfirlit',
+    next: 'menntun-og-ferilskra',
     component: DataConsent,
   },
   {
@@ -20,10 +21,17 @@ export const formSteps: Step[] = [
     component: Overview,
   },
   {
-    id: 'menntun',
-    title: 'Menntun',
+    id: 'menntun-og-ferilskra',
+    title: 'Menntun og ferilskrá',
     options: {},
     component: Education,
+  },
+  {
+    id: 'atvinnuupplysingar',
+    title: 'Atvinnuupplýsingar',
+    options: {},
+    next: 'menntun-og-ferilskra',
+    component: EmploymentInfo,
   },
 ]
 
@@ -42,5 +50,5 @@ export const formStepSections: FormStepperSection[] = formSteps.map(
       name: step.title,
       children: [],
     }
-  }
+  },
 )
