@@ -2,6 +2,7 @@ import { Education } from './Education'
 import { Overview } from './Overview'
 import { DataConsent } from './DataConsent'
 import { EmploymentInfo } from './EmploymentInfo'
+import { EmploymentStatus } from './EmploymentStatus'
 import type { ID, Step } from 'src/components/ActiveStep'
 import { FormStepperSection } from '@island.is/island-ui/core'
 
@@ -10,7 +11,7 @@ export const formSteps: Step[] = [
     id: 'gagnaoflun',
     title: 'Gagnaöflun',
     options: {},
-    next: 'menntun-og-ferilskra',
+    next: 'stada-a-vinnumarkadi',
     component: DataConsent,
   },
   {
@@ -19,6 +20,13 @@ export const formSteps: Step[] = [
     options: {},
     next: 'menntun',
     component: Overview,
+  },
+  {
+    id: 'stada-a-vinnumarkadi',
+    title: 'Staða á vinnumarkaði',
+    options: {},
+    next: 'menntun-og-ferilskra',
+    component: EmploymentStatus,
   },
   {
     id: 'menntun-og-ferilskra',
