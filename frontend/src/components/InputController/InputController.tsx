@@ -31,12 +31,6 @@ interface Props {
   required?: boolean
 }
 
-interface ChildParams {
-  field: ControllerRenderProps<FieldValues, string>
-  fieldState: ControllerFieldState
-  formState: UseFormStateReturn<FieldValues>
-}
-
 export const InputController: FC<Props> = ({
   autoFocus,
   defaultValue,
