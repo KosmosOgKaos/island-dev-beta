@@ -83,12 +83,28 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn netfang tengiliðs"
           control={form.control}
           required
+          type="email"
+          rules={{
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: 'Netfang þarf að vera gilt',
+            },
+          }}
         />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <DatePickerController label="Hætti í starfi" id="dateQuitJob" placeholder="Veldu dagsetningu" control={form.control}  />
+        <DatePickerController 
+          label="Hætti í starfi" 
+          id="dateQuitJob" 
+          placeholder="Veldu dagsetningu" 
+          control={form.control}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu dagsetningu',
+          }}
+        />
       </GridColumn>
     </GridRow>
     
@@ -97,12 +113,11 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
       <GridColumn span="12/12" paddingBottom={3}>
         <RadioController 
             id="remainingVacation"
-            largeButtons={false}
             split="1/2"
             control={form.control} 
             options={[
               {label:"Já, ég á ótekið orlof við starfslok", value:"hasRemainingVacation"},
-              {label:"Nei, ég á ekkert ótekið orlof við starfsloku", value:"noRemainingVacation"},
+              {label:"Nei, ég á ekkert ótekið orlof við starfslok", value:"noRemainingVacation"},
             ]}
           />
       </GridColumn>
