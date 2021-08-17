@@ -1,22 +1,30 @@
 import { Button } from '@island.is/island-ui/core'
-import router, { useRouter } from 'next/router'
+import { useApplicationUpdater } from 'lib/applicationData'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { ActiveStepProps } from './types'
 
-export const ActiveStep = ({ stepInfo, formData }: ActiveStepProps) => {
+export const ActiveStep = ({ stepInfo, applicationId, formData }: ActiveStepProps) => {
   const form = useForm({ defaultValues: formData })
   const { handleSubmit } = form
   const router = useRouter()
 
-  const onSubmit = (data: any) => {
-    console.log(data)
-    // save data?
-    // goto next step?
+  const updateApplication = useApplicationUpdater(applicationId)
 
-    if (stepInfo.next) {
-      //router.push(`/umsokn/${stepInfo.next}`)
-    }
+  const onSubmit = async (data: any) => {
+    console.log({ applicationId, data })
+
+    updateApplication(data)
+      .then(() => {
+        if (stepInfo.next) {
+          router.push(`/umsokn/${stepInfo.next}`)
+        }
+      })
+      .catch(e => {
+        console.log(e)
+        alert('error came ups')
+      })
   }
 
   const { component: Cmp, options } = stepInfo

@@ -17,7 +17,19 @@ export class ApplicationsService {
     })
   }
 
-  getSingleApplicationByNationalId(owner: string) {
+  async getActiveApplicationByNationalId(owner: string) {
+    const first = await this.prismaService.application.findFirst({
+      where: { owner, completed: false },
+    })
+
+    if (!first) {
+      await this.createApplication({
+        owner,
+        completed: false,
+        data: '',
+      })
+    }
+
     return this.prismaService.application.findFirst({
       where: { owner, completed: false },
     })
@@ -44,7 +56,7 @@ export class ApplicationsService {
     })
   }
 
-  createApplication(inputData: any) {
+  createApplication(inputData: { data: string, owner: string, completed: boolean }) {
     return this.prismaService.application.create({
       data: {
         data: inputData.data,
