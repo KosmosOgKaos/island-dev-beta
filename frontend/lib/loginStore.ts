@@ -1,32 +1,34 @@
+import { AuthUser } from "../../types/graphql-types"
 
-interface UserInfo {
-  username: string | null,
-  token: string | null,
+export interface LoginStore {
+  login: (info: AuthUser) => void
+  isLoggedIn: () => boolean
+  getUser: () => AuthUser
 }
 
-interface LoginStore {
-  login: (info: UserInfo) => void
-  isLoggedIn: () => boolean
-  getUser: () => UserInfo
+export const NO_USER: AuthUser = {
+  username: null,
+  token: null,
+  roles: [],
 }
 
 export const createLoginStore = (key: string = 'user'): LoginStore => {
   const store = typeof window !== 'undefined' ? window.sessionStorage : null
 
-  const login = (info: UserInfo) => {
+  const login = (info: AuthUser) => {
     if (store) {
       store.setItem(key, JSON.stringify(info))
     }
   }
 
-  const getUser = (): UserInfo => {
+  const getUser = (): AuthUser => {
     try {
       if (!store) {
         throw new Error()
       }
-      return JSON.parse(store.getItem(key) || '') as UserInfo
+      return JSON.parse(store.getItem(key) || '') as AuthUser
     } catch (e) {
-      return { username: null, token: null }
+      return NO_USER
     }
   }
 
