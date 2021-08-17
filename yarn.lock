@@ -9256,6 +9256,11 @@ jws@^3.2.2:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
 
+kennitala@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/kennitala/-/kennitala-1.2.6.tgz#a0145689f9551fe08b36dd0383fad6e4fdeb871d"
+  integrity sha512-yZm+CvaHvuIAUASmLFEGJ/Et+cD0bz/SzrW2227SMuY+WepGsAHP7sdKuE2jA0gSEqM5JhlC5QGK0NkLUtKOSg==
+
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
