@@ -2,8 +2,11 @@ import type { NextPage } from 'next'
 import { gql, useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
-import { Button as Btn, Stack, Input, Header, Text, GridRow } from "@island.is/island-ui/core";
-import { LoginLayout } from '@cmp';
+import { Button as Btn, Stack, Input, Header, Text, GridRow } from "@island.is/island-ui/core"
+import { LoginLayout } from '@cmp'
+import kennitala from 'kennitala'
+import { useEffect } from 'react'
+import router from 'next/router'
 
 
 const MUTATION_LOGIN = gql`
@@ -35,8 +38,7 @@ const Login: NextPage = () => {
   }
 
   function checkSocialNumber(username) {
-    const kennitala = require('kennitala')
-    return kennitala.isValid(username) || false
+    return kennitala.isPerson(username)
   }
 
 
@@ -46,7 +48,9 @@ const Login: NextPage = () => {
       token: data.login.token,
     })
 
-    window.location.href = '/'
+    useEffect(() => {
+      router.push('/')
+    })
 
     return null
   }
