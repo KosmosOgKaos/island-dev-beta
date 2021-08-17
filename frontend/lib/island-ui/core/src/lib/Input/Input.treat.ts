@@ -81,11 +81,6 @@ export const labelSizes = styleMap(mixins.labelSizes)
 export const labelDisabledEmptyInput = style(mixins.labelDisabledEmptyInput)
 
 export const isRequiredStar = style({
-  // remove this if buggy looking
-  position: 'absolute',
-  marginLeft: 4,
-  top: 10,
-  // eof remove
   color: theme.color.red600,
 })
 

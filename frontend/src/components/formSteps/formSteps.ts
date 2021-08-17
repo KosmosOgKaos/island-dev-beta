@@ -1,6 +1,7 @@
 import { Education } from './Education'
 import { Overview } from './Overview'
 import { DataConsent } from './DataConsent'
+import { Summary } from './Summary'
 import { EmploymentInfo } from './EmploymentInfo'
 import { EmploymentStatus } from './EmploymentStatus'
 import { Rights } from './Rights'
@@ -53,16 +54,24 @@ export const formSteps: Step[] = [
     title: 'Þín réttindi',
     options: {},
     prev: 'atvinnuupplysingar',
-    next: 'umsokn-mottekin',
+    next: 'senda-umsokn',
     component: Rights,
+  },
+  {
+    id: 'senda-umsokn',
+    title: 'Yfirlit og senda umsókn',
+    options: {},
+    prev: 'rettindi',
+    next: 'umsokn-mottekin',
+    component: Summary,
   },
   {
     id: 'umsokn-mottekin',
     title: 'Umsókn móttekin',
     options: {},
-    prev: 'rettindi',
+    prev: 'senda-umsokn',
     component: FinalView,
-  }
+  },
 ]
 
 export const getFormStep = (key: ID) => {
