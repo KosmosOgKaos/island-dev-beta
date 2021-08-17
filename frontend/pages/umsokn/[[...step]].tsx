@@ -21,7 +21,6 @@ const Umsokn: NextPage = () => {
     }
   })
 
-  // TODO: get existing data:
   const {
     data,
     loading,

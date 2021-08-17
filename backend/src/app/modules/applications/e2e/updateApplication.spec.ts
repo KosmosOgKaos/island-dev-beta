@@ -87,20 +87,6 @@ describe('updateApplication', () => {
       })
   })
 
-  it(`None of the previous updates should have affected completed`, async () => {
-    const gqlClient = getGqlClient({ roles: [Role.User, Role.Admin] })
-    const query = `{
-      getApplicationById(id: ${testIds[0]}) {
-        completed
-      }
-    }`
-    return gqlClient(query)
-      .expect(200)
-      .expect((result) => {
-        expect(result.body.data.getApplicationById.completed).toBe(false)
-      })
-  })
-
   it(`Should be able to update completed`, async () => {
     const gqlClient = getGqlClient({ roles: [Role.User, Role.Admin] })
     const query = `mutation {

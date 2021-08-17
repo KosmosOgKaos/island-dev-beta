@@ -26,7 +26,7 @@ export class ApplicationsService {
       await this.createApplication({
         owner,
         completed: false,
-        data: '',
+        data: '{}',
       })
     }
 
@@ -38,7 +38,12 @@ export class ApplicationsService {
   async updateApplicationById(id: number, data: any) {
     const applicationBefore = await this.getApplicationById(id)
 
-    const oldData = JSON.parse(applicationBefore?.data ?? '{}')
+    let oldData
+    try {
+      oldData = JSON.parse(applicationBefore?.data ?? '{}')
+    } catch {
+      oldData = {}
+    }
     const incomingData = JSON.parse(data.data)
     const processedData = {
       ...oldData,
