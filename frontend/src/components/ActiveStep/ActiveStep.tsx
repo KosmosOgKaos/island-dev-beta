@@ -13,8 +13,6 @@ export const ActiveStep = ({ stepInfo, applicationId, formData }: ActiveStepProp
   const updateApplication = useApplicationUpdater(applicationId)
 
   const onSubmit = async (data: any) => {
-    console.log({ applicationId, data })
-
     updateApplication(data)
       .then(() => {
         if (stepInfo.next) {
