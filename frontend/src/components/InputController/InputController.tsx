@@ -1,5 +1,9 @@
 import React, { FC } from 'react'
-import { Input, InputBackgroundColor } from '@island.is/island-ui/core'
+import {
+  Input,
+  InputBackgroundColor,
+  InputProps,
+} from '@island.is/island-ui/core'
 import {
   Controller,
   Control,
@@ -19,13 +23,14 @@ interface Props {
   label?: string
   name?: string
   onChange?: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void
   placeholder?: string
   textarea?: boolean
   backgroundColor?: InputBackgroundColor
   type?: 'text' | 'email' | 'number' | 'tel'
   suffix?: string
+  size?: InputProps['size']
   rows?: number
   required?: boolean
 }
@@ -51,6 +56,7 @@ export const InputController: FC<Props> = ({
   type = 'text',
   onChange: onInputChange,
   rows,
+  size,
   required,
 }) => (
   <Controller
@@ -62,6 +68,7 @@ export const InputController: FC<Props> = ({
       <Input
         id={id}
         name={name}
+        size={size}
         value={value}
         disabled={disabled}
         placeholder={placeholder}
