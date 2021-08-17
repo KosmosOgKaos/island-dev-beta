@@ -8,13 +8,16 @@ import {
   Text,
   GridColumns,
   ResponsiveProp,
+  Table as T,
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import lifeyrir from '../../static/lifeyrir.json'
 import lifeyrir2 from '../../static/lifeyrir2.json'
 import education from '../../static/education.json'
-import { InputController, SelectController } from '@cmp'
+import stettarfelog from '../../static/stettarfelog.json'
+import { InputController, SelectController, DatePickerController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
+import { RadioController } from '../RadioController'
 
 const lifeyrir2Options = lifeyrir2.map((x) => ({
   label: x,
@@ -22,6 +25,11 @@ const lifeyrir2Options = lifeyrir2.map((x) => ({
 }))
 
 const lifeyrirOptions = lifeyrir.map((x) => ({
+  label: x,
+  value: x,
+}))
+
+const stettarfelogOptions = stettarfelog.map((x) => ({
   label: x,
   value: x,
 }))
@@ -130,15 +138,15 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
     <Text variant="h2" marginBottom={2}>
       Þín réttindi
     </Text>
-
     <Divide />
-
     <Text variant="h3" marginBottom={3}>
       Bankaupplýsingar, lífeyrissjóður og stéttarfélag
     </Text>
-
     <GridRow>
-      <GridColumn span={['12/12', '12/12', '4/12']} paddingBottom={3}>
+      <GridColumn
+        span={['12/12', '12/12', '12/12', '4/12', '4/12']}
+        paddingBottom={3}
+      >
         <InputController
           id="banki"
           name="banki"
@@ -153,7 +161,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
           }}
         />
       </GridColumn>
-      <GridColumn span={['12/12', '12/12', '4/12']} paddingBottom={3}>
+      <GridColumn
+        span={['12/12', '12/12', '12/12', '4/12', '2/12']}
+        paddingBottom={3}
+      >
         <InputController
           id="hofudbok"
           name="hofudbok"
@@ -168,7 +179,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
           }}
         />
       </GridColumn>
-      <GridColumn span={['12/12', '12/12', '4/12']} paddingBottom={3}>
+      <GridColumn
+        span={['12/12', '12/12', '12/12', '4/12', '6/12']}
+        paddingBottom={3}
+      >
         <InputController
           id="reikningsnumer"
           name="reikningsnumer"
@@ -185,7 +199,7 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span={['12/12', '12/12', '6/12']} paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
           id="lifeyrissjodur"
@@ -197,7 +211,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span={['12/12', '12/12', '6/12']} paddingBottom={3}>
+      <GridColumn
+        span={['12/12', '12/12', '12/12', '12/12', '6/12']}
+        paddingBottom={3}
+      >
         <SelectController
           control={form.control}
           id="vidbotarlifeyrissparnadur"
@@ -206,6 +223,121 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
           placeholder="Veldu viðbótarlífeyrissparnað"
           options={lifeyrirOptions}
         />
+      </GridColumn>
+      <GridColumn
+        span={['12/12', '12/12', '12/12', '12/12', '6/12']}
+        paddingBottom={3}
+      >
+        <Box
+          display="flex"
+          height="full"
+          alignItems="center"
+          paddingTop={[0, 0, 0, 0, 2]}
+        >
+          <RadioController
+            control={form.control}
+            id="vidbotarlifeyrissparnadur_hlutfall"
+            name="vidbotarlifeyrissparnadur_hlutfall"
+            split={'1/4'}
+            largeButtons={false}
+            options={[
+              {
+                label: '1%',
+                value: '1%',
+              },
+              {
+                label: '2%',
+                value: '2%',
+              },
+              {
+                label: '3%',
+                value: '3%',
+              },
+              {
+                label: '4%',
+                value: '4%',
+              },
+            ]}
+          />
+        </Box>
+      </GridColumn>
+    </GridRow>
+    <GridRow>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
+        <SelectController
+          control={form.control}
+          id="stettarfelag"
+          name="Stéttarfélag"
+          label="Stéttarfélag"
+          placeholder="Veldu stéttarfélag"
+          options={stettarfelogOptions}
+        />
+      </GridColumn>
+    </GridRow>
+    <Divide />
+    <Text variant="h3" marginBottom={3}>
+      Persónuafsláttur
+    </Text>
+    <RadioController
+      control={form.control}
+      id="nyta_personuafslatt"
+      name="nyta_personuafslatt"
+      split={'1/2'}
+      largeButtons={false}
+      rules={{
+        required: 'Hér þarf að svara já eða nei',
+      }}
+      options={[
+        {
+          label: 'Já, Vinnumálastofnun nýti persónuafslátt minn',
+          value: 'Já',
+        },
+        {
+          label: 'Nei, Vinnumálastofnun nýti ekki persónuafslátt minn',
+          value: 'Nei',
+        },
+      ]}
+    />
+    <Divide />
+    <Text variant="h3" marginBottom={3}>
+      Upphaf bótagreiðslna
+    </Text>
+    <GridRow>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
+        <DatePickerController
+          control={form.control}
+          size="sm"
+          locale="is"
+          id="upphafsdagsetning_botagreidslna"
+          name="upphafsdagsetning_botagreidslna"
+          label="Óska eftir að greiðslur hefjist"
+          placeholder="Veldu dagsetningu"
+        />
+      </GridColumn>
+    </GridRow>
+    <Divide />
+    <Text variant="h3" marginBottom={3}>
+      Áætlaðar tekjur á mánuði
+    </Text>
+    <GridRow>
+      <GridColumn span="12/12" paddingBottom={6}>
+        <T.Table>
+          <T.Row>
+            <T.HeadData>Hey1</T.HeadData>
+            <T.HeadData>Hey2</T.HeadData>
+            <T.HeadData>Hey3</T.HeadData>
+            <T.HeadData>Hey4</T.HeadData>
+          </T.Row>
+          <T.Body>
+            <T.Row>
+              <T.Data>OK1</T.Data>
+              <T.Data>OK2</T.Data>
+              <T.Data>OK3</T.Data>
+              <T.Data>OK4</T.Data>
+            </T.Row>
+          </T.Body>
+          <T.Foot></T.Foot>
+        </T.Table>
       </GridColumn>
     </GridRow>
   </Box>
