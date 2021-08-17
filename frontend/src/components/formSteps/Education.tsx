@@ -132,14 +132,7 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <Text variant="h3">Námsferill</Text>
     <Text marginBottom={3}>Gögn sótt úr Mínar síður</Text>
-    <GridRow>
-      <GridColumn span="12/12" paddingBottom={3}>
-        <Inline space={3}>
-          <RadioButton id="fullt_starf" label="Full starf óskast" />
-          <RadioButton id="hlutastarf" label="Hlutastarf óskast" />
-        </Inline>
-      </GridColumn>
-    </GridRow>
+
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <Select
