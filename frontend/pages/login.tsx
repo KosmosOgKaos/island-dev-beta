@@ -34,14 +34,6 @@ const Login: NextPage = () => {
     })
   }
 
-  const hasErrors = (data: { username: string }) => {
-    return checkSocialNumber(data.username)
-  }
-
-  function checkSocialNumber(username) {
-    return kennitala.isPerson(username)
-  }
-
   useEffect(() => {
     if(isLoggedIn()) {
       router.push('/umsokn')
@@ -49,8 +41,6 @@ const Login: NextPage = () => {
   })
   if (data?.login?.token) {
     login(data.login)
-
-
     return null
   }
 
@@ -78,11 +68,11 @@ const Login: NextPage = () => {
               autoFocus 
               control={control}
               backgroundColor="blue"
+              
               rules={{
-                pattern: {
-                  value: /^\d{10}$/,
-                  message: 'Kennitalan er ógild, passaðu að hún sé 10 stafir',
-                },
+                validate: ((value) => {
+                    return kennitala.isPerson(value)
+                })
               }}>
             </InputController>
             
