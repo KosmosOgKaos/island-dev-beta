@@ -86,6 +86,9 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           label="Óskastarf 1"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu óskastarf 1',
+          }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -96,6 +99,9 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           label="Óskastarf 2"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu óskastarf 2',
+          }}
         />
       </GridColumn>
     </GridRow>

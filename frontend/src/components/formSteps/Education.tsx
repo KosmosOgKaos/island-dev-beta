@@ -170,6 +170,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Nám hófst"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={6}>
@@ -180,6 +183,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Námi lauk"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -207,6 +213,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Nám hófst"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
@@ -217,6 +226,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Námi lauk"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -332,6 +344,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -354,6 +370,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -405,6 +425,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -427,6 +451,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
