@@ -9,7 +9,6 @@ import {
   Inline,
   RadioButton,
   Text,
-  Select,
   GridColumns,
   ResponsiveProp,
   Icon,
@@ -19,6 +18,7 @@ import {
 import jobs from '../../static/jobs.json'
 import haskolagrada from '../../static/haskolagrada.json'
 import education from '../../static/education.json'
+import { InputController, SelectController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
 
 const haskolagradaOptions = haskolagrada.map((x) => ({
@@ -142,8 +142,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_profgrada"
           name="nam_profgrada"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
@@ -151,8 +152,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="haskolagrada"
           name="haskolagrada"
           label="Háskólagráða"
           placeholder="Veldu nám/prófgráðu"
@@ -160,21 +162,29 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_hofst"
           name="nam_hofst"
           label="Nám hófst"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={6}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_lauk"
           name="nam_lauk"
           label="Námi lauk"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -183,9 +193,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
-          name="nam_profgrada"
+        <SelectController
+          control={form.control}
+          id="annad_nam_profgrada_1"
+          name="annad_nam_profgrada_1"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
           options={educationOptions}
@@ -194,21 +205,29 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
-          name="nam_hofst"
+        <SelectController
+          control={form.control}
+          id="annad_nam_hofst_1"
+          name="annad_nam_hofst_1"
           label="Nám hófst"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
-          name="nam_lauk"
+        <SelectController
+          control={form.control}
+          id="annad_nam_lauk_1"
+          name="annad_nam_lauk_1"
           label="Námi lauk"
           placeholder="Ár"
           options={yearsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu ár',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -222,8 +241,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_profgrada"
           name="nam_profgrada"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
@@ -233,8 +253,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_hofst"
           name="nam_hofst"
           label="Nám hófst"
           placeholder="Ár"
@@ -242,8 +263,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_lauk"
           name="nam_lauk"
           label="Námi lauk"
           placeholder="Ár"
@@ -253,8 +275,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="nam_profgrada"
           name="nam_profgrada"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
@@ -286,10 +309,12 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={1}>
-        <Input
+        <InputController
+          id="onnur_haefni"
           name="onnur_haefni"
-          textarea
           placeholder="Önnur færni og áhugamál (þáttaka í félagsstarfi og annað)"
+          control={form.control}
+          textarea
         />
       </GridColumn>
     </GridRow>
@@ -311,12 +336,17 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="ritvinnsla_thekking"
           name="ritvinnsla_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -332,27 +362,34 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="toflureiknir_thekking"
           name="toflureiknir_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tolvuthekking_1"
           name="tolvuthekking_1"
           label="Heiti"
           options={tolvuthekkingOptions}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tolvuthekking_1_thekking"
           name="tolvuthekking_1_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
@@ -380,12 +417,17 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="islenska_thekking"
           name="islenska_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -401,19 +443,25 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="enska_thekking"
           name="enska_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu þekkingu',
+          }}
         />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tungumal_1"
           name="tungumal_1"
           label="Heiti"
           placeholder="Annnað"
@@ -421,8 +469,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="tungumal_1_thekking"
           name="tungumal_1_thekking"
           label="Þekking"
           placeholder="Veldu þekkingu"
@@ -440,28 +489,43 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          control={form.control}
+          id="umsagnaradili_1_heiti"
           name="umsagnaradili_1_heiti"
           label="Heiti umsagnaraðila"
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          control={form.control}
           name="umsagnaradili_1_stada"
+          id="umsagnaradili_1_stada"
           label="Staða umsagnaraðila"
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          control={form.control}
           name="umsagnaradili_1_vinnustadur"
+          id="umsagnaradili_1_vinnustadur"
           label="Vinnustaður"
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <Input size="sm" name="umsagnaradili_1_simi" label="Sími" />
+        <InputController
+          control={form.control}
+          name="umsagnaradili_1_simi"
+          id="umsagnaradili_1_simi"
+          label="Sími"
+          type="tel"
+          rules={{
+            pattern: {
+              value: /^\d{7}$/,
+              message: 'Símanúmer þarf að vera 7 tölustafir',
+            },
+          }}
+        />
       </GridColumn>
     </GridRow>
 

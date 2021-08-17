@@ -2,20 +2,16 @@ import React from 'react'
 import {
   Box,
   Button,
-  DatePicker,
   Divider,
-  FormStepper,
   GridColumn,
-  GridContainer,
   GridRow,
   Inline,
-  Input,
   RadioButton,
-  Select,
   Text,
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
+import { InputController, SelectController, DatePickerController } from '@cmp'
 
 const selectOptions = [
   {
@@ -55,18 +51,29 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="veldu_svaedi"
           name="veldu_svaedi"
           label="Ég vil líka vinna á"
+          rules={{
+            required: 'Vinsamlegast veldu svæði',
+          }}
           options={selectOptions}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <DatePicker
+        <DatePickerController
+          control={form.control}
+          id="start_date"
+          name="start_date"
           size="sm"
           label="Ég get byrjað"
-          placeholderText="Veldu dagsetningu"
+          placeholder="Veldu dagsetningu"
+          required
+          rules={{
+            required: 'Vinsamlegast veldu dagsetningu',
+          }}
         />
       </GridColumn>
       <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
@@ -78,21 +85,29 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="oskastarf_1"
           name="oskastarf_1"
           label="Óskastarf 1"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu óskastarf 1',
+          }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="oskastarf_2"
           name="oskastarf_2"
           label="Óskastarf 2"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
+          rules={{
+            required: 'Vinsamlegast veldu óskastarf 2',
+          }}
         />
       </GridColumn>
     </GridRow>

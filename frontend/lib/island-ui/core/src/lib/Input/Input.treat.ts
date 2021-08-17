@@ -42,9 +42,10 @@ const makeInputBackground = (breakpoint: keyof Theme['breakpoints']) =>
       themeUtils.responsiveStyle({
         [breakpoint]: {
           selectors: {
-            '&:-webkit-autofill, &:-webkit-autofill:focus, &:-webkit-autofill:hover': {
-              boxShadow: `0 0 0px 1000px ${color} inset`,
-            },
+            '&:-webkit-autofill, &:-webkit-autofill:focus, &:-webkit-autofill:hover':
+              {
+                boxShadow: `0 0 0px 1000px ${color} inset`,
+              },
           },
         },
       }),
@@ -80,6 +81,11 @@ export const labelSizes = styleMap(mixins.labelSizes)
 export const labelDisabledEmptyInput = style(mixins.labelDisabledEmptyInput)
 
 export const isRequiredStar = style({
+  // remove this if buggy looking
+  position: 'absolute',
+  marginLeft: 4,
+  top: 10,
+  // eof remove
   color: theme.color.red600,
 })
 
