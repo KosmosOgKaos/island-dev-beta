@@ -66,6 +66,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
         <DatePickerController
           control={form.control}
           id="start_date"
+          locale="is"
           name="start_date"
           size="sm"
           label="Ég get byrjað"
