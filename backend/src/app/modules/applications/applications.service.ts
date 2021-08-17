@@ -61,7 +61,11 @@ export class ApplicationsService {
     })
   }
 
-  createApplication(inputData: { data: string, owner: string, completed: boolean }) {
+  createApplication(inputData: {
+    data: string
+    owner: string
+    completed: boolean
+  }) {
     return this.prismaService.application.create({
       data: {
         data: inputData.data,

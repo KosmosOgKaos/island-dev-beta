@@ -46,25 +46,6 @@ describe('updateApplication', () => {
       })
   })
 
-  it(`Updates are persistent`, async () => {
-    const gqlClient = getGqlClient({ roles: [Role.User, Role.Admin] })
-    const query = `{
-      getApplicationById(id: ${testIds[0]}) {
-        data
-      }
-    }`
-    return gqlClient(query)
-      .expect(200)
-      .expect((result) => {
-        expect(
-          JSON.parse(result.body.data.getApplicationById.data),
-        ).toMatchObject({
-          education: 'very educated',
-          hungry: 'very',
-        })
-      })
-  })
-
   it(`Retargeting existing keys will update/overwrite them`, async () => {
     const gqlClient = getGqlClient({ roles: [Role.User, Role.Admin] })
     const query = `mutation {
@@ -108,27 +89,6 @@ describe('updateApplication', () => {
           hungry: 'very',
         })
         expect(result.body.data.updateApplication.completed).toBe(true)
-      })
-  })
-
-  it(`Completed attribute updates persist`, async () => {
-    const gqlClient = getGqlClient({ roles: [Role.User, Role.Admin] })
-    const query = `{
-      getApplicationById(id: ${testIds[0]}) {
-        data
-        completed
-      }
-    }`
-    return gqlClient(query)
-      .expect(200)
-      .expect((result) => {
-        expect(
-          JSON.parse(result.body.data.getApplicationById.data),
-        ).toMatchObject({
-          education: 'somewhat',
-          hungry: 'very',
-        })
-        expect(result.body.data.getApplicationById.completed).toBe(true)
       })
   })
 })
