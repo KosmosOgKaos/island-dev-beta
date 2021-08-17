@@ -6,6 +6,7 @@ import { EmploymentStatus } from './EmploymentStatus'
 import { Rights } from './Rights'
 import type { ID, Step } from 'src/components/ActiveStep'
 import { FormStepperSection } from '@island.is/island-ui/core'
+import { FinalView } from './FinalView'
 
 export const formSteps: Step[] = [
   {
@@ -52,8 +53,16 @@ export const formSteps: Step[] = [
     title: 'Þín réttindi',
     options: {},
     prev: 'atvinnuupplysingar',
+    next: 'umsokn-mottekin',
     component: Rights,
   },
+  {
+    id: 'umsokn-mottekin',
+    title: 'Umsókn móttekin',
+    options: {},
+    prev: 'rettindi',
+    component: FinalView,
+  }
 ]
 
 export const getFormStep = (key: ID) => {
