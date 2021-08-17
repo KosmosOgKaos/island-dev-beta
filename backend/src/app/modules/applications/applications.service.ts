@@ -26,7 +26,35 @@ export class ApplicationsService {
       await this.createApplication({
         owner,
         completed: false,
-        data: '{}',
+        data: `{
+          "ssn": "1706941119",
+          "name": "Guðrún Jónsdóttir",
+          "address": "Lindargata 3",
+          "city": "Reykjavík",
+          "postNumber": "101",
+          "email": "gj@island.is",
+          "phoneNumber": "4265500",
+          "adstaedur_umsækjanda": "Launþegi",
+          "skraningardagur_umsoknar": "2021-08-15",
+          "hlutfall_personuafslattar": 100,
+          "personuafslattur_2021": 50792,
+          "tekjur_a_manudi": 589459,
+          "greidslur_tryggingastofnun": 25000,
+          "greidslur_almennir lifeyrissjodir": 0,
+          "tekjuskattur_threp_1": 0.3145,
+          "tekjuskattur_threp_2": 0.3795,
+          "vidbotarlifeyrissparnadur": 4,
+          "stettarfelag_hlutfall": 1,
+          "employment_percentage": 100,
+          "lifeyrissjodur_hlutfall": 4,
+          "faedingarorlof": false,
+          "grunnatvinnuleysisbaetur": 307430,
+          "fjoldi_barna": 1,
+          "children": [{
+            "name": "Katla Marsibil Stefánsdóttir",
+            "ssn": "1234567890"
+          }]
+        }`,
       })
     }
 
@@ -61,7 +89,11 @@ export class ApplicationsService {
     })
   }
 
-  createApplication(inputData: { data: string, owner: string, completed: boolean }) {
+  createApplication(inputData: {
+    data: string
+    owner: string
+    completed: boolean
+  }) {
     return this.prismaService.application.create({
       data: {
         data: inputData.data,
