@@ -7,10 +7,12 @@ import {
   GridColumn,
   Header,
 } from '@island.is/island-ui/core'
+import { formStepSections, getFormStepIndex } from '../formSteps'
+import { ID } from '../ActiveStep'
 
 export interface FormLayoutProps {
   children?: React.ReactNode
-  activeState?: number
+  activeState?: ID
 }
 
 export const FormLayout = ({ children, activeState }) => {
@@ -44,31 +46,8 @@ export const FormLayout = ({ children, activeState }) => {
           <GridColumn span={['12/12', '12/12', '3/12']} order={[1, 1, 2]}>
             <Box marginTop={10} paddingLeft={2}>
               <FormStepper
-                sections={[
-                  {
-                    name: 'Gagnaöflun',
-                  },
-                  {
-                    name: 'Yfirlit',
-                    children: [
-                      {
-                        type: 'SUB_SECTION',
-                        name: 'Sub section #1',
-                      },
-                      {
-                        type: 'SUB_SECTION',
-                        name: 'Sub section #2',
-                      },
-                    ],
-                  },
-                  {
-                    name: 'Viðbótarupplýsingar',
-                  },
-                  {
-                    name: 'Réttindi',
-                  },
-                ]}
-                activeSection={activeState}
+                sections={formStepSections}
+                activeSection={getFormStepIndex(activeState)}
               />
             </Box>
           </GridColumn>
