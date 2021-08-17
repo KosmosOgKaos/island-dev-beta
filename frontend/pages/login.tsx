@@ -7,6 +7,7 @@ import { LoginLayout } from '@cmp'
 import kennitala from 'kennitala'
 import { useEffect } from 'react'
 import router from 'next/router'
+import { InputController } from '@cmp'
 
 
 const MUTATION_LOGIN = gql`
@@ -19,7 +20,7 @@ const MUTATION_LOGIN = gql`
 `
 
 const Login: NextPage = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { control, handleSubmit, formState: { errors } } = useForm()
   const [ mutation, { data } ] = useMutation(MUTATION_LOGIN)
   const { login, isLoggedIn } = createLoginStore()
   
@@ -74,7 +75,19 @@ const Login: NextPage = () => {
         <GridRow align="center">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Text marginBottom={2}>Stimplaðu inn kennitölu til þess að skrá þig inn.</Text>
-            <Input name='username' label="Kennitala" defaultValue="" required {...register("username")} hasError={!hasErrors} />
+            <InputController 
+              id="login-username-input" 
+              name="username" 
+              label="Kennitala" 
+              autoFocus 
+              control={control}
+              rules={{
+                pattern: {
+                  value: /^\d{10}$/,
+                  message: 'Kennitalan er ógild, passaðu að hún sé 10 stafir',
+                },
+              }}>
+            </InputController>
             
             <GridRow align="center" marginTop={2}>
               <Btn type="submit">Audkenna</Btn>
