@@ -1,3 +1,5 @@
+export { DatePickerController } from './DatePickerController'
+
 export { SelectController } from './SelectController'
 
 export { InputController } from './InputController'
