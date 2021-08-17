@@ -25,33 +25,33 @@ function setRefs<T>(ref: React.Ref<T>, value: T) {
 
 function useMergeRefs<ForwardRef, LocalRef extends ForwardRef>(
   forwardedRef: React.Ref<ForwardRef>,
-  localRef: React.Ref<LocalRef>,
+  localRef: React.Ref<LocalRef>
 ): (instance: LocalRef | null) => void {
   return React.useCallback(
     (value) => {
       setRefs(forwardedRef, value)
       setRefs(localRef, value)
     },
-    [forwardedRef, localRef],
+    [forwardedRef, localRef]
   )
 }
 
 const InputHOC = forwardRef(
   (
     props: Omit<InputComponentProps, 'size'>,
-    ref: React.Ref<HTMLInputElement>,
-  ) => <input ref={ref} {...props} />,
+    ref: React.Ref<HTMLInputElement>
+  ) => <input ref={ref} {...props} />
 )
 const TextareaHOC = forwardRef(
   (props: InputComponentProps, ref: React.Ref<HTMLTextAreaElement>) => (
     <textarea ref={ref} {...props} />
-  ),
+  )
 )
 
 export const Input = forwardRef(
   (
     props: InputProps,
-    ref?: React.Ref<HTMLInputElement | HTMLTextAreaElement>,
+    ref?: React.Ref<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const {
       name,
@@ -121,8 +121,7 @@ export const Input = forwardRef(
             <label
               htmlFor={id}
               className={cn(styles.label, styles.labelSizes[size], {
-                [styles.labelDisabledEmptyInput]:
-                  disabled && !value && !defaultValue,
+                [styles.labelDisabledEmptyInput]: disabled,
               })}
             >
               {label}
@@ -147,12 +146,12 @@ export const Input = forwardRef(
                   styles.inputBackgroundSm,
                   styles.inputBackgroundMd,
                   styles.inputBackgroundLg,
-                  styles.inputBackgroundXl,
+                  styles.inputBackgroundXl
                 ),
                 styles.inputSize[size],
                 {
                   [styles.textarea]: textarea,
-                },
+                }
               )}
               id={id}
               disabled={disabled}
@@ -223,5 +222,5 @@ export const Input = forwardRef(
         )}
       </div>
     )
-  },
+  }
 )
