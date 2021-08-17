@@ -1,0 +1,1 @@
+export { VinnumalastofnunLogo } from './VinnumalastofnunLogo'
