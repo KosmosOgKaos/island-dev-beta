@@ -65,7 +65,7 @@ export const DatePickerController = ({
           disabled={disabled}
           size={size}
           id={id}
-          required
+          required={required}
           errorMessage={error?.message}
           locale={locale}
           label={label}
