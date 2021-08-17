@@ -9,13 +9,13 @@ export const formSteps: Step[] = [
     id: 'gagnaoflun',
     title: 'Gagnaöflun',
     options: {},
-    next: 'education',
+    next: 'menntun-og-ferilskra',
     component: DataConsent,
   },
 
   {
-    id: 'education',
-    title: 'Menntun',
+    id: 'menntun-og-ferilskra',
+    title: 'Menntun og ferilskrá',
     options: {},
     component: Education,
   },
@@ -24,7 +24,7 @@ export const formSteps: Step[] = [
     id: 'atvinnuupplysingar',
     title: 'Atvinnuupplýsingar',
     options: {},
-    next: 'education',
+    next: 'menntun-og-ferilskra',
     component: EmploymentInfo,
   },
 ]

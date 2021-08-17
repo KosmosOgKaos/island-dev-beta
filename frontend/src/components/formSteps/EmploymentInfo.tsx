@@ -102,7 +102,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           colorScheme="default"
           iconType="filled"
           preTextIconType="filled"
-          size="medium"
+          size="default"
           type="button"
           variant="text"
         >
