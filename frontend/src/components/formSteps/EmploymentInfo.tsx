@@ -16,6 +16,7 @@ import {
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
+import { RadioController } from '@cmp'
 
 const selectOptions = [
   {
@@ -47,10 +48,16 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        <Inline space={3}>
-          <RadioButton id="fullt_starf" label="Full starf óskast" />
-          <RadioButton id="hlutastarf" label="Hlutastarf óskast" />
-        </Inline>
+        <RadioController 
+          id="jobPercentageWish"
+          largeButtons={false}
+          split="1/2"
+          control={form.control} 
+          options={[
+            {label:"Fullt starf óskast", value:"fullt_starf"},
+            {label:"Hlutastarf óskast", value:"hlutastarf"},
+          ]}
+        />
       </GridColumn>
     </GridRow>
     <GridRow>
