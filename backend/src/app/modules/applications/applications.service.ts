@@ -37,15 +37,19 @@ export class ApplicationsService {
       where: { id },
       data: {
         data: JSON.stringify(processedData),
+        completed: data.completed
+          ? data.completed
+          : applicationBefore?.completed,
       },
     })
   }
 
-  createApplication(data: any, owner: string) {
+  createApplication(inputData: any) {
     return this.prismaService.application.create({
       data: {
-        data,
-        owner,
+        data: inputData.data,
+        owner: inputData.owner,
+        completed: inputData?.completed,
       },
     })
   }
