@@ -68,7 +68,7 @@ const Login: NextPage = () => {
               autoFocus 
               control={control}
               backgroundColor="blue"
-              
+              defaultValue=""
               rules={{
                 validate: ((value) => {
                     return kennitala.isPerson(value)
