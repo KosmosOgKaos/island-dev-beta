@@ -2,18 +2,19 @@ import { globalStyle } from 'treat'
 import { theme } from '@island.is/island-ui/theme'
 
 globalStyle('html', {
+  backgroundColor: theme.color.purple100,
   boxSizing: 'border-box',
   fontSize: theme.typography.baseFontSize,
-  height: '100%',
+  minHeight: '100%',
 })
 
 globalStyle('body', {
   overflowX: 'hidden',
-  height: '100%',
+  minHeight: '100%',
 })
 
 globalStyle('#__next', {
-  height: '100%',
+  minHeight: '100%',
 })
 
 globalStyle('*, *:before, *:after', {
