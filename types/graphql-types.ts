@@ -12,7 +12,8 @@ export enum Role {
     User = "User"
 }
 
-export interface ApplicationDTO {
+export interface CreateApplicationDTO {
+    completed?: Nullable<boolean>;
     data: string;
     owner: string;
 }
@@ -21,7 +22,13 @@ export interface LoginDto {
     username: string;
 }
 
+export interface UpdateApplicationDTO {
+    completed?: Nullable<boolean>;
+    data?: Nullable<string>;
+}
+
 export interface Application {
+    completed?: Nullable<boolean>;
     data: string;
     id: number;
     owner: string;
@@ -41,9 +48,9 @@ export interface Entry {
 }
 
 export interface IMutation {
-    createApplication(data: ApplicationDTO): Application | Promise<Application>;
+    createApplication(data: CreateApplicationDTO): Application | Promise<Application>;
     login(input: LoginDto): AuthUser | Promise<AuthUser>;
-    updateApplication(data: ApplicationDTO, id: number): Application | Promise<Application>;
+    updateApplication(data: UpdateApplicationDTO, id: number): Application | Promise<Application>;
 }
 
 export interface IQuery {
