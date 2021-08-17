@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Box,
   Button,
-  DatePicker,
   Divider,
   GridColumn,
   GridRow,
@@ -12,7 +11,7 @@ import {
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { InputController, SelectController } from '@cmp'
+import { InputController, SelectController, DatePickerController } from '@cmp'
 
 const selectOptions = [
   {
@@ -64,10 +63,17 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <DatePicker
+        <DatePickerController
+          control={form.control}
+          id="start_date"
+          name="start_date"
           size="sm"
           label="Ég get byrjað"
-          placeholderText="Veldu dagsetningu"
+          placeholder="Veldu dagsetningu"
+          required
+          rules={{
+            required: 'Vinsamlegast veldu dagsetningu',
+          }}
         />
       </GridColumn>
       <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>

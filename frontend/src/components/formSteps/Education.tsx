@@ -9,7 +9,6 @@ import {
   Inline,
   RadioButton,
   Text,
-  Select,
   GridColumns,
   ResponsiveProp,
   Icon,

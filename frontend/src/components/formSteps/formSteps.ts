@@ -3,6 +3,7 @@ import { Overview } from './Overview'
 import { DataConsent } from './DataConsent'
 import { EmploymentInfo } from './EmploymentInfo'
 import { EmploymentStatus } from './EmploymentStatus'
+import { Rights } from './Rights'
 import type { ID, Step } from 'src/components/ActiveStep'
 import { FormStepperSection } from '@island.is/island-ui/core'
 
@@ -40,6 +41,13 @@ export const formSteps: Step[] = [
     options: {},
     next: 'menntun-og-ferilskra',
     component: EmploymentInfo,
+  },
+  {
+    id: 'rettindi',
+    title: 'Þín réttindi',
+    options: {},
+    next: 'menntun',
+    component: Rights,
   },
 ]
 
