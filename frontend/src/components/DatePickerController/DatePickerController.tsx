@@ -18,6 +18,7 @@ interface Props {
   control?: Control
   rules?: {}
   name?: string
+  required?: boolean
   locale?: Locale
   label: string
   size?: DatePickerProps['size']
@@ -40,6 +41,7 @@ export const DatePickerController = ({
   label,
   size,
   placeholder,
+  required,
   backgroundColor,
   maxDate,
   control,
@@ -63,6 +65,7 @@ export const DatePickerController = ({
           disabled={disabled}
           size={size}
           id={id}
+          required={required}
           errorMessage={error?.message}
           locale={locale}
           label={label}

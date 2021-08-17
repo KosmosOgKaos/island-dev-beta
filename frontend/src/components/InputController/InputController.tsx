@@ -16,10 +16,11 @@ interface Props {
   control?: Control
   rules?: {}
   id: string
+  value?: string
   label?: string
   name?: string
   onChange?: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void
   placeholder?: string
   textarea?: boolean
@@ -48,6 +49,7 @@ export const InputController: FC<Props> = ({
   rules,
   backgroundColor,
   textarea,
+  value,
   type = 'text',
   onChange: onInputChange,
   rows,
@@ -61,6 +63,7 @@ export const InputController: FC<Props> = ({
     render={({ field: { onChange, value }, fieldState: { error } }) => (
       <Input
         id={id}
+        size="sm"
         name={name}
         value={value}
         disabled={disabled}
