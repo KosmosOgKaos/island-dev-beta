@@ -21,6 +21,7 @@ import { RadioController } from '../RadioController'
 import { unemploymentCalculator } from 'lib/calculate'
 import { format, getMonth, getYear } from 'date-fns'
 import { is } from 'date-fns/locale'
+import { useWatch } from 'react-hook-form'
 
 const lifeyrir2Options = lifeyrir2.map((x) => ({
   label: x,
@@ -321,16 +322,20 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span='12/12' paddingBottom={6}>
-        <TableRows
-          startDate={form.getValues().upphafsdagsetning_botagreidslna}
-        />
+        <TableRows form={form} />
       </GridColumn>
     </GridRow>
   </Box>
 )
 
-const TableRows = ({ startDate }) => {
-  const { getTable } = unemploymentCalculator()
+const TableRows = ({ form }) => {
+  const { getTable } = unemploymentCalculator({
+    hlutfallPersAfsl: 0,
+  })
+  const { upphafsdagsetning_botagreidslna: startDate } = useWatch({
+    defaultValue: form.getValues().upphafsdagsetning_botagreidslna,
+    control: form.control,
+  })
 
   if (!startDate) {
     return null
