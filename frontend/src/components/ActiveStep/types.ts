@@ -14,6 +14,7 @@ export interface Step {
 export interface ActiveStepProps {
   stepInfo: Step
   formData: {}
+  applicationId: number
 }
 
 export interface ActiveStepComponentProps {

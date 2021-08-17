@@ -47,10 +47,7 @@ const Login: NextPage = () => {
     }
   })
   if (data?.login?.token) {
-    login({
-      username: data.login.username,
-      token: data.login.token,
-    })
+    login(data.login)
 
 
     return null
