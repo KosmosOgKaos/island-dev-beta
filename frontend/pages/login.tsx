@@ -2,13 +2,12 @@ import type { NextPage } from 'next'
 import { gql, useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
-import { Button as Btn, Stack, Input, Header, Text, GridRow } from "@island.is/island-ui/core"
+import { Button as Btn, Stack, Header, Text, GridRow } from "@island.is/island-ui/core"
 import { LoginLayout } from '@cmp'
 import kennitala from 'kennitala'
 import { useEffect } from 'react'
 import router from 'next/router'
 import { InputController } from '@cmp'
-import { blue100 } from '@island.is/island-ui/theme'
 
 
 const MUTATION_LOGIN = gql`
