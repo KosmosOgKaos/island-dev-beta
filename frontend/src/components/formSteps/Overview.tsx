@@ -2,12 +2,31 @@ import React from 'react'
 import {
   Box,
   Text,
-  Input,
   GridRow,
   GridColumn,
+  ResponsiveProp,
+  GridColumns,
+  Divider,
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
 import { InputController } from '@cmp'
+
+const gridSpacing = [
+  '12/12',
+  '6/12',
+  '12/12',
+  '6/12',
+] as ResponsiveProp<GridColumns>
+
+const Divide = () => (
+  <GridRow>
+    <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
+      <div style={{ height: 1 }}>
+        <Divider />
+      </div>
+    </GridColumn>
+  </GridRow>
+)
 
 export const Overview = ({ options, form }: ActiveStepComponentProps) => (
   <Box>
@@ -17,7 +36,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
     <Text variant="h3">Persónuupplýsingar</Text>
     <Text marginBottom={3}>Gögn sótt úr Þjóðskrá</Text>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           type="text"
           control={form.control}
@@ -28,7 +47,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           disabled
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           type="text"
           control={form.control}
@@ -38,7 +57,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           disabled
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           type="text"
           control={form.control}
@@ -48,7 +67,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           disabled
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           type="text"
           control={form.control}
@@ -58,7 +77,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           disabled
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           type="text"
           control={form.control}
@@ -68,7 +87,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           disabled
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           control={form.control}
           name="email"
@@ -83,7 +102,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           }}
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           control={form.control}
           name="phoneNumber"
@@ -96,6 +115,32 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
               message: 'Símanúmer þarf að vera 7 tölustafir',
             },
           }}
+        />
+      </GridColumn>
+    </GridRow>
+
+    <Divide />
+
+    <Text variant="h3" marginBottom={3}>
+      Börn á framfærslu
+    </Text>
+    <GridRow>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
+        <InputController
+          control={form.control}
+          name="children[0].name"
+          id="barn_nafn_1"
+          label="Nafn barns"
+          disabled
+        />
+      </GridColumn>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
+        <InputController
+          control={form.control}
+          name="children[0].ssn"
+          id="barn_kennitala_1"
+          label="Kennitala barns"
+          disabled
         />
       </GridColumn>
     </GridRow>
