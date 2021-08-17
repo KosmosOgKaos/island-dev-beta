@@ -28,15 +28,6 @@ export class ApplicationsResolver {
     return application
   }
 
-  @Query(() => Application, { nullable: true })
-  async getApplicationById(@Args('id', { type: () => Int }) id: number) {
-    this.logger.info('Finding a single application by id', { id })
-
-    const application = await this.applicationsService.getApplicationById(id)
-
-    return application
-  }
-
   @Query(() => [Application])
   async getApplications() {
     this.logger.info('Finding multiple applications')
@@ -44,25 +35,6 @@ export class ApplicationsResolver {
     const applications = await this.applicationsService.getAllApplications()
 
     return applications
-  }
-
-  @Mutation(() => Application)
-  async createApplication(
-    @Args('data', { type: () => CreateApplicationDTO }) data: any,
-  ) {
-    this.logger.info(`Creating a new application from`)
-    this.logger.info(JSON.stringify(data))
-
-    const application = await this.applicationsService.createApplication(data)
-
-    this.logger.info(`Created ${JSON.stringify(application)}`)
-
-    return {
-      id: application.id,
-      data: application.data,
-      owner: application.owner,
-      completed: application.completed,
-    }
   }
 
   @Mutation(() => Application)
