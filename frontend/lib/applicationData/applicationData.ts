@@ -25,13 +25,14 @@ export const useApplicationUpdater = (applicationId): UseApplicationUpdater => {
   const client = useApolloClient()
 
   return (formData) => {
+    console.log('Should be mutating to save formData', formData)
     return client.mutate({
       mutation: MUTATION_APPLICATION_UPDATE,
       variables: {
         id: applicationId,
         data: {
           completed: false,
-          data: formData,
+          data: JSON.stringify(formData),
         }
       }
     })
@@ -52,6 +53,7 @@ export const useApplicationData = (user: AuthUser) => {
     error,
     data,
   } = useQuery(QUERY_APPLICATION_GET, {
+    fetchPolicy: "network-only",
     variables: {
       owner: user.username
     }
@@ -64,7 +66,6 @@ export const useApplicationData = (user: AuthUser) => {
       data: null
     }
   }
-
 
   let formData
   try {

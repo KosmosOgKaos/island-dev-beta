@@ -1,4 +1,4 @@
-import { UseFormReturn } from "react-hook-form";
+import { UseFormReturn } from 'react-hook-form'
 
 export type Options = any
 export type ID = string
@@ -9,6 +9,7 @@ export interface Step {
   options: {}
   component: ({ options, form }: ActiveStepComponentProps) => JSX.Element
   next?: string
+  prev?: string
 }
 
 export interface ActiveStepProps {

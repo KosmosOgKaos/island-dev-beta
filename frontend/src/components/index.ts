@@ -1,3 +1,5 @@
+export { CheckboxController } from './CheckboxController'
+
 export { RadioController } from './RadioController'
 
 export { DatePickerController } from './DatePickerController'

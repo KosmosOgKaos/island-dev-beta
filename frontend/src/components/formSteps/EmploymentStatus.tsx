@@ -10,7 +10,10 @@ import {
 import { ActiveStepComponentProps } from '../ActiveStep'
 import { DatePickerController, InputController, RadioController } from '@cmp'
 
-export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) => (
+export const EmploymentStatus = ({
+  options,
+  form,
+}: ActiveStepComponentProps) => (
   <Box>
     <Text variant="h2" marginBottom={5}>
       Staða á vinnumarkaði
@@ -20,20 +23,23 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-          <RadioController 
-            id="currentEmploymentStatus"
-            largeButtons={false}
-            split="1/1"
-            control={form.control} 
-            options={[
-              {label:"Ég er nemi", value:"student"},
-              {label:"Ég er án atvinnu", value:"unemployed"},
-              {label:"Ég er í hlutastarfi", value:"partTimeJob"},
-              {label:"Ég er í tilfallandi vinnu", value:"incidentalJob"},
-              {label:"Ég er í eigin atvinnurekstri", value:"independant"},
-              {label:"Ég er í fæðingarorlofi", value:"parentalLeave"},
-            ]}
-          />
+        <RadioController
+          id="currentEmploymentStatus"
+          largeButtons={false}
+          split="1/1"
+          control={form.control}
+          options={[
+            { label: 'Ég er nemi', value: 'student' },
+            { label: 'Ég er án atvinnu', value: 'unemployed' },
+            { label: 'Ég er í hlutastarfi', value: 'partTimeJob' },
+            { label: 'Ég er í tilfallandi vinnu', value: 'incidentalJob' },
+            { label: 'Ég er í eigin atvinnurekstri', value: 'independant' },
+            { label: 'Ég er í fæðingarorlofi', value: 'parentalLeave' },
+          ]}
+          rules={{
+            required: 'Vinsamlegast veldu hnappinn sem á við um þig',
+          }}
+        />
       </GridColumn>
     </GridRow>
     <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
@@ -51,6 +57,9 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn nafn fyrirtækis"
           control={form.control}
           required
+          rules={{
+            required: 'Vinsamlegast sláðu inn nafn fyrirtækis',
+          }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -61,6 +70,9 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn starfshlutfall"
           control={form.control}
           required
+          rules={{
+            required: 'Vinsamlegast sláðu inn starfshlutfall',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -73,6 +85,9 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn nafn tengiliðs"
           control={form.control}
           required
+          rules={{
+            required: 'Vinsamlegast sláðu inn nafn tengiliðs',
+          }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -83,36 +98,68 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn netfang tengiliðs"
           control={form.control}
           required
+          type="email"
+          rules={{
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: 'Netfang þarf að vera gilt',
+            },
+          }}
         />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <DatePickerController label="Hætti í starfi" id="dateQuitJob" placeholder="Veldu dagsetningu" control={form.control}  />
+        <DatePickerController
+          size="sm"
+          label="Hætti í starfi"
+          id="dateQuitJob"
+          placeholder="Veldu dagsetningu"
+          control={form.control}
+          required
+          rules={{
+            required: 'Vinsamlegast veldu dagsetningu',
+          }}
+        />
       </GridColumn>
     </GridRow>
-    
 
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        <RadioController 
-            id="remainingVacation"
-            largeButtons={false}
-            split="1/2"
-            control={form.control} 
-            options={[
-              {label:"Já, ég á ótekið orlof við starfslok", value:"hasRemainingVacation"},
-              {label:"Nei, ég á ekkert ótekið orlof við starfsloku", value:"noRemainingVacation"},
-            ]}
-          />
+        <RadioController
+          id="remainingVacation"
+          largeButtons
+          backgroundColor="white"
+          split="1/2"
+          control={form.control}
+          options={[
+            {
+              label: 'Já',
+              subLabel: 'Ég á ótekið orlof við starfslok',
+              value: 'hasRemainingVacation',
+            },
+            {
+              label: 'Nei',
+              subLabel: 'Ég á ekkert ótekið orlof við starfsloku',
+              value: 'noRemainingVacation',
+            },
+          ]}
+          rules={{
+            required: 'Vinsamlegast veldu annan hnappinn',
+          }}
+        />
       </GridColumn>
     </GridRow>
-    
-    <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
-      <Text variant="small" marginBottom={2}>Upplýsingar verða sendar á atvinnuveitanda til staðfestingar</Text>
+
+    <Box paddingBottom={3} paddingTop={2}>
+      <Text variant="small">
+        Upplýsingar verða sendar á atvinnuveitanda til staðfestingar
+      </Text>
+    </Box>
+    <Box paddingBottom={4}>
       <Divider />
-    </GridColumn>
-    
+    </Box>
+
     <Text variant="h3" marginBottom={3}>
       Meðaltekjur þínar síðustu 12 mánuði
     </Text>
@@ -129,6 +176,9 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn mánaðarlegar tekjur"
           control={form.control}
           required
+          rules={{
+            required: 'Vinsamlegast sláðu inn mánaðarlegar tekjur',
+          }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -139,6 +189,9 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn fjármagnstekjur"
           control={form.control}
           required
+          rules={{
+            required: 'Vinsamlegast sláðu inn fjármagnstekjur',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -151,6 +204,9 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="Sláðu inn lífeyrissjóðsgreiðslur"
           control={form.control}
           required
+          rules={{
+            required: 'Vinsamlegast sláðu inn lífeyrissjóðsgreiðslur',
+          }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -161,6 +217,9 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           placeholder="0 kr"
           control={form.control}
           required
+          rules={{
+            required: 'Vinsamlegast sláðu inn tekjur frá tryggingastofnun',
+          }}
         />
       </GridColumn>
     </GridRow>
@@ -169,9 +228,6 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
         <Button variant="text" as="span">
           Bæta við tekjum
         </Button>
-      </GridColumn>
-      <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
-        <Divider />
       </GridColumn>
     </GridRow>
   </Box>
