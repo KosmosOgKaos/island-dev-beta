@@ -11,7 +11,7 @@ import {
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { InputController, SelectController, DatePickerController } from '@cmp'
+import { DatePickerController, RadioController, SelectController } from '@cmp'
 
 const selectOptions = [
   {
@@ -43,16 +43,21 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        <Inline space={3}>
-          <RadioButton id="fullt_starf" label="Full starf óskast" />
-          <RadioButton id="hlutastarf" label="Hlutastarf óskast" />
-        </Inline>
+        <RadioController 
+          id="jobPercentageWish"
+          largeButtons={false}
+          split="1/2"
+          control={form.control} 
+          options={[
+            {label:"Fullt starf óskast", value:"fullt_starf"},
+            {label:"Hlutastarf óskast", value:"hlutastarf"},
+          ]}
+        />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
         <SelectController
-          control={form.control}
           id="veldu_svaedi"
           name="veldu_svaedi"
           label="Ég vil líka vinna á"
@@ -60,6 +65,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
             required: 'Vinsamlegast veldu svæði',
           }}
           options={selectOptions}
+          control={form.control}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -127,11 +133,17 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={6}>
-        <Inline space={3}>
-          <RadioButton id="almennt_vinnufaer" label="Almennt vinnufær" />
-          <RadioButton id="skert_vinufaerni" label="Skert vinnufærni" />
-          <RadioButton id="er_med_ororkumat" label="Er með örorkumat" />
-        </Inline>
+        <RadioController 
+          id="workability"
+          largeButtons={false}
+          split="1/3"
+          control={form.control} 
+          options={[
+            {label:"Almennt vinnufær", value:"almennt_vinnufaer"},
+            {label:"Skert vinnufærni", value:"skert_vinufaerni"},
+            {label:"Er með örorkumat", value:"er_med_ororkumat"},
+          ]}
+        />
       </GridColumn>
     </GridRow>
   </Box>

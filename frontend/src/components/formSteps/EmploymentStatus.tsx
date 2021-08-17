@@ -2,40 +2,13 @@ import React from 'react'
 import {
   Box,
   Button,
-  DatePicker,
   Divider,
-  FormStepper,
   GridColumn,
-  GridContainer,
   GridRow,
-  Inline,
-  Input,
-  RadioButton,
-  Select,
   Text,
 } from '@island.is/island-ui/core'
-import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
-
-const selectOptions = [
-  {
-    label: 'Reykjavík',
-    value: 'Reykjavík',
-  },
-  {
-    label: 'Keflavík',
-    value: 'Keflavík',
-  },
-  {
-    label: 'Akureyri',
-    value: 'Akureyri',
-  },
-]
-
-const jobsOptions = jobs.map((x) => ({
-  label: x,
-  value: x,
-}))
+import { DatePickerController, InputController, RadioController } from '@cmp'
 
 export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) => (
   <Box>
@@ -47,14 +20,20 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        {/* <Inline space={3}> */}
-          <RadioButton id="student" label="Ég er nemi"  />
-          <RadioButton id="unemployed" label="Ég er án atvinnu" />
-          <RadioButton id="partTimeJob" label="Ég er í hlutastarfi" />
-          <RadioButton id="incidentalJob" label="Ég er í tilfallandi vinnu" />
-          <RadioButton id="independant" label="Ég er í eigin atvinnurekstri" />
-          <RadioButton id="parentalLeave" label="Ég er í fæðingarorlofi" />
-        {/* </Inline> */}
+          <RadioController 
+            id="currentEmploymentStatus"
+            largeButtons={false}
+            split="1/1"
+            control={form.control} 
+            options={[
+              {label:"Ég er nemi", value:"student"},
+              {label:"Ég er án atvinnu", value:"unemployed"},
+              {label:"Ég er í hlutastarfi", value:"partTimeJob"},
+              {label:"Ég er í tilfallandi vinnu", value:"incidentalJob"},
+              {label:"Ég er í eigin atvinnurekstri", value:"independant"},
+              {label:"Ég er í fæðingarorlofi", value:"parentalLeave"},
+            ]}
+          />
       </GridColumn>
     </GridRow>
     <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
@@ -65,52 +44,67 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
     </Text>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="company_name"
           name="company_name"
           label="Nafn fyrirtækis"
           placeholder="Sláðu inn nafn fyrirtækis"
+          control={form.control}
+          required
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="employment_percentage"
           name="employment_percentage"
           label="Starfshlutfall"
           placeholder="Sláðu inn starfshlutfall"
+          control={form.control}
+          required
         />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="contact"
           name="contact"
           label="Nafn tengiliðs"
           placeholder="Sláðu inn nafn tengiliðs"
+          control={form.control}
+          required
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="contact_email"
           name="contact_email"
           label="Netfang tengiliðs"
           placeholder="Sláðu inn netfang tengiliðs"
+          control={form.control}
+          required
         />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <DatePicker size="sm" label="Hætti í starfi" placeholderText="Veldu dagsetningu"/>
+        <DatePickerController label="Hætti í starfi" id="dateQuitJob" placeholder="Veldu dagsetningu" control={form.control}  />
       </GridColumn>
     </GridRow>
+    
 
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        <Inline space={3}>
-          <RadioButton id="remainingVacation" label="Já, ég á ótekið orlof við starfslok" />
-          <RadioButton id="noRemainingVacation" label="Nei, ég á ekkert ótekið orlof við starfslok" />
-        </Inline>
+        <RadioController 
+            id="remainingVacation"
+            largeButtons={false}
+            split="1/2"
+            control={form.control} 
+            options={[
+              {label:"Já, ég á ótekið orlof við starfslok", value:"hasRemainingVacation"},
+              {label:"Nei, ég á ekkert ótekið orlof við starfsloku", value:"noRemainingVacation"},
+            ]}
+          />
       </GridColumn>
     </GridRow>
     
@@ -128,43 +122,46 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
 
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="monthly_revenue"
           name="monthly_revenue"
           label="Mánaðarlegar tekjur"
-          placeholder="0 kr"
+          placeholder="Sláðu inn mánaðarlegar tekjur"
+          control={form.control}
+          required
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="capital_income"
           name="capital_income"
           label="Fjármagnstekjur"
-          placeholder="0 kr"
+          placeholder="Sláðu inn fjármagnstekjur"
+          control={form.control}
+          required
         />
       </GridColumn>
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="pension_payment"
           name="pension_payment"
           label="Lífeyrissjóðsgreiðslur"
-          placeholder="0 kr"
+          placeholder="Sláðu inn lífeyrissjóðsgreiðslur"
+          control={form.control}
+          required
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Input
-          size="sm"
+        <InputController
+          id="insurance_institution"
           name="insurance_institution"
           label="Tryggingastofnun"
           placeholder="0 kr"
+          control={form.control}
+          required
         />
-      </GridColumn>
-    </GridRow>
-    <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
-        <DatePicker size="sm" label="Hætti í starfi" placeholderText="Veldu dagsetningu"/>
       </GridColumn>
     </GridRow>
     <GridRow>

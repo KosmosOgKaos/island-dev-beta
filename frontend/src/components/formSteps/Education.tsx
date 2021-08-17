@@ -18,8 +18,8 @@ import {
 import jobs from '../../static/jobs.json'
 import haskolagrada from '../../static/haskolagrada.json'
 import education from '../../static/education.json'
-import { InputController, SelectController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
+import { InputController, SelectController } from '@cmp'
 
 const haskolagradaOptions = haskolagrada.map((x) => ({
   label: x,
@@ -132,43 +132,36 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <Text variant="h3">Námsferill</Text>
     <Text marginBottom={3}>Gögn sótt úr Mínar síður</Text>
-    <GridRow>
-      <GridColumn span="12/12" paddingBottom={3}>
-        <Inline space={3}>
-          <RadioButton id="fullt_starf" label="Full starf óskast" />
-          <RadioButton id="hlutastarf" label="Hlutastarf óskast" />
-        </Inline>
-      </GridColumn>
-    </GridRow>
+
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
-          control={form.control}
           id="nam_profgrada"
           name="nam_profgrada"
           label="Nám/Prófgraða"
           placeholder="Veldu nám/prófgráðu"
           options={educationOptions}
+          control={form.control}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
-          control={form.control}
           id="haskolagrada"
           name="haskolagrada"
           label="Háskólagráða"
           placeholder="Veldu nám/prófgráðu"
           options={haskolagradaOptions}
+          control={form.control}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
-          control={form.control}
           id="nam_hofst"
           name="nam_hofst"
           label="Nám hófst"
           placeholder="Ár"
           options={yearsOptions}
+          control={form.control}
           rules={{
             required: 'Vinsamlegast veldu ár',
           }}
