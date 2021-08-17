@@ -1,11 +1,10 @@
 import { Inject } from '@nestjs/common'
 import { Args, Query, Resolver, Mutation, Int } from '@nestjs/graphql'
 import { IsPublic } from '../auth/isPublic.decorator'
-import { Role } from '../auth/roles/role.enum'
-import { Roles } from '../auth/roles/roles.decorator'
 import { Logger, LOGGER_PROVIDER } from '../logging/logging.module'
 import { ApplicationsService } from './applications.service'
-import { ApplicationDTO } from './dto/application.dto'
+import { CreateApplicationDTO } from './dto/createApplication.dto'
+import { UpdateApplicationDTO } from './dto/updateApplication.dto'
 import { Application } from './models/application.model'
 
 @Resolver(() => Application)
@@ -41,17 +40,24 @@ export class ApplicationsResolver {
   }
 
   @IsPublic()
+  @Query(() => [Application])
+  async getApplications() {
+    this.logger.info('Finding multiple applications')
+    // list all applications
+    const applications = await this.applicationsService.getAllApplications()
+
+    return applications
+  }
+
+  @IsPublic()
   @Mutation(() => Application)
   async createApplication(
-    @Args('data', { type: () => ApplicationDTO }) data: any,
+    @Args('data', { type: () => CreateApplicationDTO }) data: any,
   ) {
     this.logger.info(`Creating a new application from`)
     this.logger.info(JSON.stringify(data))
 
-    const application = await this.applicationsService.createApplication(
-      data.data,
-      data.owner,
-    )
+    const application = await this.applicationsService.createApplication(data)
 
     this.logger.info(`Created ${JSON.stringify(application)}`)
 
@@ -59,13 +65,14 @@ export class ApplicationsResolver {
       id: application.id,
       data: application.data,
       owner: application.owner,
+      completed: application.completed,
     }
   }
 
   @IsPublic()
   @Mutation(() => Application)
   async updateApplication(
-    @Args('data', { type: () => ApplicationDTO }) data: any,
+    @Args('data', { type: () => UpdateApplicationDTO }) data: any,
     @Args('id', { type: () => Int }) id: number,
   ) {
     this.logger.info(`Updating application from ${JSON.stringify(data)}`)
@@ -76,15 +83,5 @@ export class ApplicationsResolver {
     )
 
     return application
-  }
-
-  @Roles(Role.Admin)
-  @Query(() => [Application])
-  async getApplications() {
-    this.logger.info('Finding multiple applications')
-    // list all applications
-    const applications = await this.applicationsService.getAllApplications()
-
-    return applications
   }
 }

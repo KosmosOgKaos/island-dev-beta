@@ -10,4 +10,7 @@ export class Application {
 
   @Field()
   data!: string
+
+  @Field(() => Boolean, { nullable: true })
+  completed?: boolean
 }
