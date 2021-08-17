@@ -8,6 +8,7 @@ import kennitala from 'kennitala'
 import { useEffect } from 'react'
 import router from 'next/router'
 import { InputController } from '@cmp'
+import { blue100 } from '@island.is/island-ui/theme'
 
 
 const MUTATION_LOGIN = gql`
@@ -65,19 +66,19 @@ const Login: NextPage = () => {
           <Text variant="h1" as="h1" marginBottom={0}>Skráðu þig inn</Text>
         </GridRow>
         <GridRow align="center">
-          <Text variant="h4" as="h4" marginBottom={2}>á mínar síður Ísland.is</Text>
+          <Text variant="h4" as="h4" marginBottom={2}>á Ísland.is</Text>
         </GridRow>
         </Stack>
 
         <GridRow align="center">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Text marginBottom={2}>Stimplaðu inn kennitölu til þess að skrá þig inn.</Text>
             <InputController 
               id="login-username-input" 
               name="username" 
               label="Kennitala" 
               autoFocus 
               control={control}
+              backgroundColor="blue"
               rules={{
                 pattern: {
                   value: /^\d{10}$/,
@@ -87,7 +88,7 @@ const Login: NextPage = () => {
             </InputController>
             
             <GridRow align="center" marginTop={2}>
-              <Btn type="submit">Audkenna</Btn>
+              <Btn type="submit">Auðkenna</Btn>
             </GridRow>
           </form>
         </GridRow>
