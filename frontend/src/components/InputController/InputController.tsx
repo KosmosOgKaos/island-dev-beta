@@ -3,7 +3,6 @@ import { Input, InputBackgroundColor } from '@island.is/island-ui/core'
 import {
   Controller,
   Control,
-  ValidationRules,
   ControllerRenderProps,
   FieldValues,
   ControllerFieldState,
@@ -15,7 +14,7 @@ interface Props {
   defaultValue?: string
   disabled?: boolean
   control?: Control
-  rules?: ValidationRules
+  rules?: {}
   id: string
   label?: string
   name?: string
