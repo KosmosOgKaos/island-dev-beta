@@ -68,12 +68,7 @@ export const FormLayout = ({ children, activeState }) => {
             </Box>
           </GridColumn>
           <GridColumn span={['12/12', '12/12', '9/12']} order={[2, 2, 1]}>
-            <Box
-              paddingY={10}
-              paddingX={[4, 4, 12]}
-              background="white"
-              borderRadius="large"
-            >
+            <Box background="white" borderRadius="large">
               {children}
             </Box>
           </GridColumn>

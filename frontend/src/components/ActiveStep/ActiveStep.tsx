@@ -1,11 +1,15 @@
-import { Button } from '@island.is/island-ui/core'
 import { useApplicationUpdater } from 'lib/applicationData'
 import { useRouter } from 'next/router'
+import { Box, Button } from '@island.is/island-ui/core'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { ActiveStepProps } from './types'
 
-export const ActiveStep = ({ stepInfo, applicationId, formData }: ActiveStepProps) => {
+export const ActiveStep = ({
+  stepInfo,
+  applicationId,
+  formData,
+}: ActiveStepProps) => {
   const form = useForm({ defaultValues: formData })
   const { handleSubmit } = form
   const router = useRouter()
@@ -19,7 +23,7 @@ export const ActiveStep = ({ stepInfo, applicationId, formData }: ActiveStepProp
           router.push(`/umsokn/${stepInfo.next}`)
         }
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e)
         alert('error came ups')
       })
@@ -29,9 +33,35 @@ export const ActiveStep = ({ stepInfo, applicationId, formData }: ActiveStepProp
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Cmp options={options} form={form} />
-
-      <Button type="submit">Áfram</Button>
+      <Box paddingTop={10} paddingX={[4, 4, 12]}>
+        <Cmp options={options} form={form} />
+      </Box>
+      <Box
+        paddingY={5}
+        paddingX={[4, 4, 12]}
+        borderTopWidth="standard"
+        borderStyle="solid"
+        borderColor="purple100"
+        display="flex"
+        flexDirection="row"
+        justifyContent={stepInfo.prev ? 'spaceBetween' : 'flexEnd'}
+      >
+        {stepInfo.prev && (
+          <Button
+            variant="ghost"
+            onClick={() => {
+              router.push(`/umsokn/${stepInfo.prev}`)
+            }}
+          >
+            Til baka
+          </Button>
+        )}
+        {stepInfo.next && (
+          <Button type="submit" icon="arrowForward">
+            Halda áfram
+          </Button>
+        )}
+      </Box>
     </form>
   )
 }
