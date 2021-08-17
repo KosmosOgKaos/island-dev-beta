@@ -2,16 +2,9 @@ import React from 'react'
 import {
   Box,
   Button,
-  DatePicker,
   Divider,
-  FormStepper,
   GridColumn,
-  GridContainer,
   GridRow,
-  Inline,
-  Input,
-  RadioButton,
-  Select,
   Text,
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
@@ -95,9 +88,10 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <DatePicker label="Hætti í starfi" placeholderText="Veldu dagsetningu"/>
+        <DatePickerController label="Hætti í starfi" id="dateQuitJob" placeholder="Veldu dagsetningu" control={form.control}  />
       </GridColumn>
     </GridRow>
+    
 
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>

@@ -16,7 +16,7 @@ import {
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { RadioController } from '@cmp'
+import { DatePickerController, RadioController, SelectController } from '@cmp'
 
 const selectOptions = [
   {
@@ -62,18 +62,20 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          id="veldu_svaedi"
           name="veldu_svaedi"
           label="Ég vil líka vinna á"
           options={selectOptions}
+          control={form.control}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <DatePicker
-          size="sm"
-          label="Ég get byrjað"
-          placeholderText="Veldu dagsetningu"
+        <DatePickerController 
+          label="Ég get byrjað" 
+          id="canStartNewJob" 
+          placeholder="Veldu dagsetningu" 
+          control={form.control}
         />
       </GridColumn>
       <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
@@ -85,21 +87,23 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          id="oskastarf_1"
           name="oskastarf_1"
           label="Óskastarf 1"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
+          control={form.control}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+      <SelectController
+          id="oskastarf_2"
           name="oskastarf_2"
           label="Óskastarf 2"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
+          control={form.control}
         />
       </GridColumn>
     </GridRow>
@@ -118,11 +122,17 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={6}>
-        <Inline space={3}>
-          <RadioButton id="almennt_vinnufaer" label="Almennt vinnufær" />
-          <RadioButton id="skert_vinufaerni" label="Skert vinnufærni" />
-          <RadioButton id="er_med_ororkumat" label="Er með örorkumat" />
-        </Inline>
+        <RadioController 
+          id="workability"
+          largeButtons={false}
+          split="1/3"
+          control={form.control} 
+          options={[
+            {label:"Almennt vinnufær", value:"almennt_vinnufaer"},
+            {label:"Skert vinnufærni", value:"skert_vinufaerni"},
+            {label:"Er með örorkumat", value:"er_med_ororkumat"},
+          ]}
+        />
       </GridColumn>
     </GridRow>
   </Box>
