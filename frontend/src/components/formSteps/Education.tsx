@@ -19,7 +19,7 @@ import jobs from '../../static/jobs.json'
 import haskolagrada from '../../static/haskolagrada.json'
 import education from '../../static/education.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { InputController, SelectController } from '@cmp'
+import { CheckboxController, InputController, SelectController } from '@cmp'
 
 const haskolagradaOptions = haskolagrada.map((x) => ({
   label: x,
@@ -289,7 +289,12 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     <GridRow>
       <GridColumn span="12/12" paddingBottom={1}>
         <Inline space={3}>
-          <Checkbox id="almennt_vinnufaer" label="B réttindi" />
+          <CheckboxController
+            id="drivingLicenseB"
+            label="B réttindi"
+            labelVariant="default"
+            control={form.control}
+          />
           <Icon type="filled" icon="car" />
         </Inline>
       </GridColumn>
