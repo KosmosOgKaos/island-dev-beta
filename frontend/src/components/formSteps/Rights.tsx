@@ -2,26 +2,26 @@ import React from 'react'
 import {
   Box,
   Button,
-  Checkbox,
   Divider,
   GridColumn,
   GridRow,
-  Inline,
-  RadioButton,
   Text,
   GridColumns,
   ResponsiveProp,
-  Icon,
-  Input,
-  InputFileUpload,
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
-import haskolagrada from '../../static/haskolagrada.json'
+import lifeyrir from '../../static/lifeyrir.json'
+import lifeyrir2 from '../../static/lifeyrir2.json'
 import education from '../../static/education.json'
 import { InputController, SelectController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
 
-const haskolagradaOptions = haskolagrada.map((x) => ({
+const lifeyrir2Options = lifeyrir2.map((x) => ({
+  label: x,
+  value: x,
+}))
+
+const lifeyrirOptions = lifeyrir.map((x) => ({
   label: x,
   value: x,
 }))
@@ -138,7 +138,7 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
 
     <GridRow>
-      <GridColumn span={['2/6']}>
+      <GridColumn span={['12/12', '12/12', '4/12']} paddingBottom={3}>
         <InputController
           id="banki"
           name="banki"
@@ -153,7 +153,7 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
           }}
         />
       </GridColumn>
-      <GridColumn span={['2/6']}>
+      <GridColumn span={['12/12', '12/12', '4/12']} paddingBottom={3}>
         <InputController
           id="hofudbok"
           name="hofudbok"
@@ -168,7 +168,7 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
           }}
         />
       </GridColumn>
-      <GridColumn span={['2/6']}>
+      <GridColumn span={['12/12', '12/12', '4/12']} paddingBottom={3}>
         <InputController
           id="reikningsnumer"
           name="reikningsnumer"
@@ -181,6 +181,30 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
               message: 'Reikningsnúmer þarf að vera allt að 6 tölustafir',
             },
           }}
+        />
+      </GridColumn>
+    </GridRow>
+    <GridRow>
+      <GridColumn span={['12/12', '12/12', '6/12']} paddingBottom={3}>
+        <SelectController
+          control={form.control}
+          id="lifeyrissjodur"
+          name="lifeyrissjodur"
+          label="Lífeyrissjóður"
+          placeholder="Veldu lífeyrissjóð"
+          options={lifeyrir2Options}
+        />
+      </GridColumn>
+    </GridRow>
+    <GridRow>
+      <GridColumn span={['12/12', '12/12', '6/12']} paddingBottom={3}>
+        <SelectController
+          control={form.control}
+          id="vidbotarlifeyrissparnadur"
+          name="vidbotarlifeyrissparnadur"
+          label="Viðbótarlífeyrissparnaður"
+          placeholder="Veldu viðbótarlífeyrissparnað"
+          options={lifeyrirOptions}
         />
       </GridColumn>
     </GridRow>
