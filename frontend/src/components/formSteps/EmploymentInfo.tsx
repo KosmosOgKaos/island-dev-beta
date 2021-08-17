@@ -43,6 +43,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span="12/12" paddingBottom={3}>
         <RadioController
           id="jobPercentageWish"
+          name="jobPercentageWish"
           largeButtons={false}
           split="1/1"
           control={form.control}
@@ -133,6 +134,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span="12/12" paddingBottom={6}>
         <RadioController
           id="workability"
+          name="workability"
           largeButtons={false}
           split="1/1"
           control={form.control}

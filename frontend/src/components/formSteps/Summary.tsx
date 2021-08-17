@@ -8,6 +8,15 @@ import {
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
 
+const currentEmploymentStatusLabels = {
+  student: 'Nemi',
+  unemployed: 'Án atvinnu',
+  partTimeJob: 'Í hlutastarfi',
+  incidentalJob: 'Í tilfallandi vinnu',
+  independant: 'Í eigin atvinnurekstri',
+  parentalLeave: 'Í fæðingarorlofi',
+}
+
 export const Summary = ({ options, form }: ActiveStepComponentProps) => {
   const {
     company_name,
@@ -54,14 +63,19 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
     dateQuitJob,
     remainingVacation,
     currentEmploymentStatus,
+    monthly_revenue,
+    capital_income,
+    pension_payment,
+    insurance_institution,
+    onnur_haefni,
   } = form.getValues()
 
   return (
-    <Box>
+    <Box paddingBottom={6}>
       <Text variant="h2" marginBottom={5}>
         Yfirlit og senda umsókn
       </Text>
-      <Accordion dividerOnTop={false}>
+      <Accordion dividerOnBottom={false} dividerOnTop={false}>
         <AccordionItem
           id="nr1"
           label="Almennar upplýsingar"
@@ -99,7 +113,8 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
               <Stack space={1}>
                 <Text variant="h4">Staða</Text>
                 <Text>
-                  Núverandi staða á vinnumarkaði: {currentEmploymentStatus}
+                  Núverandi staða á vinnumarkaði:{' '}
+                  {currentEmploymentStatusLabels[currentEmploymentStatus]}
                 </Text>
               </Stack>
 
@@ -115,6 +130,15 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
                   {remainingVacation === 'noRemainingVacation' ? 'Nei' : 'Já'}
                 </Text>
               </Stack>
+
+              <Stack space={1}>
+                <Text variant="h4">Meðaltekjur þínar síðustu 12 mánuði</Text>
+                <Text>Nafn fyrirtækis: {company_name}</Text>
+                <Text>Mánaðarlegar tekjur: {monthly_revenue}</Text>
+                <Text>Fjármagnstekjur: {capital_income}</Text>
+                <Text>Lífeyrissjóðsgreiðslur: {pension_payment}</Text>
+                <Text>Tryggingastofnun: {insurance_institution}</Text>
+              </Stack>
             </Stack>
           </Box>
         </AccordionItem>
@@ -125,7 +149,22 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
           visibleContent="Framtíðaróskir og vinnufærni"
         >
           <Box background="blue100" padding={3}>
-            bla2
+            <Stack space={3}>
+              <Stack space={1}>
+                <Text variant="h4">Framtíðaróskir</Text>
+                <Text>
+                  Starfshlutfall:
+                  {jobPercentageWish === 'fullt_starf'
+                    ? 'Fullt starf'
+                    : 'Hlutastarf'}
+                </Text>
+                <Text>Svæði sem ég vil líka vinna á: {veldu_svaedi}</Text>
+                <Text>Ég get hafið störf dags.: {start_date}</Text>
+                <Text>Óskastarf 1: {oskastarf_1}</Text>
+                <Text>Óskastarf 2: {oskastarf_2}</Text>
+                <Text>Vinnufærni: {workability}</Text>
+              </Stack>
+            </Stack>
           </Box>
         </AccordionItem>
 
@@ -135,7 +174,20 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
           visibleContent="Námsferill, starfsferill, ökuréttindi og fleira"
         >
           <Box background="blue100" padding={3}>
-            bla3
+            <Stack space={3}>
+              <Stack space={1}>
+                <Text variant="h4">Námsferill</Text>
+                <Text>Nám/Prófgraða: {nam_profgrada}</Text>
+                <Text>Háskólagráða: {haskolagrada}</Text>
+                <Text>Nám hófst: {nam_hofst}</Text>
+                <Text>Nám lauk: {nam_lauk}</Text>
+              </Stack>
+
+              <Stack space={1}>
+                <Text variant="h4">Annað</Text>
+                <Text>Önnur hæfni: {onnur_haefni}</Text>
+              </Stack>
+            </Stack>
           </Box>
         </AccordionItem>
 
@@ -145,7 +197,33 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
           visibleContent="Áætlaðar tekjur á mánuði, bankaupplýsingar og fleira"
         >
           <Box background="blue100" padding={3}>
-            bla4
+            <Stack space={3}>
+              <Stack space={1}>
+                <Text variant="h4">
+                  Bankaupplýsingar, lífeyrissjóður og stéttarfélag
+                </Text>
+                <Text>Banki: {banki}</Text>
+                <Text>Höfuðbók: {hofudbok}</Text>
+                <Text>Reikningsnumer: {reikningsnumer}</Text>
+                <Text>Lífeyrissjóður: {lifeyrissjodur}</Text>
+                <Text>
+                  Viðbótarlífeyrissparnaður: {vidbotarlifeyrissparnadur}
+                </Text>
+                <Text>
+                  Hlutfall af viðbótarlífeyrissp.:{' '}
+                  {vidbotarlifeyrissparnadur_hlutfall}
+                </Text>
+                <Text>Stéttarfélag: {stettarfelag}</Text>
+              </Stack>
+
+              <Stack space={1}>
+                <Text variant="h4">Annað</Text>
+                <Text>Nýta persónuafslátt: {nyta_personuafslatt}</Text>
+                <Text>
+                  Upphaf bótagreiðslna: {upphafsdagsetning_botagreidslna}
+                </Text>
+              </Stack>
+            </Stack>
           </Box>
         </AccordionItem>
       </Accordion>
