@@ -15,7 +15,6 @@ export class ApplicationsResolver {
     private logger: Logger,
   ) {}
 
-  @IsPublic()
   @Query(() => Application, { nullable: true })
   async getApplicationByNationalId(
     @Args('owner', { type: () => String }) owner: string,
@@ -23,13 +22,12 @@ export class ApplicationsResolver {
     this.logger.info('Finding a single application with national id', { owner })
     // get the requested application
     const application =
-      await this.applicationsService.getSingleApplicationByNationalId(owner)
+      await this.applicationsService.getActiveApplicationByNationalId(owner)
 
     // return the found application
     return application
   }
 
-  @IsPublic()
   @Query(() => Application, { nullable: true })
   async getApplicationById(@Args('id', { type: () => Int }) id: number) {
     this.logger.info('Finding a single application by id', { id })
@@ -39,7 +37,6 @@ export class ApplicationsResolver {
     return application
   }
 
-  @IsPublic()
   @Query(() => [Application])
   async getApplications() {
     this.logger.info('Finding multiple applications')
@@ -49,7 +46,6 @@ export class ApplicationsResolver {
     return applications
   }
 
-  @IsPublic()
   @Mutation(() => Application)
   async createApplication(
     @Args('data', { type: () => CreateApplicationDTO }) data: any,
@@ -69,7 +65,6 @@ export class ApplicationsResolver {
     }
   }
 
-  @IsPublic()
   @Mutation(() => Application)
   async updateApplication(
     @Args('data', { type: () => UpdateApplicationDTO }) data: any,
