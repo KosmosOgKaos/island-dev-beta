@@ -4,18 +4,15 @@ import {
   Button,
   DatePicker,
   Divider,
-  FormStepper,
   GridColumn,
-  GridContainer,
   GridRow,
   Inline,
-  Input,
   RadioButton,
-  Select,
   Text,
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
+import { InputController, SelectController } from '@cmp'
 
 const selectOptions = [
   {
@@ -55,10 +52,14 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="veldu_svaedi"
           name="veldu_svaedi"
           label="Ég vil líka vinna á"
+          rules={{
+            required: 'Vinsamlegast veldu svæði',
+          }}
           options={selectOptions}
         />
       </GridColumn>
@@ -78,8 +79,9 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="oskastarf_1"
           name="oskastarf_1"
           label="Óskastarf 1"
           placeholder="Veldu tegund starfs"
@@ -87,8 +89,9 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <Select
-          size="sm"
+        <SelectController
+          control={form.control}
+          id="oskastarf_2"
           name="oskastarf_2"
           label="Óskastarf 2"
           placeholder="Veldu tegund starfs"

@@ -8,6 +8,7 @@ interface Props {
   control?: Control
   defaultValue?: unknown
   disabled?: boolean
+  rules?: {}
   name?: string
   label: string
   options?: Option[]
@@ -22,6 +23,7 @@ export const SelectController = ({
   disabled = false,
   id,
   control,
+  rules,
   name = id,
   label,
   options = [],
@@ -34,6 +36,7 @@ export const SelectController = ({
     <Controller
       {...(defaultValue !== undefined && { defaultValue })}
       control={control}
+      rules={rules}
       name={name}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <Select
