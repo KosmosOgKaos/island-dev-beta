@@ -5,8 +5,6 @@ import {
   Divider,
   GridColumn,
   GridRow,
-  Inline,
-  RadioButton,
   Text,
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
@@ -43,14 +41,14 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        <RadioController 
+        <RadioController
           id="jobPercentageWish"
           largeButtons={false}
           split="1/1"
-          control={form.control} 
+          control={form.control}
           options={[
-            {label:"Fullt starf óskast", value:"fullt_starf"},
-            {label:"Hlutastarf óskast", value:"hlutastarf"},
+            { label: 'Fullt starf óskast', value: 'fullt_starf' },
+            { label: 'Hlutastarf óskast', value: 'hlutastarf' },
           ]}
         />
       </GridColumn>
@@ -133,15 +131,15 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={6}>
-        <RadioController 
+        <RadioController
           id="workability"
           largeButtons={false}
           split="1/1"
-          control={form.control} 
+          control={form.control}
           options={[
-            {label:"Almennt vinnufær", value:"almennt_vinnufaer"},
-            {label:"Skert vinnufærni", value:"skert_vinufaerni"},
-            {label:"Er með örorkumat", value:"er_med_ororkumat"},
+            { label: 'Almennt vinnufær', value: 'Almennt vinnufær' },
+            { label: 'Skert vinnufærni', value: 'Skert vinnufærni' },
+            { label: 'Er með örorkumat', value: 'Er með örorkumat' },
           ]}
         />
       </GridColumn>

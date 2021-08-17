@@ -267,7 +267,7 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         <SelectController
           control={form.control}
           id="stettarfelag"
-          name="Stéttarfélag"
+          name="stettarfelag"
           label="Stéttarfélag"
           placeholder="Veldu stéttarfélag"
           options={stettarfelogOptions}

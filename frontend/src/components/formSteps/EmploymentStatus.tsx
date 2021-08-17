@@ -25,6 +25,7 @@ export const EmploymentStatus = ({
       <GridColumn span="12/12" paddingBottom={3}>
         <RadioController
           id="currentEmploymentStatus"
+          name="currentEmploymentStatus"
           largeButtons={false}
           split="1/1"
           control={form.control}
