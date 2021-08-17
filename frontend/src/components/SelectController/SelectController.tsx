@@ -8,8 +8,10 @@ interface Props {
   control?: Control
   defaultValue?: unknown
   disabled?: boolean
+  rules?: {}
   name?: string
   label: string
+  required?: boolean
   options?: Option[]
   placeholder?: string
   onSelect?: (s: Option, onChange: (t: unknown) => void) => void
@@ -22,6 +24,8 @@ export const SelectController = ({
   disabled = false,
   id,
   control,
+  rules,
+  required,
   name = id,
   label,
   options = [],
@@ -34,6 +38,7 @@ export const SelectController = ({
     <Controller
       {...(defaultValue !== undefined && { defaultValue })}
       control={control}
+      rules={rules}
       name={name}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <Select
@@ -41,6 +46,8 @@ export const SelectController = ({
           hasError={error !== undefined}
           disabled={disabled}
           id={id}
+          required={required}
+          size="sm"
           errorMessage={error?.message}
           name={name}
           options={options}
