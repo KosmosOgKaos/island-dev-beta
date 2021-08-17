@@ -18,6 +18,9 @@ import stettarfelog from '../../static/stettarfelog.json'
 import { InputController, SelectController, DatePickerController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
 import { RadioController } from '../RadioController'
+import { unemploymentCalculator } from 'lib/calculate'
+import { format, getMonth, getYear } from 'date-fns'
+import { is } from 'date-fns/locale'
 
 const lifeyrir2Options = lifeyrir2.map((x) => ({
   label: x,
@@ -106,16 +109,13 @@ const tungumalOptions = [
   },
 ]
 
-const gridSpacing = [
-  '12/12',
-  '6/12',
-  '12/12',
-  '6/12',
-] as ResponsiveProp<GridColumns>
+const gridSpacing = ['12/12', '6/12', '12/12', '6/12'] as ResponsiveProp<
+  GridColumns
+>
 
 const Divide = () => (
   <GridRow>
-    <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
+    <GridColumn span='12/12' paddingTop={4} paddingBottom={4}>
       <div style={{ height: 1 }}>
         <Divider />
       </div>
@@ -126,7 +126,7 @@ const Divide = () => (
 const AddLine = () => (
   <GridRow>
     <GridColumn span={gridSpacing} paddingBottom={3}>
-      <Button variant="text" as="span">
+      <Button variant='text' as='span'>
         Bæta við línu
       </Button>
     </GridColumn>
@@ -135,11 +135,11 @@ const AddLine = () => (
 
 export const Rights = ({ options, form }: ActiveStepComponentProps) => (
   <Box>
-    <Text variant="h2" marginBottom={2}>
+    <Text variant='h2' marginBottom={2}>
       Þín réttindi
     </Text>
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Bankaupplýsingar, lífeyrissjóður og stéttarfélag
     </Text>
     <GridRow>
@@ -148,11 +148,11 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <InputController
-          id="banki"
-          name="banki"
+          id='banki'
+          name='banki'
           control={form.control}
           required
-          label="Banki"
+          label='Banki'
           rules={{
             pattern: {
               value: /^\d{3,4}$/,
@@ -166,11 +166,11 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <InputController
-          id="hofudbok"
-          name="hofudbok"
+          id='hofudbok'
+          name='hofudbok'
           control={form.control}
           required
-          label="Höfuðb."
+          label='Höfuðb.'
           rules={{
             pattern: {
               value: /^\d{2}$/,
@@ -184,11 +184,11 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <InputController
-          id="reikningsnumer"
-          name="reikningsnumer"
+          id='reikningsnumer'
+          name='reikningsnumer'
           control={form.control}
           required
-          label="Reikningsnúmer"
+          label='Reikningsnúmer'
           rules={{
             pattern: {
               value: /^\d{1,6}$/,
@@ -202,10 +202,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
-          id="lifeyrissjodur"
-          name="lifeyrissjodur"
-          label="Lífeyrissjóður"
-          placeholder="Veldu lífeyrissjóð"
+          id='lifeyrissjodur'
+          name='lifeyrissjodur'
+          label='Lífeyrissjóður'
+          placeholder='Veldu lífeyrissjóð'
           options={lifeyrir2Options}
         />
       </GridColumn>
@@ -217,10 +217,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       >
         <SelectController
           control={form.control}
-          id="vidbotarlifeyrissparnadur"
-          name="vidbotarlifeyrissparnadur"
-          label="Viðbótarlífeyrissparnaður"
-          placeholder="Veldu viðbótarlífeyrissparnað"
+          id='vidbotarlifeyrissparnadur'
+          name='vidbotarlifeyrissparnadur'
+          label='Viðbótarlífeyrissparnaður'
+          placeholder='Veldu viðbótarlífeyrissparnað'
           options={lifeyrirOptions}
         />
       </GridColumn>
@@ -229,15 +229,15 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <Box
-          display="flex"
-          height="full"
-          alignItems="center"
+          display='flex'
+          height='full'
+          alignItems='center'
           paddingTop={[0, 0, 0, 0, 2]}
         >
           <RadioController
             control={form.control}
-            id="vidbotarlifeyrissparnadur_hlutfall"
-            name="vidbotarlifeyrissparnadur_hlutfall"
+            id='vidbotarlifeyrissparnadur_hlutfall'
+            name='vidbotarlifeyrissparnadur_hlutfall'
             split={'1/4'}
             largeButtons={false}
             options={[
@@ -266,22 +266,22 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
-          id="stettarfelag"
-          name="stettarfelag"
-          label="Stéttarfélag"
-          placeholder="Veldu stéttarfélag"
+          id='stettarfelag'
+          name='Stéttarfélag'
+          label='Stéttarfélag'
+          placeholder='Veldu stéttarfélag'
           options={stettarfelogOptions}
         />
       </GridColumn>
     </GridRow>
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Persónuafsláttur
     </Text>
     <RadioController
       control={form.control}
-      id="nyta_personuafslatt"
-      name="nyta_personuafslatt"
+      id='nyta_personuafslatt'
+      name='nyta_personuafslatt'
       split={'1/2'}
       largeButtons={false}
       rules={{
@@ -299,46 +299,78 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       ]}
     />
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Upphaf bótagreiðslna
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <DatePickerController
           control={form.control}
-          size="sm"
-          locale="is"
-          id="upphafsdagsetning_botagreidslna"
-          name="upphafsdagsetning_botagreidslna"
-          label="Óska eftir að greiðslur hefjist"
-          placeholder="Veldu dagsetningu"
+          size='sm'
+          locale='is'
+          id='upphafsdagsetning_botagreidslna'
+          name='upphafsdagsetning_botagreidslna'
+          label='Óska eftir að greiðslur hefjist'
+          placeholder='Veldu dagsetningu'
         />
       </GridColumn>
     </GridRow>
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Áætlaðar tekjur á mánuði
     </Text>
     <GridRow>
-      <GridColumn span="12/12" paddingBottom={6}>
-        <T.Table>
-          <T.Row>
-            <T.HeadData>Hey1</T.HeadData>
-            <T.HeadData>Hey2</T.HeadData>
-            <T.HeadData>Hey3</T.HeadData>
-            <T.HeadData>Hey4</T.HeadData>
-          </T.Row>
-          <T.Body>
-            <T.Row>
-              <T.Data>OK1</T.Data>
-              <T.Data>OK2</T.Data>
-              <T.Data>OK3</T.Data>
-              <T.Data>OK4</T.Data>
-            </T.Row>
-          </T.Body>
-          <T.Foot></T.Foot>
-        </T.Table>
+      <GridColumn span='12/12' paddingBottom={6}>
+        <TableRows
+          startDate={form.getValues().upphafsdagsetning_botagreidslna}
+        />
       </GridColumn>
     </GridRow>
   </Box>
 )
+
+const TableRows = ({ startDate }) => {
+  const { getTable } = unemploymentCalculator()
+
+  if (!startDate) {
+    return null
+  }
+
+  return (
+    <>
+      <T.Table>
+        <T.Row>
+          <T.HeadData>Ár</T.HeadData>
+          <T.HeadData>Mánuður</T.HeadData>
+          <T.HeadData>Bóttarréttur</T.HeadData>
+          <T.HeadData>Heildarlaun</T.HeadData>
+          <T.HeadData>Lífeyrisgreiðsla</T.HeadData>
+          <T.HeadData>Staðgreiðsla</T.HeadData>
+          <T.HeadData>Útborguð laun</T.HeadData>
+        </T.Row>
+        <T.Body>
+          {getTable(new Date(startDate)).map((row, i) => {
+            return (
+              <T.Row key={i}>
+                <T.Data>{getYear(row.monthStart)}</T.Data>
+                <T.Data>
+                  {format(row.monthStart, 'MMMM', { locale: is })}
+                </T.Data>
+                <T.Data>{`${row.botarettur * 100}%`}</T.Data>
+                <T.Data>
+                  {row.heildarlaun.toLocaleString('De-de', {
+                    maximumFractionDigits: 0,
+                  })}
+                </T.Data>
+                <T.Data>-</T.Data>
+                <T.Data>-</T.Data>
+                <T.Data>-</T.Data>
+              </T.Row>
+            )
+          })}
+        </T.Body>
+        <T.Foot></T.Foot>
+      </T.Table>
+    </>
+  )
+}
