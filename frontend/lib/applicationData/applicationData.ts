@@ -21,8 +21,6 @@ const QUERY_APPLICATION_GET = gql`
   }
 `
 
-
-
 export const useApplicationUpdater = (applicationId): UseApplicationUpdater => {
   const client = useApolloClient()
 
