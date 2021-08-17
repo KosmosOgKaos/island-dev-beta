@@ -416,7 +416,7 @@ const Home: NextPage = () => {
                               Umsókn um atvinnuleysisbætur
                             </Text>
                           </Box>
-                          <Link href="/umsokn" skipTab>
+                          <Link href="/login" skipTab>
                             <Button icon="open" iconType="outline" nowrap>
                               Sækja um
                             </Button>

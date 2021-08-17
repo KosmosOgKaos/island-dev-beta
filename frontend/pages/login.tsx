@@ -21,7 +21,7 @@ const MUTATION_LOGIN = gql`
 const Login: NextPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [ mutation, { data } ] = useMutation(MUTATION_LOGIN)
-  const { login } = createLoginStore()
+  const { login, isLoggedIn } = createLoginStore()
   
   const onSubmit = (data: { username: string }) => {
     mutation({
@@ -41,16 +41,17 @@ const Login: NextPage = () => {
     return kennitala.isPerson(username)
   }
 
-
+  useEffect(() => {
+    if(isLoggedIn()) {
+      router.push('/umsokn')
+    }
+  })
   if (data?.login?.token) {
     login({
       username: data.login.username,
       token: data.login.token,
     })
 
-    useEffect(() => {
-      router.push('/')
-    })
 
     return null
   }
