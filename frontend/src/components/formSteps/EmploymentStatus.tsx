@@ -15,7 +15,7 @@ import {
   Text,
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { DatePickerController, InputController } from '@cmp'
+import { DatePickerController, InputController, RadioController } from '@cmp'
 
 export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) => (
   <Box>
@@ -27,14 +27,20 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
     </Text>
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        {/* <Inline space={3}> */}
-          <RadioButton id="student" label="Ég er nemi"  />
-          <RadioButton id="unemployed" label="Ég er án atvinnu" />
-          <RadioButton id="partTimeJob" label="Ég er í hlutastarfi" />
-          <RadioButton id="incidentalJob" label="Ég er í tilfallandi vinnu" />
-          <RadioButton id="independant" label="Ég er í eigin atvinnurekstri" />
-          <RadioButton id="parentalLeave" label="Ég er í fæðingarorlofi" />
-        {/* </Inline> */}
+          <RadioController 
+            id="currentEmploymentStatus"
+            largeButtons={false}
+            split="1/1"
+            control={form.control} 
+            options={[
+              {label:"Ég er nemi", value:"student"},
+              {label:"Ég er án atvinnu", value:"unemployed"},
+              {label:"Ég er í hlutastarfi", value:"partTimeJob"},
+              {label:"Ég er í tilfallandi vinnu", value:"incidentalJob"},
+              {label:"Ég er í eigin atvinnurekstri", value:"independant"},
+              {label:"Ég er í fæðingarorlofi", value:"parentalLeave"},
+            ]}
+          />
       </GridColumn>
     </GridRow>
     <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
@@ -95,10 +101,16 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
 
     <GridRow>
       <GridColumn span="12/12" paddingBottom={3}>
-        <Inline space={3}>
-          <RadioButton id="remainingVacation" label="Já, ég á ótekið orlof við starfslok" />
-          <RadioButton id="noRemainingVacation" label="Nei, ég á ekkert ótekið orlof við starfslok" />
-        </Inline>
+        <RadioController 
+            id="remainingVacation"
+            largeButtons={false}
+            split="1/2"
+            control={form.control} 
+            options={[
+              {label:"Já, ég á ótekið orlof við starfslok", value:"hasRemainingVacation"},
+              {label:"Nei, ég á ekkert ótekið orlof við starfsloku", value:"noRemainingVacation"},
+            ]}
+          />
       </GridColumn>
     </GridRow>
     
@@ -156,11 +168,6 @@ export const EmploymentStatus = ({ options, form }: ActiveStepComponentProps) =>
           control={form.control}
           required
         />
-      </GridColumn>
-    </GridRow>
-    <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
-        <DatePickerController size="sm" label="Hætti í starfi" id="dateQuitJob" placeholder="Veldu dagsetningu" control={form.control}  />
       </GridColumn>
     </GridRow>
     <GridRow>
