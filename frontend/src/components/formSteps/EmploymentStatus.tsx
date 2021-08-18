@@ -193,10 +193,11 @@ export const EmploymentStatus = ({
           label="Mánaðarlegar tekjur"
           placeholder="Sláðu inn mánaðarlegar tekjur"
           control={form.control}
+          currency
           required
-          // rules={{
-          //   required: 'Vinsamlegast sláðu inn mánaðarlegar tekjur',
-          // }}
+          rules={{
+            required: 'Vinsamlegast sláðu inn mánaðarlegar tekjur',
+          }}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
@@ -206,6 +207,7 @@ export const EmploymentStatus = ({
           label="Fjármagnstekjur"
           placeholder="Sláðu inn fjármagnstekjur"
           control={form.control}
+          currency
           required
           // rules={{
           //   required: 'Vinsamlegast sláðu inn fjármagnstekjur',
@@ -221,6 +223,7 @@ export const EmploymentStatus = ({
           label="Lífeyrissjóðsgreiðslur"
           placeholder="Sláðu inn lífeyrissjóðsgreiðslur"
           control={form.control}
+          currency
           required
           // rules={{
           //   required: 'Vinsamlegast sláðu inn lífeyrissjóðsgreiðslur',
@@ -234,6 +237,7 @@ export const EmploymentStatus = ({
           label="Tryggingastofnun"
           placeholder="0 kr"
           control={form.control}
+          currency
           required
           // rules={{
           //   required: 'Vinsamlegast sláðu inn tekjur frá tryggingastofnun',
