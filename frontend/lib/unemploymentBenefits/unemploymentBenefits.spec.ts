@@ -1,4 +1,3 @@
-import StateManager from 'react-select'
 import { unemploymentCalculator } from './unemploymentBenefits'
 
 describe('unemployment calculator', () => {
