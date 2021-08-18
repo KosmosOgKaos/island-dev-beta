@@ -1,8 +1,8 @@
-import { ApolloError } from "@apollo/client";
+import { ApolloError } from '@apollo/client'
 
 export interface UseApplicationDataResult {
-  loading?: boolean,
-  error?: ApolloError,
+  loading?: boolean
+  error?: ApolloError
   data?: {
     id: number
     formData: {}

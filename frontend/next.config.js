@@ -1,4 +1,4 @@
 /** @type {import('next').NextConfig} */
-const withTreat = require("next-treat")();
+const withTreat = require('next-treat')()
 
-module.exports = withTreat({ reactStrictMode: true });
+module.exports = withTreat({ reactStrictMode: true })

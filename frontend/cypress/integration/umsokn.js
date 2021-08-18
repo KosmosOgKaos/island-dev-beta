@@ -1,4 +1,4 @@
-describe("Visiting the application page", () => {
+describe('Visiting the application page', () => {
   it('unauthenticated', () => {
     cy.visit('/umsokn')
     cy.url().should('match', /login/)
@@ -10,11 +10,14 @@ describe("Visiting the application page", () => {
   })
 
   it('authenticated', () => {
-    cy.window().then(win => {
-      win.sessionStorage.setItem('user', JSON.stringify({
-        token: 'xxxxxx',
-        user: '0910815209',
-      }))
+    cy.window().then((win) => {
+      win.sessionStorage.setItem(
+        'user',
+        JSON.stringify({
+          token: 'xxxxxx',
+          user: '0910815209',
+        }),
+      )
 
       cy.visit('/umsokn')
       cy.url().should('match', /umsokn/)

@@ -1,6 +1,6 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { createLoginStore } from './loginStore';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
+import { createLoginStore } from './loginStore'
 
 const httpLink = createHttpLink({
   // TODO: put in env/and/or next.js config or something
@@ -13,8 +13,8 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    }
+      authorization: token ? `Bearer ${token}` : '',
+    },
   }
 })
 
@@ -24,4 +24,3 @@ export const client = new ApolloClient({
   // Maybe set to true? but we'd need a way to get the token from the client
   ssrMode: false,
 })
-
