@@ -8,7 +8,19 @@ import {
   Text,
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { DatePickerController, InputController, RadioController } from '@cmp'
+import {
+  DatePickerController,
+  InputController,
+  RadioController,
+  SelectController,
+} from '@cmp'
+
+const percentageOptions = Array.from({ length: 101 })
+  .map((x, i) => ({
+    label: `${i.toString()}%`,
+    value: `${i.toString()}%`,
+  }))
+  .reverse()
 
 export const EmploymentStatus = ({
   options,
@@ -64,16 +76,13 @@ export const EmploymentStatus = ({
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <InputController
+        <SelectController
+          control={form.control}
           id="employment_percentage"
           name="employment_percentage"
           label="Starfshlutfall"
-          placeholder="Sláðu inn starfshlutfall í %"
-          control={form.control}
-          required
-          // rules={{
-          //   required: 'Vinsamlegast sláðu inn starfshlutfall',
-          // }}
+          placeholder="Veldu 0-100%"
+          options={percentageOptions}
         />
       </GridColumn>
     </GridRow>

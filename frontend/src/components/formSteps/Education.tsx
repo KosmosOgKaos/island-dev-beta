@@ -36,10 +36,12 @@ const jobsOptions = jobs.map((x) => ({
   value: x,
 }))
 
-const yearsOptions = Array.from({ length: 100 }).map((x, i) => ({
-  label: (1921 + i).toString(),
-  value: (1921 + i).toString(),
-}))
+const yearsOptions = Array.from({ length: 100 })
+  .map((x, i) => ({
+    label: (1921 + i).toString(),
+    value: (1921 + i).toString(),
+  }))
+  .reverse()
 
 const thekkingOptions = [
   {

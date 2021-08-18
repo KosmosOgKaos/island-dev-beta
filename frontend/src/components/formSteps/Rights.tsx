@@ -48,15 +48,19 @@ const jobsOptions = jobs.map((x) => ({
   value: x,
 }))
 
-const yearsOptions = Array.from({ length: 100 }).map((x, i) => ({
-  label: (1921 + i).toString(),
-  value: (1921 + i).toString(),
-}))
+const yearsOptions = Array.from({ length: 100 })
+  .map((x, i) => ({
+    label: (1921 + i).toString(),
+    value: (1921 + i).toString(),
+  }))
+  .reverse()
 
-const percentageOptions = Array.from({ length: 100 }).map((x, i) => ({
-  label: `${i.toString()}%`,
-  value: `${i.toString()}%`,
-}))
+const percentageOptions = Array.from({ length: 11 })
+  .map((_, i) => ({
+    label: `${(i * 10).toString()}%`,
+    value: `${(i * 10).toString()}%`,
+  }))
+  .reverse()
 
 const thekkingOptions = [
   {
