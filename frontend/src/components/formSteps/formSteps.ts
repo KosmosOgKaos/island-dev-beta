@@ -75,7 +75,10 @@ export const formSteps: Step[] = [
 ]
 
 export const getFormStep = (key: ID) => {
-  window.scrollTo(0, 0)
+  if (typeof window !== 'undefined') {
+    window.scrollTo(0, 0)
+  }
+
   return formSteps.find(({ id }) => id === key)
 }
 
