@@ -25,12 +25,6 @@ const Umsokn: NextPage = () => {
 
   const stepInfo = activeStep ? getFormStep(activeStep) : null
 
-  useEffect(() => {
-    if (!activeStep) {
-      router.push('/umsokn/gagnaoflun')
-    }
-  })
-
   return (
     <FormLayout activeState={stepInfo?.id}>
       {loading && <Text variant="h2">LOADING</Text>}
