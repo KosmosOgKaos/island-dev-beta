@@ -3,9 +3,7 @@ import { UseFormReturn, useWatch } from 'react-hook-form'
 import { unemploymentCalculator } from 'lib/unemploymentBenefits'
 import { format, getYear } from 'date-fns'
 import { is } from 'date-fns/locale'
-import {
-  Table as T,
-} from '@island.is/island-ui/core'
+import { Table as T } from '@island.is/island-ui/core'
 
 export interface EstimatedIncomeTableProps {
   form: UseFormReturn

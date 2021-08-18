@@ -322,7 +322,7 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       Áætlaðar tekjur á mánuði
     </Text>
     <GridRow>
-      <GridColumn span='12/12' paddingBottom={6}>
+      <GridColumn span="12/12" paddingBottom={6}>
         <EstimatedIncomeTable form={form} />
       </GridColumn>
     </GridRow>
