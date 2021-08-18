@@ -59,10 +59,10 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
         <SelectController
           id="veldu_svaedi"
           name="veldu_svaedi"
-          label="Ég vil líka vinna á"
-          rules={{
-            required: 'Vinsamlegast veldu svæði',
-          }}
+          label="Önnur svæði"
+          // rules={{
+          //   required: 'Vinsamlegast veldu svæði',
+          // }}
           options={selectOptions}
           control={form.control}
         />
@@ -76,10 +76,10 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           size="sm"
           label="Ég get byrjað"
           placeholder="Veldu dagsetningu"
-          required
-          rules={{
-            required: 'Vinsamlegast veldu dagsetningu',
-          }}
+          // required
+          // rules={{
+          //   required: 'Vinsamlegast veldu dagsetningu',
+          // }}
         />
       </GridColumn>
       <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
@@ -98,9 +98,9 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           label="Óskastarf 1"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
-          rules={{
-            required: 'Vinsamlegast veldu óskastarf 1',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu óskastarf 1',
+          // }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -111,9 +111,9 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           label="Óskastarf 2"
           placeholder="Veldu tegund starfs"
           options={jobsOptions}
-          rules={{
-            required: 'Vinsamlegast veldu óskastarf 2',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu óskastarf 2',
+          // }}
         />
       </GridColumn>
     </GridRow>

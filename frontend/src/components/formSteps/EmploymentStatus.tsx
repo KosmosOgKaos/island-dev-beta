@@ -8,7 +8,19 @@ import {
   Text,
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { DatePickerController, InputController, RadioController } from '@cmp'
+import {
+  DatePickerController,
+  InputController,
+  RadioController,
+  SelectController,
+} from '@cmp'
+
+const percentageOptions = Array.from({ length: 101 })
+  .map((x, i) => ({
+    label: `${i.toString()}%`,
+    value: `${i.toString()}%`,
+  }))
+  .reverse()
 
 export const EmploymentStatus = ({
   options,
@@ -37,9 +49,9 @@ export const EmploymentStatus = ({
             { label: 'Ég er í eigin atvinnurekstri', value: 'independant' },
             { label: 'Ég er í fæðingarorlofi', value: 'faedingarorlof' },
           ]}
-          rules={{
-            required: 'Vinsamlegast veldu hnappinn sem á við um þig',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu hnappinn sem á við um þig',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -58,22 +70,19 @@ export const EmploymentStatus = ({
           placeholder="Sláðu inn nafn fyrirtækis"
           control={form.control}
           required
-          rules={{
-            required: 'Vinsamlegast sláðu inn nafn fyrirtækis',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast sláðu inn nafn fyrirtækis',
+          // }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
-        <InputController
+        <SelectController
+          control={form.control}
           id="employment_percentage"
           name="employment_percentage"
           label="Starfshlutfall"
-          placeholder="Sláðu inn starfshlutfall"
-          control={form.control}
-          required
-          rules={{
-            required: 'Vinsamlegast sláðu inn starfshlutfall',
-          }}
+          placeholder="Veldu 0-100%"
+          options={percentageOptions}
         />
       </GridColumn>
     </GridRow>
@@ -86,9 +95,9 @@ export const EmploymentStatus = ({
           placeholder="Sláðu inn nafn tengiliðs"
           control={form.control}
           required
-          rules={{
-            required: 'Vinsamlegast sláðu inn nafn tengiliðs',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast sláðu inn nafn tengiliðs',
+          // }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -100,12 +109,12 @@ export const EmploymentStatus = ({
           control={form.control}
           required
           type="email"
-          rules={{
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: 'Netfang þarf að vera gilt',
-            },
-          }}
+          // rules={{
+          //   pattern: {
+          //     value: /\S+@\S+\.\S+/,
+          //     message: 'Netfang þarf að vera gilt',
+          //   },
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -114,13 +123,14 @@ export const EmploymentStatus = ({
         <DatePickerController
           size="sm"
           label="Hætti í starfi"
+          locale="is"
           id="dateQuitJob"
           placeholder="Veldu dagsetningu"
           control={form.control}
           required
-          rules={{
-            required: 'Vinsamlegast veldu dagsetningu',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu dagsetningu',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -145,9 +155,9 @@ export const EmploymentStatus = ({
               value: 'noRemainingVacation',
             },
           ]}
-          rules={{
-            required: 'Vinsamlegast veldu annan hnappinn',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu annan hnappinn',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -164,9 +174,7 @@ export const EmploymentStatus = ({
     <Text variant="h3" marginBottom={3}>
       Meðaltekjur þínar síðustu 12 mánuði
     </Text>
-    <Text variant="small" marginBottom={3}>
-      Samkvæmt opinberum skrám
-    </Text>
+    <Text marginBottom={3}>Samkvæmt opinberum skrám</Text>
 
     <GridRow>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -177,9 +185,9 @@ export const EmploymentStatus = ({
           placeholder="Sláðu inn mánaðarlegar tekjur"
           control={form.control}
           required
-          rules={{
-            required: 'Vinsamlegast sláðu inn mánaðarlegar tekjur',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast sláðu inn mánaðarlegar tekjur',
+          // }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -190,9 +198,9 @@ export const EmploymentStatus = ({
           placeholder="Sláðu inn fjármagnstekjur"
           control={form.control}
           required
-          rules={{
-            required: 'Vinsamlegast sláðu inn fjármagnstekjur',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast sláðu inn fjármagnstekjur',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -205,9 +213,9 @@ export const EmploymentStatus = ({
           placeholder="Sláðu inn lífeyrissjóðsgreiðslur"
           control={form.control}
           required
-          rules={{
-            required: 'Vinsamlegast sláðu inn lífeyrissjóðsgreiðslur',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast sláðu inn lífeyrissjóðsgreiðslur',
+          // }}
         />
       </GridColumn>
       <GridColumn span="6/12" paddingBottom={3}>
@@ -218,9 +226,9 @@ export const EmploymentStatus = ({
           placeholder="0 kr"
           control={form.control}
           required
-          rules={{
-            required: 'Vinsamlegast sláðu inn tekjur frá tryggingastofnun',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast sláðu inn tekjur frá tryggingastofnun',
+          // }}
         />
       </GridColumn>
     </GridRow>
