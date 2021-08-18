@@ -4,12 +4,21 @@ import {
   Button,
   Divider,
   GridColumn,
+  GridColumns,
   GridRow,
+  ResponsiveProp,
   Text,
 } from '@island.is/island-ui/core'
 import jobs from '../../static/jobs.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
 import { DatePickerController, RadioController, SelectController } from '@cmp'
+
+const gridSpacing = [
+  '12/12',
+  '6/12',
+  '12/12',
+  '6/12',
+] as ResponsiveProp<GridColumns>
 
 const selectOptions = [
   {
@@ -55,7 +64,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           id="veldu_svaedi"
           name="veldu_svaedi"
@@ -67,7 +76,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           control={form.control}
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <DatePickerController
           control={form.control}
           id="start_date"
@@ -90,7 +99,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
       Óskir um starf
     </Text>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
           id="oskastarf_1"
@@ -103,7 +112,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
           // }}
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
           id="oskastarf_2"
@@ -118,7 +127,7 @@ export const EmploymentInfo = ({ options, form }: ActiveStepComponentProps) => (
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <Button variant="text" as="span">
           Bæta við línu
         </Button>

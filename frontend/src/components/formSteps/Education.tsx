@@ -19,7 +19,12 @@ import jobs from '../../static/jobs.json'
 import haskolagrada from '../../static/haskolagrada.json'
 import education from '../../static/education.json'
 import { ActiveStepComponentProps } from '../ActiveStep'
-import { CheckboxController, InputController, SelectController } from '@cmp'
+import {
+  CheckboxController,
+  DatePickerController,
+  InputController,
+  SelectController,
+} from '@cmp'
 
 const haskolagradaOptions = haskolagrada.map((x) => ({
   label: x,
@@ -237,13 +242,35 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
-        <SelectController
+        <InputController
+          id="atvinnurekandi"
+          name="atvinnurekandi"
+          label="Atvinnurekandi"
           control={form.control}
-          id="nam_profgrada"
-          name="nam_profgrada"
-          label="Nám/Prófgraða"
-          placeholder="Veldu nám/prófgráðu"
-          options={educationOptions}
+        />
+      </GridColumn>
+    </GridRow>
+    <GridRow>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
+        <DatePickerController
+          control={form.control}
+          id="hof_starf_dags"
+          locale="is"
+          name="hof_starf_dags"
+          size="sm"
+          label="Hóf starf"
+          placeholder="Veldu dagsetningu"
+        />
+      </GridColumn>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
+        <DatePickerController
+          control={form.control}
+          id="haetti_i_starfi_dags"
+          locale="is"
+          name="haetti_i_starfi_dags"
+          size="sm"
+          label="Hætti í starfi"
+          placeholder="Veldu dagsetningu"
         />
       </GridColumn>
     </GridRow>
@@ -251,33 +278,11 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
-          id="nam_hofst"
-          name="nam_hofst"
-          label="Nám hófst"
-          placeholder="Ár"
-          options={yearsOptions}
-        />
-      </GridColumn>
-      <GridColumn span={gridSpacing} paddingBottom={3}>
-        <SelectController
-          control={form.control}
-          id="nam_lauk"
-          name="nam_lauk"
-          label="Námi lauk"
-          placeholder="Ár"
-          options={yearsOptions}
-        />
-      </GridColumn>
-    </GridRow>
-    <GridRow>
-      <GridColumn span={gridSpacing} paddingBottom={3}>
-        <SelectController
-          control={form.control}
-          id="nam_profgrada"
-          name="nam_profgrada"
-          label="Nám/Prófgraða"
-          placeholder="Veldu nám/prófgráðu"
-          options={educationOptions}
+          id="starfsheiti"
+          name="starfsheiti"
+          label="Starfsheiti"
+          placeholder="Veldu starf"
+          options={jobsOptions}
         />
       </GridColumn>
     </GridRow>
