@@ -9,7 +9,6 @@ describe('unemployment calculator', () => {
         tekjurAManudi,
         hlutfallPersAfsl,
       }).getTable(new Date())
-
     })
 
     it('table should have 6 rows', () => {
