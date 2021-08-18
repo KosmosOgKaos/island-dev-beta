@@ -37,6 +37,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           type="text"
+          format="######-####"
           control={form.control}
           name="ssn"
           id="ssn"
@@ -106,6 +107,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           name="phoneNumber"
           id="phoneNumber"
           label="Sími"
+          format="### ####"
           type="tel"
           rules={{
             pattern: {
@@ -135,6 +137,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           control={form.control}
+          format="######-####"
           name="children[0].ssn"
           id="barn_kennitala_1"
           label="Kennitala barns"
