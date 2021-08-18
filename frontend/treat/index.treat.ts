@@ -21,5 +21,5 @@ export const sticky = style({
 export const loginForm = style({
   width: '66%',
   maxWidth: '400px',
-  minWidth: '210px'
+  minWidth: '210px',
 })

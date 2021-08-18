@@ -27,7 +27,10 @@ export const LoginLayout = ({ children }) => {
       </Head>
       <GridContainer>
         <GridRow align="center">
-          <GridColumn span={['12/12', '11/12', '10/12', '9/12', '6/12']} order={[1, 1, 1]}>
+          <GridColumn
+            span={['12/12', '11/12', '10/12', '9/12', '6/12']}
+            order={[1, 1, 1]}
+          >
             <Box
               marginTop={12}
               border="standard"
@@ -47,7 +50,7 @@ export const LoginLayout = ({ children }) => {
                 <GridRow>
                   <GridColumn
                     span={['10/12', '10/12', '10/12', '10/12', '4/6']}
-                    offset={['1/12', '1/12', '1/12', '1/12', "1/6"]}
+                    offset={['1/12', '1/12', '1/12', '1/12', '1/6']}
                   >
                     <Stack space={2}>
                       <Button
