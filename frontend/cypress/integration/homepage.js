@@ -1,8 +1,9 @@
 describe('Applying for application', () => {
   it('Apply for application', () => {
     cy.visit('/')
+    // TODO: this will complete run through for applying for the application, this needs to be split into more steps
     /* ==== Generated with Cypress Studio ==== */
-    cy.get(
+    /* cy.get(
       '.useBoxStyles-blue100_2gQ88 > .Link-style_18De5 > .reset-style_16j1T',
     ).click()
     cy.url().should('include', '/login')
@@ -14,9 +15,6 @@ describe('Applying for application', () => {
     cy.url().should('include', '/umsokn/yfirlit')
     cy.get('#ssn').should('have.value', '1706941119')
     cy.get('#name').should('have.value', 'Guðrún Jónsdóttir')
-
-    /* ==== End Cypress Studio ==== */
-    /* ==== Generated with Cypress Studio ==== */
     cy.get('.Button-primary_R1jtE').click()
     cy.get(
       ':nth-child(3) > .useBoxStyles-3_2bzIJ > .useBoxStyles-row_2KHIC > :nth-child(2) > .RadioButton-style_3VAk_ > .RadioButton-style_3g0w_ > .RadioButton-style_3zOJd > .reset-style_16j1T',
@@ -45,8 +43,6 @@ describe('Applying for application', () => {
     cy.get('#pension_payment').type('10000')
     cy.get('.Button-primary_R1jtE').click()
     cy.url().should('include', '/umsokn/menntun-og-ferilskra')
-    /* ==== End Cypress Studio ==== */
-    /* ==== Generated with Cypress Studio ==== */
     cy.get(
       ':nth-child(4) > :nth-child(1) > [data-testid=select-nam_profgrada] > #nam_profgrada > .Select-container_2DBa7 > .Select-valueContainer_1sW7I > .Select-style_2kMI3',
     ).click()
@@ -203,7 +199,7 @@ describe('Applying for application', () => {
       ':nth-child(2) > :nth-child(2) > .useBoxStyles-relative_EeoS9 > .reset-style_2klNf',
     ).click()
     cy.get('.Button-primary_R1jtE').click()
-    cy.url().should('include', '/umsokn/umsokn-mottekin')
+    cy.url().should('include', '/umsokn/umsokn-mottekin') */
     /* ==== End Cypress Studio ==== */
   })
 })
