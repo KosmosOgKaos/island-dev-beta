@@ -2,17 +2,24 @@ import type { NextPage } from 'next'
 import { gql, useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
-import { Button as Btn, Stack, Header, Text, GridRow, Box, Button } from "@island.is/island-ui/core"
+import {
+  Button as Btn,
+  Stack,
+  Header,
+  Text,
+  GridRow,
+  Box,
+  Button,
+} from '@island.is/island-ui/core'
 import { LoginLayout } from '@cmp'
 import kennitala from 'kennitala'
 import React, { useEffect } from 'react'
 import router from 'next/router'
 import { InputController } from '@cmp'
 
-
 const MUTATION_LOGIN = gql`
   mutation ($input: LoginDto!) {
-    login (input: $input) {
+    login(input: $input) {
       token
       username
     }
@@ -20,22 +27,26 @@ const MUTATION_LOGIN = gql`
 `
 
 const Login: NextPage = () => {
-  const { control, handleSubmit, formState: { errors } } = useForm()
-  const [ mutation, { data } ] = useMutation(MUTATION_LOGIN)
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+  const [mutation, { data }] = useMutation(MUTATION_LOGIN)
   const { login, isLoggedIn } = createLoginStore()
-  
+
   const onSubmit = (data: { username: string }) => {
     mutation({
       variables: {
         input: {
-          username: data.username
-        }
-      }
+          username: data.username,
+        },
+      },
     })
   }
 
   useEffect(() => {
-    if(isLoggedIn()) {
+    if (isLoggedIn()) {
       router.push('/umsokn')
     }
   })
@@ -51,7 +62,9 @@ const Login: NextPage = () => {
           <Header />
         </GridRow>
         <GridRow align="center" marginBottom={0}>
-          <Text variant="h1" as="h1" marginBottom={0}>Skráðu þig inn</Text>
+          <Text variant="h1" as="h1" marginBottom={0}>
+            Skráðu þig inn
+          </Text>
         </GridRow>
         <Stack space={4}>
           <GridRow align="center">
@@ -59,23 +72,22 @@ const Login: NextPage = () => {
           </GridRow>
           <GridRow align="center">
             <form onSubmit={handleSubmit(onSubmit)}>
-
               <Stack space={2}>
-                <InputController 
-                  id="login-username-input" 
-                  name="username" 
-                  label="Kennitala" 
-                  autoFocus 
+                <InputController
+                  id="login-username-input"
+                  name="username"
+                  label="Kennitala"
+                  autoFocus
                   control={control}
                   backgroundColor="blue"
                   defaultValue=""
                   rules={{
-                    validate: ((value) => {
+                    validate: (value) => {
                       return kennitala.isPerson(value)
-                    })
-                  }}>
-                </InputController>
-                
+                    },
+                  }}
+                ></InputController>
+
                 <GridRow align="center" marginTop={2} marginBottom={8}>
                   <Btn type="submit">Auðkenna</Btn>
                 </GridRow>
