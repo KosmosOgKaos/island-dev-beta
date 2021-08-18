@@ -1,5 +1,5 @@
-import { FetchResult, gql, useApolloClient, useQuery } from "@apollo/client"
-import { AuthUser } from '../../../types/graphql-types'
+import { gql, useApolloClient, useQuery } from "@apollo/client"
+import { AuthUser } from "gen/types/graphql-types"
 import { UseApplicationDataResult, UseApplicationUpdater } from "./applicationData.type"
 
 const MUTATION_APPLICATION_UPDATE = gql`

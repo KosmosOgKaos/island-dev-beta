@@ -1,4 +1,4 @@
-import { AuthUser } from "../../types/graphql-types"
+import { AuthUser } from "gen/types/graphql-types"
 
 export interface LoginStore {
   login: (info: AuthUser) => void
