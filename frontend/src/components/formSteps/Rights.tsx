@@ -328,6 +328,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
     </GridRow>
   </Box>
 )
+const numba = (number: number) =>
+  number.toLocaleString('De-de', {
+    maximumFractionDigits: 0,
+  })
 
 const TableRows = ({ form }) => {
   const startDate = useWatch({
@@ -337,9 +341,9 @@ const TableRows = ({ form }) => {
   })
 
   const { getTable } = unemploymentCalculator({
-    hlutfallPersAfsl: 0,
-    tekjurAManudi: form.getV,
-    starfshlutfall: 100,
+    hlutfallPersAfsl: 1,
+    tekjurAManudi: 589459,
+    starfshlutfall: 1,
   })
 
   if (!startDate) {
@@ -367,18 +371,10 @@ const TableRows = ({ form }) => {
                   {format(row.monthStart, 'MMMM', { locale: is })}
                 </T.Data>
                 <T.Data>{`${row.botarettur * 100}%`}</T.Data>
-                <T.Data>
-                  {row.heildarlaun.toLocaleString('De-de', {
-                    maximumFractionDigits: 0,
-                  })}
-                </T.Data>
-                <T.Data>-</T.Data>
-                <T.Data>-</T.Data>
-                <T.Data>
-                  {row.utborgudLaun.toLocaleString('De-de', {
-                    maximumFractionDigits: 0,
-                  })}
-                </T.Data>
+                <T.Data>{numba(row.heildarlaun)}</T.Data>
+                <T.Data>{numba(row.lifeyrisgreidsla)}</T.Data>
+                <T.Data>{numba(row.stadgreidsla)}</T.Data>
+                <T.Data>{numba(row.utborgudLaun)}</T.Data>
               </T.Row>
             )
           })}

@@ -96,7 +96,6 @@ export const unemploymentCalculator = (opts: UnemploymentBenefitsOptions) => {
   }
 
   const getTable = (startDate: Date) => {
-    console.log({ startDate })
     const tekjutengingDate = startOfMonth(startDate)
     const monthStart = startOfMonth(startDate)
 
@@ -128,6 +127,7 @@ export const unemploymentCalculator = (opts: UnemploymentBenefitsOptions) => {
           utborgudLaun,
         }
       })
+    console.table(rows)
     return rows
   }
 
