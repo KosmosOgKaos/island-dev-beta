@@ -98,8 +98,9 @@ export const HeadData = ({
   const classNames = cn(
     styles.cell,
     getTextStyles({
-      variant: 'h5',
       ...text,
+      variant: 'small',
+      fontWeight: 'semiBold',
     }),
     useBoxStyles({
       component: 'th',
