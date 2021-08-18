@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier -w ./",
     "cy:run": "cypress run",
     "cmp": "npx hygen cmp new",
     "test": "start-server-and-test start http://localhost:3000 cy:run"
@@ -54,6 +55,7 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
     "next-transpile-modules": "8.0.0",
+    "prettier": "^2.3.2",
     "start-server-and-test": "^1.13.1",
     "typescript": "4.3.5"
   }
