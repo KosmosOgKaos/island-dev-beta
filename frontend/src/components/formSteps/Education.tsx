@@ -36,10 +36,12 @@ const jobsOptions = jobs.map((x) => ({
   value: x,
 }))
 
-const yearsOptions = Array.from({ length: 100 }).map((x, i) => ({
-  label: (1921 + i).toString(),
-  value: (1921 + i).toString(),
-}))
+const yearsOptions = Array.from({ length: 100 })
+  .map((x, i) => ({
+    label: (1921 + i).toString(),
+    value: (1921 + i).toString(),
+  }))
+  .reverse()
 
 const thekkingOptions = [
   {
@@ -130,8 +132,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     <Text variant="h2" marginBottom={5}>
       Menntun og ferilskrá
     </Text>
-    <Text variant="h3">Námsferill</Text>
-    <Text marginBottom={3}>Gögn sótt úr Mínar síður</Text>
+    <Text variant="h3" marginBottom={3}>
+      Námsferill
+    </Text>
 
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
@@ -162,9 +165,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           placeholder="Ár"
           options={yearsOptions}
           control={form.control}
-          rules={{
-            required: 'Vinsamlegast veldu ár',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu ár',
+          // }}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={6}>
@@ -175,9 +178,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Námi lauk"
           placeholder="Ár"
           options={yearsOptions}
-          rules={{
-            required: 'Vinsamlegast veldu ár',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu ár',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -205,9 +208,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Nám hófst"
           placeholder="Ár"
           options={yearsOptions}
-          rules={{
-            required: 'Vinsamlegast veldu ár',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu ár',
+          // }}
         />
       </GridColumn>
       <GridColumn span={gridSpacing} paddingBottom={3}>
@@ -218,9 +221,9 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Námi lauk"
           placeholder="Ár"
           options={yearsOptions}
-          rules={{
-            required: 'Vinsamlegast veldu ár',
-          }}
+          // rules={{
+          //   required: 'Vinsamlegast veldu ár',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -341,10 +344,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
-          required
-          rules={{
-            required: 'Vinsamlegast veldu þekkingu',
-          }}
+          // required
+          // rules={{
+          //   required: 'Vinsamlegast veldu þekkingu',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -367,10 +370,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
-          required
-          rules={{
-            required: 'Vinsamlegast veldu þekkingu',
-          }}
+          // required
+          // rules={{
+          //   required: 'Vinsamlegast veldu þekkingu',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -422,10 +425,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
-          required
-          rules={{
-            required: 'Vinsamlegast veldu þekkingu',
-          }}
+          // required
+          // rules={{
+          //   required: 'Vinsamlegast veldu þekkingu',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -448,10 +451,10 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           label="Þekking"
           placeholder="Veldu þekkingu"
           options={thekkingOptions}
-          required
-          rules={{
-            required: 'Vinsamlegast veldu þekkingu',
-          }}
+          // required
+          // rules={{
+          //   required: 'Vinsamlegast veldu þekkingu',
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -517,12 +520,12 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           id="umsagnaradili_1_simi"
           label="Sími"
           type="tel"
-          rules={{
-            pattern: {
-              value: /^\d{7}$/,
-              message: 'Símanúmer þarf að vera 7 tölustafir',
-            },
-          }}
+          // rules={{
+          //   pattern: {
+          //     value: /^\d{7}$/,
+          //     message: 'Símanúmer þarf að vera 7 tölustafir',
+          //   },
+          // }}
         />
       </GridColumn>
     </GridRow>
@@ -537,8 +540,8 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
     <Box marginBottom={6}>
       <InputFileUpload
         fileList={[]}
-        header="Ferilskrá, Kynningarbréf, Meðmælabréf, Prófskírteini, Annað"
-        description="Tekið er við skjölum með endingu: .pdf, .docx, .rtf"
+        header="Eftirfarandi gögn þarf að hlaða upp: ferilskrá, kynningarbréf"
+        description="Önnur valkvæð gögn: meðmælabréf, prófskírteini, annað"
         buttonLabel="Velja skjöl til að hlaða upp"
         onChange={() => {
           console.log('changed')

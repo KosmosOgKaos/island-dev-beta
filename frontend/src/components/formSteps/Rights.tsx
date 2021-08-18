@@ -48,10 +48,19 @@ const jobsOptions = jobs.map((x) => ({
   value: x,
 }))
 
-const yearsOptions = Array.from({ length: 100 }).map((x, i) => ({
-  label: (1921 + i).toString(),
-  value: (1921 + i).toString(),
-}))
+const yearsOptions = Array.from({ length: 100 })
+  .map((x, i) => ({
+    label: (1921 + i).toString(),
+    value: (1921 + i).toString(),
+  }))
+  .reverse()
+
+const percentageOptions = Array.from({ length: 11 })
+  .map((_, i) => ({
+    label: `${(i * 10).toString()}%`,
+    value: `${(i * 10).toString()}%`,
+  }))
+  .reverse()
 
 const thekkingOptions = [
   {
@@ -282,26 +291,18 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
     <Text variant="h3" marginBottom={3}>
       Persónuafsláttur
     </Text>
-    <RadioController
-      control={form.control}
-      id="nyta_personuafslatt"
-      name="nyta_personuafslatt"
-      split={'1/2'}
-      largeButtons={false}
-      rules={{
-        required: 'Hér þarf að svara já eða nei',
-      }}
-      options={[
-        {
-          label: 'Já, Vinnumálastofnun nýti persónuafslátt minn',
-          value: 'Já',
-        },
-        {
-          label: 'Nei, Vinnumálastofnun nýti ekki persónuafslátt minn',
-          value: 'Nei',
-        },
-      ]}
-    />
+    <GridRow>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
+        <SelectController
+          control={form.control}
+          id="nyta_personuafslatt"
+          name="nyta_personuafslatt"
+          label="Nýting persónuafsláttar"
+          placeholder="Veldu 0-100%"
+          options={percentageOptions}
+        />
+      </GridColumn>
+    </GridRow>
     <Divide />
     <Text variant="h3" marginBottom={3}>
       Upphaf bótagreiðslna

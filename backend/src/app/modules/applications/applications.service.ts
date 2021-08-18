@@ -48,6 +48,8 @@ export class ApplicationsService {
           "employment_percentage": 100,
           "lifeyrissjodur_hlutfall": 4,
           "faedingarorlof": false,
+          "capital_income": 0,
+          "pension_payment": 0,
           "grunnatvinnuleysisbaetur": 307430,
           "fjoldi_barna": 1,
           "children": [{
