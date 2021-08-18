@@ -31,10 +31,8 @@ const Divide = () => (
 export const Overview = ({ options, form }: ActiveStepComponentProps) => (
   <Box>
     <Text variant="h2" marginBottom={5}>
-      Yfirlit til grundvallar réttinda
+      Persónuupplýsingar
     </Text>
-    <Text variant="h3">Persónuupplýsingar</Text>
-    <Text marginBottom={3}>Gögn sótt úr Þjóðskrá</Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
