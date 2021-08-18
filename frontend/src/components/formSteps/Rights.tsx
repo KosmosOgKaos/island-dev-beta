@@ -10,16 +10,16 @@ import {
   ResponsiveProp,
   Table as T,
 } from '@island.is/island-ui/core'
-import jobs from '../../static/jobs.json'
-import lifeyrir from '../../static/lifeyrir.json'
-import lifeyrir2 from '../../static/lifeyrir2.json'
-import education from '../../static/education.json'
-import stettarfelog from '../../static/stettarfelog.json'
+import jobs from 'src/static/jobs.json'
+import lifeyrir from 'src/static/lifeyrir.json'
+import lifeyrir2 from 'src/static/lifeyrir2.json'
+import education from 'src/static/education.json'
+import stettarfelog from 'src/static/stettarfelog.json'
 import { InputController, SelectController, DatePickerController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
 import { RadioController } from '../RadioController'
-import { unemploymentCalculator } from 'lib/calculate'
-import { format, getMonth, getYear } from 'date-fns'
+import { unemploymentCalculator } from 'lib/unemploymentBenefits'
+import { format, getYear } from 'date-fns'
 import { is } from 'date-fns/locale'
 import { useWatch } from 'react-hook-form'
 
@@ -119,16 +119,13 @@ const tungumalOptions = [
   },
 ]
 
-const gridSpacing = [
-  '12/12',
-  '6/12',
-  '12/12',
-  '6/12',
-] as ResponsiveProp<GridColumns>
+const gridSpacing = ['12/12', '6/12', '12/12', '6/12'] as ResponsiveProp<
+  GridColumns
+>
 
 const Divide = () => (
   <GridRow>
-    <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
+    <GridColumn span='12/12' paddingTop={4} paddingBottom={4}>
       <div style={{ height: 1 }}>
         <Divider />
       </div>
@@ -139,7 +136,7 @@ const Divide = () => (
 const AddLine = () => (
   <GridRow>
     <GridColumn span={gridSpacing} paddingBottom={3}>
-      <Button variant="text" as="span">
+      <Button variant='text' as='span'>
         Bæta við línu
       </Button>
     </GridColumn>
@@ -148,11 +145,11 @@ const AddLine = () => (
 
 export const Rights = ({ options, form }: ActiveStepComponentProps) => (
   <Box>
-    <Text variant="h2" marginBottom={2}>
+    <Text variant='h2' marginBottom={2}>
       Þín réttindi
     </Text>
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Bankaupplýsingar, lífeyrissjóður og stéttarfélag
     </Text>
     <GridRow>
@@ -161,11 +158,11 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <InputController
-          id="banki"
-          name="banki"
+          id='banki'
+          name='banki'
           control={form.control}
           required
-          label="Banki"
+          label='Banki'
           rules={{
             pattern: {
               value: /^\d{3,4}$/,
@@ -179,11 +176,11 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <InputController
-          id="hofudbok"
-          name="hofudbok"
+          id='hofudbok'
+          name='hofudbok'
           control={form.control}
           required
-          label="Höfuðb."
+          label='Höfuðb.'
           rules={{
             pattern: {
               value: /^\d{2}$/,
@@ -197,11 +194,11 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <InputController
-          id="reikningsnumer"
-          name="reikningsnumer"
+          id='reikningsnumer'
+          name='reikningsnumer'
           control={form.control}
           required
-          label="Reikningsnúmer"
+          label='Reikningsnúmer'
           rules={{
             pattern: {
               value: /^\d{1,6}$/,
@@ -215,10 +212,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
-          id="lifeyrissjodur"
-          name="lifeyrissjodur"
-          label="Lífeyrissjóður"
-          placeholder="Veldu lífeyrissjóð"
+          id='lifeyrissjodur'
+          name='lifeyrissjodur'
+          label='Lífeyrissjóður'
+          placeholder='Veldu lífeyrissjóð'
           options={lifeyrir2Options}
         />
       </GridColumn>
@@ -230,10 +227,10 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       >
         <SelectController
           control={form.control}
-          id="vidbotarlifeyrissparnadur"
-          name="vidbotarlifeyrissparnadur"
-          label="Viðbótarlífeyrissparnaður"
-          placeholder="Veldu viðbótarlífeyrissparnað"
+          id='vidbotarlifeyrissparnadur'
+          name='vidbotarlifeyrissparnadur'
+          label='Viðbótarlífeyrissparnaður'
+          placeholder='Veldu viðbótarlífeyrissparnað'
           options={lifeyrirOptions}
         />
       </GridColumn>
@@ -242,15 +239,15 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
         paddingBottom={3}
       >
         <Box
-          display="flex"
-          height="full"
-          alignItems="center"
+          display='flex'
+          height='full'
+          alignItems='center'
           paddingTop={[0, 0, 0, 0, 2]}
         >
           <RadioController
             control={form.control}
-            id="vidbotarlifeyrissparnadur_hlutfall"
-            name="vidbotarlifeyrissparnadur_hlutfall"
+            id='vidbotarlifeyrissparnadur_hlutfall'
+            name='vidbotarlifeyrissparnadur_hlutfall'
             split={'1/4'}
             largeButtons={false}
             options={[
@@ -279,66 +276,74 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
-          id="stettarfelag"
-          name="Stéttarfélag"
-          label="Stéttarfélag"
-          placeholder="Veldu stéttarfélag"
+          id='stettarfelag'
+          name='Stéttarfélag'
+          label='Stéttarfélag'
+          placeholder='Veldu stéttarfélag'
           options={stettarfelogOptions}
         />
       </GridColumn>
     </GridRow>
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Persónuafsláttur
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
-          id="nyta_personuafslatt"
-          name="nyta_personuafslatt"
-          label="Nýting persónuafsláttar"
-          placeholder="Veldu 0-100%"
+          id='nyta_personuafslatt'
+          name='nyta_personuafslatt'
+          label='Nýting persónuafsláttar'
+          placeholder='Veldu 0-100%'
           options={percentageOptions}
         />
       </GridColumn>
     </GridRow>
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Upphaf bótagreiðslna
     </Text>
     <GridRow>
       <GridColumn span={gridSpacing} paddingBottom={3}>
         <DatePickerController
           control={form.control}
-          size="sm"
-          locale="is"
-          id="upphafsdagsetning_botagreidslna"
-          name="upphafsdagsetning_botagreidslna"
-          label="Óska eftir að greiðslur hefjist"
-          placeholder="Veldu dagsetningu"
+          size='sm'
+          locale='is'
+          id='upphafsdagsetning_botagreidslna'
+          name='upphafsdagsetning_botagreidslna'
+          label='Óska eftir að greiðslur hefjist'
+          placeholder='Veldu dagsetningu'
         />
       </GridColumn>
     </GridRow>
     <Divide />
-    <Text variant="h3" marginBottom={3}>
+    <Text variant='h3' marginBottom={3}>
       Áætlaðar tekjur á mánuði
     </Text>
     <GridRow>
-      <GridColumn span="12/12" paddingBottom={6}>
+      <GridColumn span='12/12' paddingBottom={6}>
         <TableRows form={form} />
       </GridColumn>
     </GridRow>
   </Box>
 )
+const numba = (number: number) =>
+  number.toLocaleString('De-de', {
+    maximumFractionDigits: 0,
+  })
 
 const TableRows = ({ form }) => {
-  const { getTable } = unemploymentCalculator({
-    hlutfallPersAfsl: 0,
-  })
-  const { upphafsdagsetning_botagreidslna: startDate } = useWatch({
+  const startDate = useWatch({
+    name: 'upphafsdagsetning_botagreidslna',
     defaultValue: form.getValues().upphafsdagsetning_botagreidslna,
     control: form.control,
+  })
+
+  const { getTable } = unemploymentCalculator({
+    hlutfallPersAfsl: 1,
+    tekjurAManudi: 589459,
+    starfshlutfall: 1,
   })
 
   if (!startDate) {
@@ -366,14 +371,10 @@ const TableRows = ({ form }) => {
                   {format(row.monthStart, 'MMMM', { locale: is })}
                 </T.Data>
                 <T.Data>{`${row.botarettur * 100}%`}</T.Data>
-                <T.Data>
-                  {row.heildarlaun.toLocaleString('De-de', {
-                    maximumFractionDigits: 0,
-                  })}
-                </T.Data>
-                <T.Data>-</T.Data>
-                <T.Data>-</T.Data>
-                <T.Data>-</T.Data>
+                <T.Data>{numba(row.heildarlaun)}</T.Data>
+                <T.Data>{numba(row.lifeyrisgreidsla)}</T.Data>
+                <T.Data>{numba(row.stadgreidsla)}</T.Data>
+                <T.Data>{numba(row.utborgudLaun)}</T.Data>
               </T.Row>
             )
           })}
