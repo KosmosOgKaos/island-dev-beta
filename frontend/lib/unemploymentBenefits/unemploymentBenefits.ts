@@ -1,43 +1,29 @@
 import { addDays, addMonths, isSameMonth, startOfMonth } from 'date-fns'
+import { UnemploymentBenefitsOptions } from './unemploymentBenefits.types'
 
-const defaults = {
-  hlutfallPersAfsl: 1.0,
-  personuafslattur: 50792,
-  tekjurAManudi: 589459,
-  elliOrorkuTSR: 25000,
-  elliOrorkuAlm: 0,
-  // Tekjuskattur þrep 1 0-349.018 kr.
-  tekjuskatturStep1: 0.3145,
-  tekjuskatturStep1Threshold: 349018,
-  tekjuskatturStep2: 0.3795,
-  vidbodarlifeyrissparnadur: 0.04,
-  stettarfelagHlutfall: 0.01,
-  starfshlutfall: 1.0,
-  lifeyrissjodurHlutfall: 0.04,
-  // Grunnatvinnuleysisbætur 100% starfshlutfall
-  grunnbaetur: 307430,
-  fjoldiBarna: 1,
-}
+// Note: All these variables and calculations are taken from a master
+// spreadsheet this was extrapolated from - translating them all would
+// probably end up being too confusing to maintain.
 
-export const unemploymentCalculator = (opts = {}) => {
+export const unemploymentCalculator = (opts: UnemploymentBenefitsOptions) => {
   const {
     hlutfallPersAfsl,
-    personuafslattur,
     tekjurAManudi,
-    elliOrorkuTSR,
-    elliOrorkuAlm,
+    personuafslattur = 50792,
+    elliOrorkuTSR = 25000,
+    elliOrorkuAlm = 0,
     // Tekjuskattur þrep 1 0-349.018 kr.
-    tekjuskatturStep1,
-    tekjuskatturStep1Threshold,
-    tekjuskatturStep2,
-    vidbodarlifeyrissparnadur,
-    stettarfelagHlutfall,
-    starfshlutfall,
-    lifeyrissjodurHlutfall,
+    tekjuskatturStep1 = 0.3145,
+    tekjuskatturStep1Threshold = 349018,
+    tekjuskatturStep2 = 0.3795,
+    vidbodarlifeyrissparnadur = 0.04,
+    stettarfelagHlutfall = 0.01,
+    starfshlutfall = 1.0,
+    lifeyrissjodurHlutfall = 0.04,
     // Grunnatvinnuleysisbætur 100% starfshlutfall
-    grunnbaetur,
-    fjoldiBarna,
-  } = { ...defaults, ...opts }
+    grunnbaetur = 307430,
+    fjoldiBarna = 1,
+  } = opts
 
   const hamarksTekjutenging = grunnbaetur + 165405
   // Viðbot fyrir börn laun á/undir grunnbótum
@@ -55,14 +41,6 @@ export const unemploymentCalculator = (opts = {}) => {
       utkoma1,
       margfaldadMStarfshlufalli,
     }
-  }
-
-  const baeturMedTekjutengingu = () => {
-    return utkomur(tekjutengdUtkoma)
-  }
-
-  const baeturAnTekjutengingu = () => {
-    return utkomur(otekjutengdUtkoma)
   }
 
   const tekjutengdUtkoma = () => {
@@ -85,8 +63,7 @@ export const unemploymentCalculator = (opts = {}) => {
       : grunnbaetur
   }
 
-  const utkomur = (utkoma2Fall: () => number) => {
-    const heildarutkoma2 = utkoma2Fall()
+  const utkomur = (heildarutkoma2: number) => {
     // Heildarútkoma 2 + Bæta við tekjum á börn (ef heildarútkoma 2 er minni/jafntog grunn þá heildarútkoma 2*(viðbót1*börn), annars heildarútkoma 2*(viðbót2*börn)
     const heildarutkoma3 =
       heildarutkoma2 <= grunnbaetur
@@ -119,8 +96,7 @@ export const unemploymentCalculator = (opts = {}) => {
   }
 
   const getTable = (startDate: Date) => {
-    console.log({ startDate })
-    const tekjutengingDate = addDays(startDate, 14)
+    const tekjutengingDate = startOfMonth(startDate)
     const monthStart = startOfMonth(startDate)
 
     const rows = Array.from({ length: 6 })
@@ -128,14 +104,27 @@ export const unemploymentCalculator = (opts = {}) => {
       .map((row) => {
         const isTheMonth = isSameMonth(row.monthStart, tekjutengingDate)
 
-        const heildarlaun =
-          tekjutengdUtkoma() * (isTheMonth ? 0.5 : 1) +
-          otekjutengdUtkoma() * (isTheMonth ? 0.5 : 0)
+        const multTT = x => (isTheMonth ?  x * .5 : x * 1)
+        const multOTT = x => (isTheMonth ?  x * .5 : x * 0)
+
+        const utkomaTT = utkomur(tekjutengdUtkoma())
+        const utkomaOTT = utkomur(otekjutengdUtkoma())
+
+        const heildarlaun = multTT(utkomaTT.heildarutkoma3) + multOTT(utkomaOTT.heildarutkoma3)
+
+        const lifeyrisgreidsla = multTT(utkomaTT.heildarutkoma3 - utkomaTT.heildarutkoma4)
+        + multOTT(utkomaOTT.heildarutkoma3 - utkomaOTT.heildarutkoma4)
+        const utborgudLaun = multTT(utkomaTT.utborgudLaun) + multOTT(utkomaOTT.utborgudLaun)
+        const stadgreidsla = multTT(utkomaTT.heildarutkoma3 - utkomaOTT.heildarutkoma6)
+        + multOTT(utkomaTT.heildarutkoma3 - utkomaOTT.heildarutkoma6)
 
         return {
           ...row,
           botarettur: starfshlutfall,
+          lifeyrisgreidsla,
           heildarlaun,
+          stadgreidsla,
+          utborgudLaun,
         }
       })
     console.table(rows)
