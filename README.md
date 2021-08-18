@@ -1,3 +1,3 @@
-# Juni Ne[x]stJS starter
+# Sjálfsafgreiðsluteymi: Atvinnuleysisbætur
 
 Base for backend and frontend projects
