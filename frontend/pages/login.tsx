@@ -9,7 +9,6 @@ import {
   Text,
   GridRow,
   Box,
-  Button,
 } from '@island.is/island-ui/core'
 import { LoginLayout } from '@cmp'
 import kennitala from 'kennitala'
@@ -47,7 +46,7 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      router.push('/umsokn')
+      router.push('/umsokn/gagnaoflun')
     }
   })
   if (data?.login?.token) {

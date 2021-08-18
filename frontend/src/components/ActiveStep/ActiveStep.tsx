@@ -36,6 +36,7 @@ export const ActiveStep = ({
       <Box paddingTop={10} paddingX={[4, 4, 12]}>
         <Cmp options={options} form={form} />
       </Box>
+
       <Box
         paddingY={5}
         paddingX={[4, 4, 12]}
@@ -46,6 +47,11 @@ export const ActiveStep = ({
         flexDirection="row"
         justifyContent={stepInfo.prev ? 'spaceBetween' : 'flexEnd'}
       >
+        {!(stepInfo.prev || stepInfo.next) && (
+          <Button type="submit" icon="arrowForward">
+            Mínar síður
+          </Button>
+        )}
         {stepInfo.prev && (
           <Button
             variant="ghost"

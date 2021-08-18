@@ -69,7 +69,6 @@ export const formSteps: Step[] = [
     id: 'umsokn-mottekin',
     title: 'Umsókn móttekin',
     options: {},
-    prev: 'senda-umsokn',
     component: FinalView,
   },
 ]
