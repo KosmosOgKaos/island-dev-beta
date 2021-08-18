@@ -32,6 +32,9 @@ interface Props {
   size?: InputProps['size']
 }
 
+const NumbInput = (props) => <Input {...props} size="sm" />
+const NumbInputMd = (props) => <Input {...props} size="md" />
+
 export const InputController: FC<Props> = ({
   autoFocus,
   defaultValue,
@@ -62,7 +65,7 @@ export const InputController: FC<Props> = ({
       if (currency) {
         return (
           <NumberFormat
-            customInput={(props) => <Input {...props} size={size} />}
+            customInput={size === 'md' ? NumbInputMd : NumbInput}
             id={id}
             disabled={disabled}
             placeholder={placeholder}
@@ -89,7 +92,7 @@ export const InputController: FC<Props> = ({
       } else if (type === 'number' && suffix) {
         return (
           <NumberFormat
-            customInput={(props) => <Input {...props} size={size} />}
+            customInput={size === 'md' ? NumbInputMd : NumbInput}
             id={id}
             disabled={disabled}
             backgroundColor={backgroundColor}
@@ -98,11 +101,6 @@ export const InputController: FC<Props> = ({
             suffix={suffix}
             value={value}
             format={format}
-            onChange={(e) => {
-              if (onInputChange) {
-                onInputChange(e)
-              }
-            }}
             onValueChange={({ value }) => {
               onChange(value)
             }}
@@ -114,7 +112,7 @@ export const InputController: FC<Props> = ({
       } else if (format && ['text', 'tel'].includes(type)) {
         return (
           <NumberFormat
-            customInput={(props) => <Input {...props} size={size} />}
+            customInput={size === 'md' ? NumbInputMd : NumbInput}
             id={id}
             disabled={disabled}
             backgroundColor={backgroundColor}
