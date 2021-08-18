@@ -4,7 +4,7 @@ import { createLoginStore } from './loginStore'
 
 const httpLink = createHttpLink({
   // TODO: put in env/and/or next.js config or something
-  uri: 'http://localhost:4000/api/graphql',
+  uri: '/api/graphql',
 })
 
 const authLink = setContext((_, { headers }) => {
