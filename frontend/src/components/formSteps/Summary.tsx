@@ -7,6 +7,7 @@ import {
   Stack,
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
+import { EstimatedIncomeTable } from '../EstimatedIncomeTable'
 
 const currentEmploymentStatusLabels = {
   student: 'Nemi',
@@ -235,6 +236,7 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
                   Upphaf bótagreiðslna: {upphafsdagsetning_botagreidslna}
                 </Text>
               </Stack>
+              <EstimatedIncomeTable form={form} />
             </Stack>
           </Box>
         </AccordionItem>
