@@ -1,3 +1,5 @@
+export { EstimatedIncomeTable } from './EstimatedIncomeTable'
+
 export { CheckboxController } from './CheckboxController'
 
 export { RadioController } from './RadioController'
