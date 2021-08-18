@@ -2,6 +2,9 @@ import type { NextPage } from 'next'
 import { gql, useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
+import cn from 'classnames'
+import * as styles from '../treat/index.treat'
+
 import {
   Button as Btn,
   Stack,
@@ -10,6 +13,7 @@ import {
   GridRow,
   Box,
   Button,
+  GridColumn,
 } from '@island.is/island-ui/core'
 import { LoginLayout } from '@cmp'
 import kennitala from 'kennitala'
@@ -71,22 +75,25 @@ const Login: NextPage = () => {
             <Text marginBottom={2}>á Ísland.is</Text>
           </GridRow>
           <GridRow align="center">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className={cn(styles.loginForm)}>
               <Stack space={2}>
-                <InputController
-                  id="login-username-input"
-                  name="username"
-                  label="Kennitala"
-                  autoFocus
-                  control={control}
-                  backgroundColor="blue"
-                  defaultValue=""
-                  rules={{
-                    validate: (value) => {
-                      return kennitala.isPerson(value)
-                    },
-                  }}
-                ></InputController>
+                <GridColumn span="12/12">
+                  <InputController
+                    id="login-username-input"
+                    name="username"
+                    label="Kennitala"
+                    autoFocus
+                    
+                    control={control}
+                    backgroundColor="blue"
+                    defaultValue=""
+                    rules={{
+                      validate: (value) => {
+                        return kennitala.isPerson(value)
+                      },
+                    }}
+                    ></InputController>
+                </GridColumn>
 
                 <GridRow align="center" marginTop={2} marginBottom={8}>
                   <Btn type="submit">Auðkenna</Btn>
