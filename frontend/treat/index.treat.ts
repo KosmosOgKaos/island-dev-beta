@@ -17,3 +17,9 @@ export const sticky = style({
   position: 'sticky',
   alignSelf: 'flex-start',
 })
+
+export const loginForm = style({
+  width: '66%',
+  maxWidth: '400px',
+  minWidth: '210px'
+})
