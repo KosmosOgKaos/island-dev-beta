@@ -46,7 +46,7 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      router.push('/umsokn/gagnaoflun')
+      router.push('/umsokn')
     }
   })
   if (data?.login?.token) {
