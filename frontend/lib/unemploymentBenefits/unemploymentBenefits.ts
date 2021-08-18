@@ -104,19 +104,23 @@ export const unemploymentCalculator = (opts: UnemploymentBenefitsOptions) => {
       .map((row) => {
         const isTheMonth = isSameMonth(row.monthStart, tekjutengingDate)
 
-        const multTT = x => (isTheMonth ?  x * .5 : x * 1)
-        const multOTT = x => (isTheMonth ?  x * .5 : x * 0)
+        const multTT = (x) => (isTheMonth ? x * 0.5 : x * 1)
+        const multOTT = (x) => (isTheMonth ? x * 0.5 : x * 0)
 
         const utkomaTT = utkomur(tekjutengdUtkoma())
         const utkomaOTT = utkomur(otekjutengdUtkoma())
 
-        const heildarlaun = multTT(utkomaTT.heildarutkoma3) + multOTT(utkomaOTT.heildarutkoma3)
+        const heildarlaun =
+          multTT(utkomaTT.heildarutkoma3) + multOTT(utkomaOTT.heildarutkoma3)
 
-        const lifeyrisgreidsla = multTT(utkomaTT.heildarutkoma3 - utkomaTT.heildarutkoma4)
-        + multOTT(utkomaOTT.heildarutkoma3 - utkomaOTT.heildarutkoma4)
-        const utborgudLaun = multTT(utkomaTT.utborgudLaun) + multOTT(utkomaOTT.utborgudLaun)
-        const stadgreidsla = multTT(utkomaTT.heildarutkoma3 - utkomaOTT.heildarutkoma6)
-        + multOTT(utkomaTT.heildarutkoma3 - utkomaOTT.heildarutkoma6)
+        const lifeyrisgreidsla =
+          multTT(utkomaTT.heildarutkoma3 - utkomaTT.heildarutkoma4) +
+          multOTT(utkomaOTT.heildarutkoma3 - utkomaOTT.heildarutkoma4)
+        const utborgudLaun =
+          multTT(utkomaTT.utborgudLaun) + multOTT(utkomaOTT.utborgudLaun)
+        const stadgreidsla =
+          multTT(utkomaTT.heildarutkoma3 - utkomaOTT.heildarutkoma6) +
+          multOTT(utkomaTT.heildarutkoma3 - utkomaOTT.heildarutkoma6)
 
         return {
           ...row,
