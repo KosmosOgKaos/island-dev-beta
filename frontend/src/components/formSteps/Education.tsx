@@ -524,6 +524,7 @@ export const Education = ({ options, form }: ActiveStepComponentProps) => (
           name="umsagnaradili_1_simi"
           id="umsagnaradili_1_simi"
           label="Sími"
+          format="### ####"
           type="tel"
           // rules={{
           //   pattern: {

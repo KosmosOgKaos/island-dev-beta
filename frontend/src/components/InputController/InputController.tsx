@@ -1,13 +1,11 @@
 import React, { FC } from 'react'
-import { Input, InputBackgroundColor } from '@island.is/island-ui/core'
 import {
-  Controller,
-  Control,
-  ControllerRenderProps,
-  FieldValues,
-  ControllerFieldState,
-  UseFormStateReturn,
-} from 'react-hook-form'
+  Input,
+  InputBackgroundColor,
+  InputProps,
+} from '@island.is/island-ui/core'
+import { Controller, Control } from 'react-hook-form'
+import NumberFormat, { FormatInputValueFunction } from 'react-number-format'
 
 interface Props {
   autoFocus?: boolean
@@ -29,6 +27,9 @@ interface Props {
   suffix?: string
   rows?: number
   required?: boolean
+  currency?: boolean
+  format?: string | FormatInputValueFunction
+  size?: InputProps['size']
 }
 
 export const InputController: FC<Props> = ({
@@ -43,42 +44,125 @@ export const InputController: FC<Props> = ({
   rules,
   backgroundColor,
   textarea,
-  value,
+  currency,
   type = 'text',
   onChange: onInputChange,
   rows,
+  suffix,
   required,
+  format,
+  size = 'sm',
 }) => (
   <Controller
     name={name}
     control={control}
     rules={rules}
     {...(defaultValue !== undefined && { defaultValue })}
-    render={({ field: { onChange, value }, fieldState: { error } }) => (
-      <Input
-        id={id}
-        size="sm"
-        name={name}
-        value={value}
-        disabled={disabled}
-        placeholder={placeholder}
-        label={label}
-        backgroundColor={backgroundColor}
-        autoFocus={autoFocus}
-        hasError={error?.message !== undefined}
-        errorMessage={error?.message}
-        required={required}
-        textarea={textarea}
-        type={type}
-        onChange={(e) => {
-          onChange(e.target.value)
-          if (onInputChange) {
-            onInputChange(e)
-          }
-        }}
-        rows={rows}
-      />
-    )}
+    render={({ field: { onChange, value }, fieldState: { error } }) => {
+      if (currency) {
+        return (
+          <NumberFormat
+            customInput={(props) => <Input {...props} size={size} />}
+            id={id}
+            disabled={disabled}
+            placeholder={placeholder}
+            label={label}
+            type="text"
+            decimalSeparator=","
+            backgroundColor={backgroundColor}
+            thousandSeparator="."
+            suffix=" kr."
+            value={value}
+            onChange={(e) => {
+              if (onInputChange) {
+                onInputChange(e)
+              }
+            }}
+            onValueChange={({ value }) => {
+              onChange(value)
+            }}
+            hasError={error !== undefined}
+            errorMessage={error}
+            required={required}
+          />
+        )
+      } else if (type === 'number' && suffix) {
+        return (
+          <NumberFormat
+            customInput={(props) => <Input {...props} size={size} />}
+            id={id}
+            disabled={disabled}
+            backgroundColor={backgroundColor}
+            placeholder={placeholder}
+            label={label}
+            suffix={suffix}
+            value={value}
+            format={format}
+            onChange={(e) => {
+              if (onInputChange) {
+                onInputChange(e)
+              }
+            }}
+            onValueChange={({ value }) => {
+              onChange(value)
+            }}
+            hasError={error !== undefined}
+            errorMessage={error}
+            required={required}
+          />
+        )
+      } else if (format && ['text', 'tel'].includes(type)) {
+        return (
+          <NumberFormat
+            customInput={(props) => <Input {...props} size={size} />}
+            id={id}
+            disabled={disabled}
+            backgroundColor={backgroundColor}
+            placeholder={placeholder}
+            label={label}
+            type={type as 'text' | 'tel'}
+            value={value}
+            format={format}
+            onChange={(e) => {
+              if (onInputChange) {
+                onInputChange(e)
+              }
+            }}
+            onValueChange={({ value }) => {
+              onChange(value)
+            }}
+            hasError={error !== undefined}
+            errorMessage={error}
+            required={required}
+          />
+        )
+      }
+      return (
+        <Input
+          id={id}
+          size={size}
+          name={name}
+          value={value}
+          disabled={disabled}
+          placeholder={placeholder}
+          label={label}
+          backgroundColor={backgroundColor}
+          autoFocus={autoFocus}
+          hasError={error?.message !== undefined}
+          errorMessage={error?.message}
+          required={required}
+          textarea={textarea}
+          type={type}
+          onChange={(e) => {
+            onChange(e.target.value)
+            if (onInputChange) {
+              onInputChange(e)
+            }
+          }}
+          rows={rows}
+        />
+      )
+    }}
   />
 )
 
