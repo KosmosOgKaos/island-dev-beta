@@ -4,7 +4,9 @@ import {
   Button,
   Divider,
   GridColumn,
+  GridColumns,
   GridRow,
+  ResponsiveProp,
   Text,
 } from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
@@ -14,6 +16,13 @@ import {
   RadioController,
   SelectController,
 } from '@cmp'
+
+const gridSpacing = [
+  '12/12',
+  '6/12',
+  '12/12',
+  '6/12',
+] as ResponsiveProp<GridColumns>
 
 const percentageOptions = Array.from({ length: 101 })
   .map((x, i) => ({
@@ -62,7 +71,7 @@ export const EmploymentStatus = ({
       Síðasti vinnuveitandi
     </Text>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           id="company_name"
           name="company_name"
@@ -75,7 +84,7 @@ export const EmploymentStatus = ({
           // }}
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <SelectController
           control={form.control}
           id="employment_percentage"
@@ -87,7 +96,7 @@ export const EmploymentStatus = ({
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           id="contact"
           name="contact"
@@ -100,7 +109,7 @@ export const EmploymentStatus = ({
           // }}
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           id="contact_email"
           name="contact_email"
@@ -119,7 +128,7 @@ export const EmploymentStatus = ({
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <DatePickerController
           size="sm"
           label="Hætti í starfi"
@@ -177,7 +186,7 @@ export const EmploymentStatus = ({
     <Text marginBottom={3}>Samkvæmt opinberum skrám</Text>
 
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           id="tekjur_a_manudi"
           name="tekjur_a_manudi"
@@ -190,7 +199,7 @@ export const EmploymentStatus = ({
           // }}
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           id="capital_income"
           name="capital_income"
@@ -205,7 +214,7 @@ export const EmploymentStatus = ({
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           id="pension_payment"
           name="pension_payment"
@@ -218,7 +227,7 @@ export const EmploymentStatus = ({
           // }}
         />
       </GridColumn>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <InputController
           id="greidslur_tryggingastofnun"
           name="greidslur_tryggingastofnun"
@@ -233,7 +242,7 @@ export const EmploymentStatus = ({
       </GridColumn>
     </GridRow>
     <GridRow>
-      <GridColumn span="6/12" paddingBottom={3}>
+      <GridColumn span={gridSpacing} paddingBottom={3}>
         <Button variant="text" as="span">
           Bæta við tekjum
         </Button>

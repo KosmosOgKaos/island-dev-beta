@@ -68,6 +68,10 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
     pension_payment,
     greidslur_tryggingastofnun,
     onnur_haefni,
+    atvinnurekandi,
+    starfsheiti,
+    haetti_i_starfi_dags,
+    hof_starf_dags,
   } = form.getValues()
 
   return (
@@ -181,6 +185,14 @@ export const Summary = ({ options, form }: ActiveStepComponentProps) => {
                 <Text>Háskólagráða: {haskolagrada}</Text>
                 <Text>Nám hófst: {nam_hofst}</Text>
                 <Text>Nám lauk: {nam_lauk}</Text>
+              </Stack>
+
+              <Stack space={1}>
+                <Text variant="h4">Starfsferill</Text>
+                <Text>Atvinnurekandi: {atvinnurekandi}</Text>
+                <Text>Hóf störf: {hof_starf_dags}</Text>
+                <Text>Hætti í starfi: {haetti_i_starfi_dags}</Text>
+                <Text>Starfsheiti: {starfsheiti}</Text>
               </Stack>
 
               <Stack space={1}>
