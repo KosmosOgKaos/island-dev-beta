@@ -2,10 +2,10 @@ import type { NextPage } from 'next'
 import { gql, useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { createLoginStore } from '../lib/loginStore'
-import { Button as Btn, Stack, Header, Text, GridRow } from "@island.is/island-ui/core"
+import { Button as Btn, Stack, Header, Text, GridRow, Box, Button } from "@island.is/island-ui/core"
 import { LoginLayout } from '@cmp'
 import kennitala from 'kennitala'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import router from 'next/router'
 import { InputController } from '@cmp'
 
@@ -46,42 +46,44 @@ const Login: NextPage = () => {
 
   return (
     <LoginLayout>
-      <div>
+      <Box>
         <GridRow align="center">
           <Header />
         </GridRow>
-        <Stack space={3}>
-        <GridRow align="center">
+        <GridRow align="center" marginBottom={0}>
           <Text variant="h1" as="h1" marginBottom={0}>Skráðu þig inn</Text>
         </GridRow>
-        <GridRow align="center">
-          <Text variant="h4" as="h4" marginBottom={2}>á Ísland.is</Text>
-        </GridRow>
-        </Stack>
+        <Stack space={4}>
+          <GridRow align="center">
+            <Text marginBottom={2}>á Ísland.is</Text>
+          </GridRow>
+          <GridRow align="center">
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-        <GridRow align="center">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <InputController 
-              id="login-username-input" 
-              name="username" 
-              label="Kennitala" 
-              autoFocus 
-              control={control}
-              backgroundColor="blue"
-              defaultValue=""
-              rules={{
-                validate: ((value) => {
-                    return kennitala.isPerson(value)
-                })
-              }}>
-            </InputController>
-            
-            <GridRow align="center" marginTop={2}>
-              <Btn type="submit">Auðkenna</Btn>
-            </GridRow>
-          </form>
-        </GridRow>
-      </div>
+              <Stack space={2}>
+                <InputController 
+                  id="login-username-input" 
+                  name="username" 
+                  label="Kennitala" 
+                  autoFocus 
+                  control={control}
+                  backgroundColor="blue"
+                  defaultValue=""
+                  rules={{
+                    validate: ((value) => {
+                      return kennitala.isPerson(value)
+                    })
+                  }}>
+                </InputController>
+                
+                <GridRow align="center" marginTop={2} marginBottom={8}>
+                  <Btn type="submit">Auðkenna</Btn>
+                </GridRow>
+              </Stack>
+            </form>
+          </GridRow>
+        </Stack>
+      </Box>
     </LoginLayout>
   )
 }
