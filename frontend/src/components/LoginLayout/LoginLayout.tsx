@@ -13,7 +13,6 @@ export interface FormLayoutProps {
   children?: React.ReactNode
 }
 
-
 export const LoginLayout = ({ children }) => {
   return (
     <Box
@@ -22,7 +21,7 @@ export const LoginLayout = ({ children }) => {
       flexDirection="column"
       height="full"
     >
-      <Head>  
+      <Head>
         <title>Innskráning - Umsókn um atvinnuleysisbætur</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -40,41 +39,46 @@ export const LoginLayout = ({ children }) => {
               {children}
               <Box background="blue100" paddingBottom={6}>
                 <GridRow align="center" marginBottom={4}>
-                  <Text variant="h5" color="blue600" marginTop={4}>Fleiri leiðir</Text>
+                  <Text variant="h5" color="blue600" marginTop={4}>
+                    Fleiri leiðir
+                  </Text>
                 </GridRow>
-                
-                <GridRow> 
-                  <GridColumn span={["12/12","12/12","12/12", "12/12", "4/6"]} offset="1/6">
+
+                <GridRow>
+                  <GridColumn
+                    span={['12/12', '12/12', '12/12', '12/12', '4/6']}
+                    offset="1/6"
+                  >
                     <Stack space={2}>
-                    <Button
-                      colorScheme="negative"
-                      iconType="filled"
-                      onBlur={function noRefCheck(){}}
-                      onClick={function noRefCheck(){}}
-                      onFocus={function noRefCheck(){}}
-                      preTextIconType="filled"
-                      fluid
-                      size="small"
-                      type="button"
-                      variant="primary"
+                      <Button
+                        colorScheme="negative"
+                        iconType="filled"
+                        onBlur={function noRefCheck() {}}
+                        onClick={function noRefCheck() {}}
+                        onFocus={function noRefCheck() {}}
+                        preTextIconType="filled"
+                        fluid
+                        size="small"
+                        type="button"
+                        variant="primary"
                       >
-                      Auðkenni-appið
-                    </Button>
-                    <Button
-                      colorScheme="negative"
-                      iconType="filled"
-                      onBlur={function noRefCheck(){}}
-                      onClick={function noRefCheck(){}}
-                      onFocus={function noRefCheck(){}}
-                      preTextIconType="filled"
-                      size="small"
-                      fluid
-                      type="button"
-                      variant="primary"
+                        Auðkenni-appið
+                      </Button>
+                      <Button
+                        colorScheme="negative"
+                        iconType="filled"
+                        onBlur={function noRefCheck() {}}
+                        onClick={function noRefCheck() {}}
+                        onFocus={function noRefCheck() {}}
+                        preTextIconType="filled"
+                        size="small"
+                        fluid
+                        type="button"
+                        variant="primary"
                       >
-                      Skilríki á korti
-                    </Button>
-                  </Stack>
+                        Skilríki á korti
+                      </Button>
+                    </Stack>
                   </GridColumn>
                 </GridRow>
               </Box>

@@ -1,6 +1,9 @@
-import { gql, useApolloClient, useQuery } from "@apollo/client"
-import { AuthUser } from "gen/types/graphql-types"
-import { UseApplicationDataResult, UseApplicationUpdater } from "./applicationData.type"
+import { gql, useApolloClient, useQuery } from '@apollo/client'
+import { AuthUser } from 'gen/types/graphql-types'
+import {
+  UseApplicationDataResult,
+  UseApplicationUpdater,
+} from './applicationData.type'
 
 const MUTATION_APPLICATION_UPDATE = gql`
   mutation ($id: Int!, $data: UpdateApplicationDTO!) {
@@ -26,44 +29,41 @@ export const useApplicationUpdater = (applicationId): UseApplicationUpdater => {
 
   return (formData) => {
     console.log('Should be mutating to save formData', formData)
-    return client.mutate({
-      mutation: MUTATION_APPLICATION_UPDATE,
-      variables: {
-        id: applicationId,
-        data: {
-          completed: false,
-          data: JSON.stringify(formData),
-        }
-      }
-    })
-    .catch(e => {
-      console.log(e)
-      return false
-    })
-    .then((xx) => {
-      console.log(xx)
-      return true
-    })
+    return client
+      .mutate({
+        mutation: MUTATION_APPLICATION_UPDATE,
+        variables: {
+          id: applicationId,
+          data: {
+            completed: false,
+            data: JSON.stringify(formData),
+          },
+        },
+      })
+      .catch((e) => {
+        console.log(e)
+        return false
+      })
+      .then((xx) => {
+        console.log(xx)
+        return true
+      })
   }
 }
 
 export const useApplicationData = (user: AuthUser) => {
-  const {
-    loading,
-    error,
-    data,
-  } = useQuery(QUERY_APPLICATION_GET, {
-    fetchPolicy: "network-only",
+  const { loading, error, data } = useQuery(QUERY_APPLICATION_GET, {
+    fetchPolicy: 'network-only',
     variables: {
-      owner: user.username
-    }
+      owner: user.username,
+    },
   })
 
   if (typeof window === 'undefined') {
     return {
       loading: false,
       error: null,
-      data: null
+      data: null,
     }
   }
 
@@ -77,9 +77,11 @@ export const useApplicationData = (user: AuthUser) => {
   return {
     loading,
     error,
-    data: data?.getApplicationByNationalId ? {
-      id: data.getApplicationByNationalId.id,
-      formData,
-    } : null
+    data: data?.getApplicationByNationalId
+      ? {
+          id: data.getApplicationByNationalId.id,
+          formData,
+        }
+      : null,
   } as UseApplicationDataResult
 }

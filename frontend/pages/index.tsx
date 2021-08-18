@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
-import type { NextPage } from "next";
-import { gql, useQuery } from "@apollo/client";
-import cn from "classnames";
-import NextLink from "next/link";
+import React, { useRef } from 'react'
+import type { NextPage } from 'next'
+import { gql, useQuery } from '@apollo/client'
+import cn from 'classnames'
+import NextLink from 'next/link'
 import {
   Page,
   Hidden,
@@ -24,11 +24,11 @@ import {
   Breadcrumbs,
   Stack,
   Hyphen,
-} from "@island.is/island-ui/core";
+} from '@island.is/island-ui/core'
 
-import * as styles from "../treat/index.treat";
+import * as styles from '../treat/index.treat'
 
-const marginLeft = [1, 1, 1, 2] as ResponsiveSpace;
+const marginLeft = [1, 1, 1, 2] as ResponsiveSpace
 
 const QUERY_ENTRIES = gql`
   query {
@@ -38,24 +38,24 @@ const QUERY_ENTRIES = gql`
       type
     }
   }
-`;
+`
 
 interface Entry {
-  id: number;
-  title: string;
-  type: string;
+  id: number
+  title: string
+  type: string
 }
 
 interface MegaMenuLink {
-  href: string;
-  text: string;
-  sub?: [string];
+  href: string
+  text: string
+  sub?: [string]
 }
 
 const Home: NextPage = () => {
-  const searchInput = useRef<HTMLInputElement>();
-  const { loading, error, data } = useQuery(QUERY_ENTRIES);
-  const entries = data?.getEntries || [];
+  const searchInput = useRef<HTMLInputElement>()
+  const { loading, error, data } = useQuery(QUERY_ENTRIES)
+  const entries = data?.getEntries || []
 
   return (
     <Page component="div">
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
                   >
                     <Box
                       role="search"
-                      display={["none", "none", "none", "block"]}
+                      display={['none', 'none', 'none', 'block']}
                     >
                       <Input
                         name="input"
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
                     </Hidden>
                     <Box
                       marginLeft={marginLeft}
-                      display={["none", "none", "none", "block"]}
+                      display={['none', 'none', 'none', 'block']}
                     >
                       <Button variant="utility">EN</Button>
                     </Box>
@@ -111,164 +111,164 @@ const Home: NextPage = () => {
                         asideBottomTitle="Aðrir opinberir vefir"
                         asideTopLinks={[
                           {
-                            text: "Stafrænt Ísland",
-                            href: "https://island.is/s/stafraent-island",
+                            text: 'Stafrænt Ísland',
+                            href: 'https://island.is/s/stafraent-island',
                           },
                           {
-                            text: "Þjónusta Ísland.is",
-                            href: "https://island.is/s/stafraent-island/thjonustur",
+                            text: 'Þjónusta Ísland.is',
+                            href: 'https://island.is/s/stafraent-island/thjonustur',
                           },
                           {
-                            text: "Opinberir aðilar",
-                            href: "https://island.is/stofnanir",
+                            text: 'Opinberir aðilar',
+                            href: 'https://island.is/stofnanir',
                           },
                         ]}
                         mainLinks={[
                           {
-                            href: "https://island.is/flokkur/akstur-og-bifreidar",
-                            text: "Akstur og bifreiðar",
+                            href: 'https://island.is/flokkur/akstur-og-bifreidar',
+                            text: 'Akstur og bifreiðar',
                           },
                           {
-                            href: "https://island.is/flokkur/atvinnurekstur-og-sjalfstaett-starfandi",
-                            text: "Atvinnurekstur og sjálfstætt starfandi",
+                            href: 'https://island.is/flokkur/atvinnurekstur-og-sjalfstaett-starfandi',
+                            text: 'Atvinnurekstur og sjálfstætt starfandi',
                           },
                           {
-                            href: "https://island.is/flokkur/domstolar-og-rettarfar",
-                            text: "Dómstólar og réttarfar",
+                            href: 'https://island.is/flokkur/domstolar-og-rettarfar',
+                            text: 'Dómstólar og réttarfar',
                           },
                           {
-                            href: "https://island.is/flokkur/fjarmal-og-skattar",
-                            text: "Fjármál og skattar",
+                            href: 'https://island.is/flokkur/fjarmal-og-skattar',
+                            text: 'Fjármál og skattar',
                           },
                           {
-                            href: "https://island.is/flokkur/fjolskylda-og-velferd",
-                            text: "Fjölskylda og velferð",
+                            href: 'https://island.is/flokkur/fjolskylda-og-velferd',
+                            text: 'Fjölskylda og velferð',
                           },
                           {
-                            href: "https://island.is/flokkur/heilbrigdismal",
-                            text: "Heilbrigðismál",
+                            href: 'https://island.is/flokkur/heilbrigdismal',
+                            text: 'Heilbrigðismál',
                           },
                           {
-                            href: "https://island.is/flokkur/husnaedismal",
-                            text: "Húsnæðismál",
+                            href: 'https://island.is/flokkur/husnaedismal',
+                            text: 'Húsnæðismál',
                           },
                           {
-                            href: "https://island.is/flokkur/idnadur",
-                            text: "Iðnaður",
+                            href: 'https://island.is/flokkur/idnadur',
+                            text: 'Iðnaður',
                           },
                           {
-                            href: "https://island.is/flokkur/innflytjendamal",
-                            text: "Innflytjendamál",
+                            href: 'https://island.is/flokkur/innflytjendamal',
+                            text: 'Innflytjendamál',
                           },
                           {
-                            href: "https://island.is/flokkur/launthegi-rettindi-og-lifeyrir",
-                            text: "Launþegi, réttindi og lífeyrir",
+                            href: 'https://island.is/flokkur/launthegi-rettindi-og-lifeyrir',
+                            text: 'Launþegi, réttindi og lífeyrir',
                           },
                           {
-                            href: "https://island.is/flokkur/malefni-fatlads-folks",
-                            text: "Málefni fatlaðs fólks",
+                            href: 'https://island.is/flokkur/malefni-fatlads-folks',
+                            text: 'Málefni fatlaðs fólks',
                           },
                           {
-                            href: "https://island.is/flokkur/menntun",
-                            text: "Menntun",
+                            href: 'https://island.is/flokkur/menntun',
+                            text: 'Menntun',
                           },
                           {
-                            href: "https://island.is/flokkur/neytendamal",
-                            text: "Neytendamál",
+                            href: 'https://island.is/flokkur/neytendamal',
+                            text: 'Neytendamál',
                           },
                           {
-                            href: "https://island.is/flokkur/samfelag-og-rettindi",
-                            text: "Samfélag og réttindi",
+                            href: 'https://island.is/flokkur/samfelag-og-rettindi',
+                            text: 'Samfélag og réttindi',
                           },
                           {
-                            href: "https://island.is/flokkur/samgongur",
-                            text: "Samgöngur",
+                            href: 'https://island.is/flokkur/samgongur',
+                            text: 'Samgöngur',
                           },
                           {
-                            href: "https://island.is/flokkur/umhverfismal",
-                            text: "Umhverfismál",
+                            href: 'https://island.is/flokkur/umhverfismal',
+                            text: 'Umhverfismál',
                           },
                           {
-                            href: "https://island.is/flokkur/vegabref-ferdalog-og-buseta-erlendis",
-                            text: "Vegabréf, ferðalög og búseta erlendis",
+                            href: 'https://island.is/flokkur/vegabref-ferdalog-og-buseta-erlendis',
+                            text: 'Vegabréf, ferðalög og búseta erlendis',
                           },
                           {
-                            href: "https://island.is/flokkur/thjonusta-island-is",
-                            text: "Þjónusta Ísland.is",
+                            href: 'https://island.is/flokkur/thjonusta-island-is',
+                            text: 'Þjónusta Ísland.is',
                           },
                         ]}
                         asideBottomLinks={[
                           {
-                            text: "Mínar síður",
-                            href: "https://minarsidur.island.is/",
+                            text: 'Mínar síður',
+                            href: 'https://minarsidur.island.is/',
                           },
                           {
-                            text: "Heilsuvera",
-                            href: "https://www.heilsuvera.is/",
+                            text: 'Heilsuvera',
+                            href: 'https://www.heilsuvera.is/',
                           },
                           {
-                            text: "Opinber nýsköpun",
-                            href: "https://opinbernyskopun.island.is/",
+                            text: 'Opinber nýsköpun',
+                            href: 'https://opinbernyskopun.island.is/',
                           },
                           {
-                            text: "Samráðsgátt",
-                            href: "https://samradsgatt.island.is/",
+                            text: 'Samráðsgátt',
+                            href: 'https://samradsgatt.island.is/',
                           },
                           {
-                            text: "Mannanöfn",
-                            href: "https://island.is/mannanofn/",
+                            text: 'Mannanöfn',
+                            href: 'https://island.is/mannanofn/',
                           },
                           {
-                            text: "Undirskriftarlistar",
-                            href: "http://vefur.island.is/undirskriftalistar",
+                            text: 'Undirskriftarlistar',
+                            href: 'http://vefur.island.is/undirskriftalistar',
                           },
                           {
-                            text: "Algengar spurningar",
-                            href: "https://island.is/stafraent-island/algengar-spurningar/",
+                            text: 'Algengar spurningar',
+                            href: 'https://island.is/stafraent-island/algengar-spurningar/',
                           },
                           {
-                            text: "Opnir reikningar ríkisins",
-                            href: "http://www.opnirreikningar.is/",
+                            text: 'Opnir reikningar ríkisins',
+                            href: 'http://www.opnirreikningar.is/',
                           },
                           {
-                            text: "Tekjusagan",
-                            href: "https://tekjusagan.is/",
+                            text: 'Tekjusagan',
+                            href: 'https://tekjusagan.is/',
                           },
                         ]}
                         baseId="Menu"
                         myPagesText="Texti"
                         renderDisclosure={(
                           disclosureDefault,
-                          { onClick, ...disclosureProps }
+                          { onClick, ...disclosureProps },
                         ) => {
                           return (
                             <Box display="flex">
                               <Box
                                 marginRight={1}
-                                display={["block", "block", "block", "none"]}
+                                display={['block', 'block', 'block', 'none']}
                               >
                                 <Button
                                   {...disclosureProps}
                                   variant="utility"
                                   icon="search"
                                   onClick={(e) => {
-                                    onClick(e);
+                                    onClick(e)
                                     setTimeout(() => {
                                       if (searchInput.current) {
-                                        searchInput.current.focus();
+                                        searchInput.current.focus()
                                       }
-                                    }, 100);
+                                    }, 100)
                                   }}
                                 />
                               </Box>
                               {disclosureDefault}
                             </Box>
-                          );
+                          )
                         }}
                         renderLogo={(logo, closeModal) => (
                           <a
                             onClick={() => {
-                              closeModal();
+                              closeModal()
                             }}
                           >
                             <span>{logo}</span>
@@ -284,14 +284,14 @@ const Home: NextPage = () => {
                             <Link href={href} onClick={closeModal}>
                               <span className={className}>{text}</span>
                             </Link>
-                          );
+                          )
                         }}
                         renderMyPagesButton={() => {
                           return (
                             <Button variant="utility" icon="person" as="span">
                               Mínar síður
                             </Button>
-                          );
+                          )
                         }}
                         renderLanguageSwitch={() => (
                           <Button variant="utility">EN</Button>
@@ -327,7 +327,7 @@ const Home: NextPage = () => {
               className={cn(styles.sidebarWrapper, {
                 [styles.sticky]: true,
               })}
-              display={["none", "none", "block"]}
+              display={['none', 'none', 'block']}
             >
               <Box
                 background="purple100"
@@ -338,7 +338,7 @@ const Home: NextPage = () => {
               >
                 <Box
                   display="block"
-                  style={{ flex: "0 0 64px" }}
+                  style={{ flex: '0 0 64px' }}
                   marginRight={3}
                 >
                   <Box
@@ -361,29 +361,29 @@ const Home: NextPage = () => {
             <GridContainer id="main-content">
               <GridRow>
                 <GridColumn
-                  offset={["0", "0", "0", "0", "1/9"]}
-                  span={["9/9", "9/9", "9/9", "9/9", "7/9"]}
+                  offset={['0', '0', '0', '0', '1/9']}
+                  span={['9/9', '9/9', '9/9', '9/9', '7/9']}
                 >
                   <Box paddingLeft={[0, 0, 6, 6, 0]}>
                     <Box
                       paddingBottom={[2, 2, 4]}
-                      display={["none", "none", "block"]}
+                      display={['none', 'none', 'block']}
                       printHidden
                     >
                       <Breadcrumbs
                         items={[
                           {
-                            title: "Ísland.is",
-                            href: "https://island.is",
+                            title: 'Ísland.is',
+                            href: 'https://island.is',
                           },
                           {
-                            title: "Launþegi, réttindi og lífeyrir",
-                            href: "https://island.is/flokkur/launthegi-rettindi-og-lifeyrir",
+                            title: 'Launþegi, réttindi og lífeyrir',
+                            href: 'https://island.is/flokkur/launthegi-rettindi-og-lifeyrir',
                           },
                           {
                             isTag: true,
-                            title: "Atvinnuleysi og starfslok",
-                            href: "https://island.is/flokkur/launthegi-rettindi-og-lifeyrir#atvinnuleysi",
+                            title: 'Atvinnuleysi og starfslok',
+                            href: 'https://island.is/flokkur/launthegi-rettindi-og-lifeyrir#atvinnuleysi',
                           },
                         ]}
                         renderLink={(link, { typename, slug, href }) => {
@@ -391,7 +391,7 @@ const Home: NextPage = () => {
                             <NextLink href={href} passHref>
                               {link}
                             </NextLink>
-                          );
+                          )
                         }}
                       />
                     </Box>
@@ -408,8 +408,8 @@ const Home: NextPage = () => {
                           borderRadius="large"
                           paddingY={4}
                           paddingX={[3, 3, 3, 3, 4]}
-                          alignItems={["flexStart", "center"]}
-                          flexDirection={["column", "row"]}
+                          alignItems={['flexStart', 'center']}
+                          flexDirection={['column', 'row']}
                         >
                           <Box marginRight={[0, 2]} marginBottom={[3, 0]}>
                             <Text variant="h3" color="blue600">
@@ -469,7 +469,7 @@ const Home: NextPage = () => {
       </Box>
       <Footer showTagLinks showMiddleLinks />
     </Page>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

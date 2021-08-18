@@ -1,9 +1,4 @@
-import {
-  addDays,
-  addMonths,
-  isSameMonth,
-  startOfMonth,
-} from 'date-fns'
+import { addDays, addMonths, isSameMonth, startOfMonth } from 'date-fns'
 
 const defaults = {
   hlutfallPersAfsl: 1.0,
@@ -151,4 +146,3 @@ export const unemploymentCalculator = (opts = {}) => {
     getTable,
   }
 }
-

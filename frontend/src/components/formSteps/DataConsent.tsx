@@ -1,5 +1,12 @@
 import React from 'react'
-import { Box, Checkbox, GridRow, Icon, Inline, Text } from '@island.is/island-ui/core'
+import {
+  Box,
+  Checkbox,
+  GridRow,
+  Icon,
+  Inline,
+  Text,
+} from '@island.is/island-ui/core'
 import { ActiveStepComponentProps } from '../ActiveStep'
 import { CheckboxController } from '@cmp'
 
@@ -9,10 +16,14 @@ export const DataConsent = ({ options, form }: ActiveStepComponentProps) => (
       Gagnaöflun
     </Text>
 
-      <Box display="flex">
-        <Box marginRight={2}><Icon color="blue400" type="outline" size="large" icon="download" /></Box>
-        <Text variant="h4" marginBottom={6}>Eftirfarandi gögn verða sótt rafrænt</Text>
+    <Box display="flex">
+      <Box marginRight={2}>
+        <Icon color="blue400" type="outline" size="large" icon="download" />
       </Box>
+      <Text variant="h4" marginBottom={6}>
+        Eftirfarandi gögn verða sótt rafrænt
+      </Text>
+    </Box>
 
     <Text variant="h5" color="blue400">
       Persónuupplýsingar úr Þjóðskrá
