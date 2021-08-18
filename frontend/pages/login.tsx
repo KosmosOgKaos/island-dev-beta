@@ -10,7 +10,6 @@ import {
   GridRow,
   GridColumn,
   Box,
-  Button,
 } from '@island.is/island-ui/core'
 import { LoginLayout } from '@cmp'
 import kennitala from 'kennitala'
