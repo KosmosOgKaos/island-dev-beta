@@ -111,7 +111,7 @@ export const InputController: FC<Props> = ({
       } else if (format && ['text', 'tel'].includes(type)) {
         return (
           <NumberFormat
-            customInput={Input}
+            customInput={NumbInput}
             id={id}
             disabled={disabled}
             backgroundColor={backgroundColor}
