@@ -10,16 +10,16 @@ import {
   ResponsiveProp,
   Table as T,
 } from '@island.is/island-ui/core'
-import jobs from '../../static/jobs.json'
-import lifeyrir from '../../static/lifeyrir.json'
-import lifeyrir2 from '../../static/lifeyrir2.json'
-import education from '../../static/education.json'
-import stettarfelog from '../../static/stettarfelog.json'
+import jobs from 'src/static/jobs.json'
+import lifeyrir from 'src/static/lifeyrir.json'
+import lifeyrir2 from 'src/static/lifeyrir2.json'
+import education from 'src/static/education.json'
+import stettarfelog from 'src/static/stettarfelog.json'
 import { InputController, SelectController, DatePickerController } from '@cmp'
 import { ActiveStepComponentProps } from '../ActiveStep'
 import { RadioController } from '../RadioController'
-import { unemploymentCalculator } from 'lib/calculate'
-import { format, getMonth, getYear } from 'date-fns'
+import { unemploymentCalculator } from 'lib/unemploymentBenefits'
+import { format, getYear } from 'date-fns'
 import { is } from 'date-fns/locale'
 import { useWatch } from 'react-hook-form'
 
@@ -333,12 +333,16 @@ export const Rights = ({ options, form }: ActiveStepComponentProps) => (
 )
 
 const TableRows = ({ form }) => {
-  const { getTable } = unemploymentCalculator({
-    hlutfallPersAfsl: 0,
-  })
-  const { upphafsdagsetning_botagreidslna: startDate } = useWatch({
+  const startDate = useWatch({
+    name: 'upphafsdagsetning_botagreidslna',
     defaultValue: form.getValues().upphafsdagsetning_botagreidslna,
     control: form.control,
+  })
+
+  const { getTable } = unemploymentCalculator({
+    hlutfallPersAfsl: 0,
+    tekjurAManudi: form.getV,
+    starfshlutfall: 100,
   })
 
   if (!startDate) {
@@ -373,7 +377,7 @@ const TableRows = ({ form }) => {
                 </T.Data>
                 <T.Data>-</T.Data>
                 <T.Data>-</T.Data>
-                <T.Data>-</T.Data>
+                <T.Data>{row.utborgudLaun}</T.Data>
               </T.Row>
             )
           })}

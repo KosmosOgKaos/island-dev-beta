@@ -1,43 +1,29 @@
 import { addDays, addMonths, isSameMonth, startOfMonth } from 'date-fns'
+import { UnemploymentBenefitsOptions } from './unemploymentBenefits.types'
 
-const defaults = {
-  hlutfallPersAfsl: 1.0,
-  personuafslattur: 50792,
-  tekjurAManudi: 589459,
-  elliOrorkuTSR: 25000,
-  elliOrorkuAlm: 0,
-  // Tekjuskattur þrep 1 0-349.018 kr.
-  tekjuskatturStep1: 0.3145,
-  tekjuskatturStep1Threshold: 349018,
-  tekjuskatturStep2: 0.3795,
-  vidbodarlifeyrissparnadur: 0.04,
-  stettarfelagHlutfall: 0.01,
-  starfshlutfall: 1.0,
-  lifeyrissjodurHlutfall: 0.04,
-  // Grunnatvinnuleysisbætur 100% starfshlutfall
-  grunnbaetur: 307430,
-  fjoldiBarna: 1,
-}
+// Note: All these variables and calculations are taken from a master
+// spreadsheet this was extrapolated from - translating them all would
+// probably end up being too confusing to maintain.
 
-export const unemploymentCalculator = (opts = {}) => {
+export const unemploymentCalculator = (opts: UnemploymentBenefitsOptions) => {
   const {
     hlutfallPersAfsl,
-    personuafslattur,
     tekjurAManudi,
-    elliOrorkuTSR,
-    elliOrorkuAlm,
+    personuafslattur = 50792,
+    elliOrorkuTSR = 25000,
+    elliOrorkuAlm = 0,
     // Tekjuskattur þrep 1 0-349.018 kr.
-    tekjuskatturStep1,
-    tekjuskatturStep1Threshold,
-    tekjuskatturStep2,
-    vidbodarlifeyrissparnadur,
-    stettarfelagHlutfall,
-    starfshlutfall,
-    lifeyrissjodurHlutfall,
+    tekjuskatturStep1 = 0.3145,
+    tekjuskatturStep1Threshold = 349018,
+    tekjuskatturStep2 = 0.3795,
+    vidbodarlifeyrissparnadur = 0.04,
+    stettarfelagHlutfall = 0.01,
+    starfshlutfall = 1.0,
+    lifeyrissjodurHlutfall = 0.04,
     // Grunnatvinnuleysisbætur 100% starfshlutfall
-    grunnbaetur,
-    fjoldiBarna,
-  } = { ...defaults, ...opts }
+    grunnbaetur = 307430,
+    fjoldiBarna = 1,
+  } = opts
 
   const hamarksTekjutenging = grunnbaetur + 165405
   // Viðbot fyrir börn laun á/undir grunnbótum
@@ -55,14 +41,6 @@ export const unemploymentCalculator = (opts = {}) => {
       utkoma1,
       margfaldadMStarfshlufalli,
     }
-  }
-
-  const baeturMedTekjutengingu = () => {
-    return utkomur(tekjutengdUtkoma)
-  }
-
-  const baeturAnTekjutengingu = () => {
-    return utkomur(otekjutengdUtkoma)
   }
 
   const tekjutengdUtkoma = () => {
@@ -132,13 +110,16 @@ export const unemploymentCalculator = (opts = {}) => {
           tekjutengdUtkoma() * (isTheMonth ? 0.5 : 1) +
           otekjutengdUtkoma() * (isTheMonth ? 0.5 : 0)
 
+        const utborgudLaun =
+          utkomur(tekjutengdUtkoma).utborgudLaun * (isTheMonth ? 0.5 : 1) +
+          utkomur(otekjutengdUtkoma).utborgudLaun * (isTheMonth ? 0.5 : 0)
         return {
           ...row,
           botarettur: starfshlutfall,
           heildarlaun,
+          utborgudLaun,
         }
       })
-    console.table(rows)
     return rows
   }
 
