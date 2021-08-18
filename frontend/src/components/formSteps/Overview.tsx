@@ -108,6 +108,7 @@ export const Overview = ({ options, form }: ActiveStepComponentProps) => (
           id="phoneNumber"
           label="Sími"
           format="### ####"
+          disabled
           type="tel"
           rules={{
             pattern: {
